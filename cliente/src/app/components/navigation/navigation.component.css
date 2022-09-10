@@ -1,0 +1,9 @@
+#logout{
+    cursor: pointer;
+}
+
+.bg-light-cac {
+    --bs-bg-opacity: 1;
+    background-color: rgb(86, 187, 255);;
+    
+}
