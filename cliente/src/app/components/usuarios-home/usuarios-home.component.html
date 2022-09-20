@@ -1,0 +1,23 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+
+            <div class="card text-center">
+                <a routerLink="../../animales/listar" class="btn btn-success" >  Animales <span class="sr-only">(current)</span></a> 
+            </div>
+            <div class="card text-center" *ngIf= "rol=='user'">
+                <a routerLink="../../animales/registrar" class="btn btn-danger" >Registrar Animal<span class="sr-only">(current)</span></a> 
+            </div>
+          <!-- <div class="card text-center">
+                <a routerLink="../../historial/listar" class="btn btn-success" > Historial <span class="sr-only">(current)</span></a> 
+            </div>--> 
+            <div class="card text-center" *ngIf= "rol=='admin'">
+                <a routerLink="../../usuarios/listar" class="btn btn-danger" > Administrar Usuarios <span class="sr-only">(current)</span></a> 
+            </div>
+            <div class="card text-center" *ngIf= "rol=='admin'">
+                <a routerLink="../../animal/administrar" class="btn btn-danger" > Administrar Animal <span class="sr-only">(current)</span></a> 
+            </div>
+
+        </div>
+    </div>
+</div>

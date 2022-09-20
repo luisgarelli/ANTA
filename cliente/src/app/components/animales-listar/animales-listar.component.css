@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+	
+	background-image:url(https://i.pinimg.com/736x/8b/ec/61/8bec61d4bed377644ae301c5119302e3.jpg) ;
+    background-position: center center;
+
+	/* Esta imagen no debe de repetirse */
+	background-repeat: no-repeat;
+  
+	/* COn esta regla fijamos la imagen en la pantalla. */
+	background-attachment: fixed;
+  
+	/* La imagen ocupa el 100% y se reescala */
+	background-size:cover;
+	min-height: 100vh;
+}

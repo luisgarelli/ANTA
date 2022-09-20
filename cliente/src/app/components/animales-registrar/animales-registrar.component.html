@@ -1,0 +1,192 @@
+<br>
+<div class="container">
+    
+    <div class="row justify-content-center "  style="background-color: rgb(86, 187, 255);">
+        <div class="col-7" style="background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20191009/pngtree-cute-corgi-dog-face-pattern-image_318704.jpg'); width: 100%; height: 79vh; background-size: cover; ">
+          <h2 style="color: rgb(0, 0, 0);">Agregar animal</h2>
+          <form class="row g-5 "  (submit)="agregar()" method="post" enctype="multipart/form-data" >
+
+            <div class="col-md-12">
+                <br>
+                <label for="raza" class="form-label">Animal</label>
+                <select class="form-select" [(ngModel)]="animal.animal_codigo" (change)="cambiarSeleccion7($event)">
+                   <!-- <option selected>Seleccione...</option>-->
+                   
+                    <option [value]="ani.id" *ngFor="let ani of combo5" >
+                      {{ani.nombre}}
+                  
+                  </select>
+              </div>
+            <div class="col-md-12">
+            <label for="nombre" class="form-label">Nombre</label>
+            <div class="input-group  ">
+               
+                <input type="text" id="" name="nombre" [(ngModel)]="animal.nombre" placeholder="nombre" autofocus>
+            </div>
+            </div>
+          
+            <div class="col-md-12">
+                <label for="edad" class="form-label">Edad (en años)</label>
+                <div class="input-group  ">
+                   
+                    <input type="text" name="edad" [(ngModel)]="animal.edad" placeholder="1">
+                </div>
+                </div>
+
+
+            
+                <div class="col-md-12">
+                    <br>
+                    <label for="raza" class="form-label">Raza</label>
+                    <select class="form-select" [(ngModel)]="animal.raza" (change)="cambiarSeleccion2($event)">
+                       <!-- <option selected>Seleccione...</option>-->
+                       
+                        <option [value]="ani.id" *ngFor="let ani of codigo2" >
+                          {{ani.raza}}
+                      
+                      </select>
+                  </div>
+
+                  <div class="input-group form-group">
+                           
+                    <label for="sexo" class="form-label">Provincia</label>
+                    <select class="form-select" [(ngModel)]="animal.provincia" (change)="cambiarSeleccion5($event)" >
+                       <!-- <option selected>Seleccione...</option>-->
+                       <option disabled selected> Selecciona una opcion</option>
+                        <option [value]="ani.id"   *ngFor="let ani of combo3" >
+                          {{ani.provincia}}
+                      
+                      </select>
+                  </div>
+                  <div class="col-md-12">
+                 
+                    <label for="sexo" class="form-label">Localidad</label>
+                    <select class="form-select" [(ngModel)]="animal.localidad" (change)="cambiarSeleccion6($event)">
+                       <!-- <option selected>Seleccione...</option>-->
+                       
+                        <option [value]="ani.id" *ngFor="let ani of codigo" >
+                          {{ani.localidad}}  
+                      
+                      </select>
+                  </div>
+              <!-- <input type="text" id="" name="raza" [(ngModel)]="animal.raza" placeholder="raza">-->
+           
+            
+        <div class="col-md-12">
+            <label for="descripcion" class="form-label">Descripción</label>
+            <div class="input-group  ">
+               
+                <input type="text" id="" name="descripcion" [(ngModel)]="animal.descripcion" placeholder="Descripcion">
+            </div>
+
+            
+        </div>
+            
+          <br>
+          
+           Fecha: <input type="date" [(ngModel)]="animal.alta" (change)="fechaSeleccionada($event)">
+      
+
+
+            <div class="col-md-12">
+                <br>
+                <label for="sexo" class="form-label">Sexo</label>
+                <select class="form-select" [(ngModel)]="animal.sexo" (change)="cambiarSeleccion($event)">
+                   <!-- <option selected>Seleccione...</option>-->
+                   
+                    <option [value]="ani.sexo" *ngFor="let ani of combo" >
+                      {{ani.sexo}}
+                  
+                  </select>
+              </div>
+           <div>
+         
+
+     <!--  <div>
+
+          <label for="imagen" class="form-label">imagen:</label>
+          <input type="file" class="form-control" [(ngModel)]="animal.imagen" (change)="onChange($event)" >
+          <img [src]="myimage" width="200px" height="200px" alt="" />
+       
+         </div>  --> 
+<!-- -------------------------------------------------------------------------------- -->
+        <input type="file" (change)="selecciona($event)" [(ngModel)]="animal.imagen" />
+ 
+         <div *ngIf="myimage">
+           <img [src]="myimage" width="200px" height="200px" alt="" />
+ 
+         </div>
+
+        <!--    --------------------------------------------------------------- -->
+
+                <br>
+              <button class="btn btn-primary btn-sm" (click)="alerta()"   >Agregar</button>
+              <br>
+            </div>
+          </form>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+
+<div class="container mb-5">
+  <br>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <br>
+    <div *ngFor="let image of images" class="col">
+      
+      <div class="card h-100">
+        <br>
+        <img [src]="image" class="card-img-top" alt="...">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+<input type="file" (change)="onChangee($event)" />
+
+<div *ngIf="myimagess">
+  <img [src]="myimagess | async" width="200px" height="200px" alt="" />
+</div>
+-->
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="container">  
+  <div class="card-group mt-2">
+ <div  class="row">
+  <div class="col-md-4" style="width: 18rem;"    *ngFor=" let animale of animales"   >
+    <img class="card-img-top" [src]="animale.imagen" alt="Card image cap">
+    <div class="card-body">
+    
+    Nombre: {{animale.nombre}} <br>
+    Edad:  {{animale.edad}}<br>
+    Sexo: {{animale.sexo}}  <br>
+    Descripción: {{animale.descripcion}}
+    
+    <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>--> 
+      <div class="card text-center">
+        <a class="btn btn-info"   >Ver animal</a> 
+    </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+

@@ -1,0 +1,85 @@
+<div>
+
+    <div>
+
+        <table class="table table-dark table-hover">
+
+            <thead class="thead-light">
+
+                <th>ID</th>
+                <th>Slot</th>
+                <th>Descripción</th>
+
+            </thead>
+
+            <tbody *ngIf="slots.length > 0; else fila">
+
+                <tr *ngFor=" let slot of slots">
+
+                    <td>{{slot.id_slot}}</td>
+                    <td>{{slot.slot}}</td>
+                    <td>{{slot.descripcion}}</td>
+
+                </tr>
+
+            </tbody>
+
+            <ng-template #fila>
+
+                <tbody>
+                    <tr>
+                        <td colspan="4">No hay mas filas</td>
+                    </tr>
+                </tbody>
+
+            </ng-template>
+
+        </table>
+
+    </div>
+
+
+
+    <div>
+
+        <div>
+
+            <legend> Agregar </legend>
+    
+            <input type="text" name="slot" style="margin: 10px" (change)="ActivarAgregar($event)" [(ngModel)]="slot.slot" placeholder="E01">
+            <input type="text" name="descripcion" style="margin: 10px" [(ngModel)]="slot.descripcion" placeholder="Descripción">
+    
+            <a href="../../slots/administrar"> <button [disabled]="btnStateAgregar" name="agregar" type="button" style="margin: 30px" class="btn btn-success" (click)="AgregarSlot()"> Agregar </button> </a>
+    
+        </div>
+
+        <div>
+
+            <legend> Modificar </legend>
+
+            <select [(ngModel)]="slotModificado.id_slot" (change)="ActivarModificar($event)">
+                <option selected></option>
+                <option [value]="slotModificado.id_slot" *ngFor="let slotModificado of slots">{{slotModificado.id_slot}}</option>
+            </select>
+            <input type="text" name="slotModificar" style="margin: 10px" [(ngModel)]="slotModificado.slot" placeholder="AA 000 AA">
+            <input type="text" name="descripcionModificar" style="margin: 10px" [(ngModel)]="slotModificado.descripcion" placeholder="Descripción">
+
+            <a href="../../slots/administrar"> <button [disabled]="btnStateModificar" name="modificar" type="button" style="margin: 30px" class="btn btn-success" (click)="ModificarSlot()"> Modificar </button> </a>
+        </div>
+
+        <div>
+
+            <legend> Borrar </legend>
+    
+            <select [(ngModel)]="slotBorrado.id_slot" (change)="ActivarBorrar($event)">
+                <option selected></option>
+                <option [value]="slotBorrado.id_slot" *ngFor="let slotBorrado of slots">{{slotBorrado.id_slot}}</option>
+            </select>
+    
+            <a href="../../slots/administrar"> <button [disabled]="btnStateBorrar" name="borrar" type="button" style="margin: 30px" class="btn btn-danger" (click)="BorrarSlot()"> Borrar </button> </a>
+    
+        </div>
+
+    </div>
+
+</div>

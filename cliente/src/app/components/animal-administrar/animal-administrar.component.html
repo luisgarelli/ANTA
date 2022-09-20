@@ -1,0 +1,212 @@
+<br>
+<table class="table table-dark table-hover">
+    <thead class="thead-light">
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Edad</th>
+        <th>Sexo</th>
+        <th>Raza</th>
+        <th>Descripcion</th>
+        <th>Alta</th>
+        <th>Eliminar</th>
+    </thead>
+    <tbody *ngIf="animales.length > 0; else fila">
+        <tr *ngFor=" let animal of animales">
+            <td>{{animal.id}}</td>
+            <td>{{animal.nombre}}</td>
+            <td>{{animal.edad}}</td>
+            <td>{{animal.sexo}}</td>
+            <td>{{animal.raza}}</td>
+            <td>{{animal.descripcion}}</td>
+            <td>{{animal.alta}}</td>
+            <td>                             
+                <button name="borrar" type="button" class="btn btn-danger" (click)="BorrarAnimal(animal.id)"> Eliminar </button>
+            </td>
+            
+        </tr>
+    </tbody>
+    <ng-template #fila>
+        <tbody>
+            <tr>
+                <td colspan="4">No hay mas filas</td>
+            </tr>
+        </tbody>
+    </ng-template>
+</table>
+<!--
+<div>
+    <form (submit)="agregar()" method="post">
+        <legend>Agregar animal</legend>
+        <div class="form-group">
+            <input type="text" id="" name="nombre" [(ngModel)]="animal.nombre" placeholder="nombre" autofocus>
+            <input type="text" name="edad" [(ngModel)]="animal.edad" placeholder="11">
+            <select class="form-select" [(ngModel)]="animal.sexo" (change)="cambiarSeleccion($event)">
+                <option selected>Seleccione</option>
+                <option [value]="ani.sexo" *ngFor="let ani of combo" >
+                  {{ani.sexo}}
+              
+              </select>
+            <input type="text" id="" name="raza" [(ngModel)]="animal.raza" placeholder="raza">
+            <input type="text" id="" name="descripcion" [(ngModel)]="animal.descripcion" placeholder="Descripcion">
+            <button class="btn btn-info btn-sm">Agregar</button>
+        </div>
+    </form>
+</div>
+-->
+<!--
+<div>
+    <form (submit)="modificar()" method="post">
+        <legend>Modificar animal</legend>
+        <div class="form-group">
+            <select id=""  name="id" [(ngModel)]="id" (change)="seleccionar()">
+                <option *ngFor="let animal_i of animales" value="{{animal_i.id}}">{{animal_i.id}}</option>
+            </select>
+            <input type="text" id="" name="nombre" [(ngModel)]="animal2.nombre" placeholder="nombre" autofocus>
+            <input type="text" name="edad" [(ngModel)]="animal2.edad" placeholder="11">
+            <input type="text" id="" name="sexo" [(ngModel)]="animal2.sexo" placeholder="sexo">
+            
+            <input type="text" id="" name="raza" [(ngModel)]="animal2.raza" placeholder="raza">
+            <input type="text" id="" name="descripcion" [(ngModel)]="animal2.descripcion" placeholder="Descripcion">
+            <button class="btn btn-info btn-sm">Modificar</button>
+        </div>
+    </form>
+</div>
+-->
+<!--
+    <label class=" col-sm-2 col-form-label" > sexo</label>
+    <div class ="col-sm-10">
+<select class="form-select" [(ngModel)]="animal.sexo" >
+  <option selected>Seleccione</option>
+  <option  *ngFor="let ani of combo" >
+    {{ani.sexo}}
+
+</select>
+</div>
+
+-->
+
+<div class="container">
+    
+    <div class="row justify-content-center "  style="background-color: rgb(86, 187, 255);">
+        <div class="col-7" style="background-image: url('https://previews.123rf.com/images/wewhitelist/wewhitelist1508/wewhitelist150800067/44334659--fondo-blanco-geom%C3%A9trico-abstracto-modelo-para-el-dise%C3%B1o-estilo-pol%C3%ADgono-de-vectores-de-fondo-.jpg'); width: 100%; height: 79vh; background-size: cover; ">
+          <h2 style="color: rgb(86, 187, 255);">Agregar animal</h2>
+          <form class="row g-5 "  (submit)="agregar()" method="post" >
+            <div class="col-md-12">
+            <label for="nombre" class="form-label">Nombre</label>
+            <div class="input-group  ">
+               
+                <input type="text" id="" name="nombre" [(ngModel)]="animal.nombre" placeholder="nombre" autofocus>
+            </div>
+            </div>
+          
+            <div class="col-md-12">
+                <label for="edad" class="form-label">Edad</label>
+                <div class="input-group  ">
+                   
+                    <input type="text" name="edad" [(ngModel)]="animal.edad" placeholder="11">
+                </div>
+                </div>
+            
+                <div class="col-md-12">
+                    <br>
+                    <label for="raza" class="form-label">Raza</label>
+                    <select class="form-select" [(ngModel)]="animal.raza" (change)="cambiarSeleccion2($event)">
+                       <!-- <option selected>Seleccione...</option>-->
+                       
+                        <option [value]="ani.raza" *ngFor="let ani of combo2" >
+                          {{ani.raza}}
+                      
+                      </select>
+                  </div>
+              <!-- <input type="text" id="" name="raza" [(ngModel)]="animal.raza" placeholder="raza">-->
+           
+            
+        <div class="col-md-12">
+            <label for="descripcion" class="form-label">Descripción</label>
+            <div class="input-group  ">
+               
+                <input type="text" id="" name="descripcion" [(ngModel)]="animal.descripcion" placeholder="Descripcion">
+            </div>
+        </div>
+                
+          
+
+            <div class="col-md-12">
+                <br>
+                <label for="sexo" class="form-label">Sexo</label>
+                <select class="form-select" [(ngModel)]="animal.sexo" (change)="cambiarSeleccion($event)">
+                   <!-- <option selected>Seleccione...</option>-->
+                   
+                    <option [value]="ani.sexo" *ngFor="let ani of combo" >
+                      {{ani.sexo}}
+                  
+                  </select>
+              </div>
+           <div>
+              <button class="btn btn-info btn-sm">Agregar</button>
+            </div>
+          </form>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="container">
+    
+    <div class="row justify-content-center "  style="background-color: rgb(86, 187, 255);">
+        <div class="col-7" style="background-image: url('https://previews.123rf.com/images/wewhitelist/wewhitelist1508/wewhitelist150800067/44334659--fondo-blanco-geom%C3%A9trico-abstracto-modelo-para-el-dise%C3%B1o-estilo-pol%C3%ADgono-de-vectores-de-fondo-.jpg'); width: 100%; height: 70vh; background-size: cover; ">
+          <h2 style="color: rgb(86, 187, 255);">Modificar Animal</h2>
+          <form class="row g-5 "   (submit)="modificar()" method="post">
+            <select id=""  name="id" [(ngModel)]="id" (change)="seleccionar()">
+                <option *ngFor="let animal_i of animales" value="{{animal_i.id}}">{{animal_i.nombre}}</option>
+            </select>
+            <div class="col-md-12">
+            <label for="nombre" class="form-label">Nombre</label>
+            <div class="input-group  ">
+               
+                <input type="text" id="" name="nombre" [(ngModel)]="animal2.nombre" placeholder="nombre" autofocus>
+            </div>
+            </div>
+          
+            <div class="col-md-12">
+                <label for="edad" class="form-label">Edad</label>
+                <div class="input-group  ">
+                   
+                    <input type="text" name="edad" [(ngModel)]="animal2.edad" placeholder="11">
+                </div>
+                </div>
+             <div class="col-md-12">
+            <label for="raza" class="form-label">Raza</label>
+            <div class="input-group  ">
+               
+                <input type="text" id="" name="raza" [(ngModel)]="animal2.raza" placeholder="raza">
+            </div>
+        </div>
+            
+        <div class="col-md-12">
+            <label for="descripcion" class="form-label">Descripción</label>
+            <div class="input-group  ">
+               
+                <input type="text" id="" name="descripcion" [(ngModel)]="animal2.descripcion" placeholder="Descripcion">
+            </div>
+        </div>
+                
+          
+
+        <div class="col-md-12">
+            <label for="descripcion" class="form-label">Sexo</label>
+            <div class="input-group  ">
+               
+                <input type="text" id="" name="sexo" [(ngModel)]="animal2.sexo" placeholder="hembra/macho">
+            </div>
+        </div>
+           <div>
+              <button class="btn btn-info btn-sm">Modificar</button>
+            </div>
+          </form>
+        </div>
+    </div>
+</div>
+
+

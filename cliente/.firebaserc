@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "imag-43b3a": {
+      "hosting": {
+        "cliente01": [
+          "imag-43b3a"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "imag-43b3a"
+  }
+}
