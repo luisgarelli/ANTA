@@ -94,6 +94,24 @@ class AnimalModel
 
 		return result;
 	}
+	async crearAdopcion(usuario: object)
+    {
+		const result = (await this.db.query('INSERT INTO adopcion SET ?', [usuario]))[0].affectedRows;
+		console.log(result);
+
+		return result;
+	}
+	async buscarAdopcion(nombre: string)
+    {
+		const encontrado: any = await this.db.query('SELECT * FROM adopcion WHERE id_animal = ?', [nombre]);
+		//Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
+		
+        if (encontrado.length > 1)
+
+			return encontrado[0][0];
+
+		return null;
+	}
 
 	//Devuelve 1 si logro actualizar el usuario indicado por id
 	async actualizar(usuario: object, id: string)

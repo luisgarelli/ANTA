@@ -25,6 +25,8 @@ import { AnimalesInformacionComponent } from './components/animales-informacion/
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxToastNotifierModule } from 'ngx-toast-notifier';
 
 
 @NgModule({
@@ -45,17 +47,22 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     RegistrarComponent,
     AnimalesRegistrarComponent,
     AnimalesInformacionComponent
+  
+   
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    BrowserAnimationsModule, // required animations module
+    NgxToastNotifierModule.forRoot(), // NgxToastNotifierModule added
     HttpClientModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideStorage(() => getStorage())
   ],
   providers: [
+    
     UsuariosService,
     AuthGuard,
     {

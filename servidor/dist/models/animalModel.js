@@ -92,6 +92,22 @@ class AnimalModel {
             return result;
         });
     }
+    crearAdopcion(usuario) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const result = (yield this.db.query('INSERT INTO adopcion SET ?', [usuario]))[0].affectedRows;
+            console.log(result);
+            return result;
+        });
+    }
+    buscarAdopcion(nombre) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const encontrado = yield this.db.query('SELECT * FROM adopcion WHERE id_animal = ?', [nombre]);
+            //Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
+            if (encontrado.length > 1)
+                return encontrado[0][0];
+            return null;
+        });
+    }
     //Devuelve 1 si logro actualizar el usuario indicado por id
     actualizar(usuario, id) {
         return __awaiter(this, void 0, void 0, function* () {

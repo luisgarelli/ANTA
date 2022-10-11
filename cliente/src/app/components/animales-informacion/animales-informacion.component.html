@@ -1,10 +1,68 @@
-<p>animales-informacion works!</p>
-<div class="col-md-4" style="width: 18rem;"    *ngFor=" let ani of variable"  >
-    
-    <div class="card-body" >
-    Nombre: {{ani.nombre}} <br>
-    
-      <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
-     
+
+<br>
+<div class="container-fluid">
+  <div class="row text-white text-center">
+    <div class="col-2 bg-dark border">
+
+      <p style="color: white;">Nombre: {{Animal.nombre}}</p>
+<p style="color: white;">Sexo: {{Animal.sexo}}</p>
+<p style="color: white;">Edad: {{Animal.edad}}</p>  
+<p style="color: white;">Fecha de ingreso: {{Animal.alta| date: 'dd/MM/yyyy'}}</p>
+
+<button class="btn btn-primary "  (click)="agregar(Animal.id)" (click)="addSuccess()" >Adoptar</button>
+    </div>
+    <div class="col-10 bg-dark border">
+      <img class="circular--square" [src]="Animal.imagen" alt="Card image cap">
     </div>
   </div>
+</div>
+<!--<div class="overlay">
+ 
+  <div class="wrap-buttons">
+    <button class="btn btn-success" (click)="addSuccess()">Success Alert</button>
+    <button class="btn btn-info" (click)="addInfo()">Info Alert</button>
+    <button class="btn btn-warning" (click)="addWarning()">Warning Alert</button>
+    <button class="btn btn-danger" (click)="addDanger()">Danger Alert</button>
+  </div>
+</div>-->
+<ngx-toast-notifier></ngx-toast-notifier>
+<!-- Button trigger modal -->
+
+<div class="container">
+  <br>
+  <!-- Boton -->
+  <button data-toggle="modal" href="#mi_modal" class="btn btn-primary">Abrir ventana modal</button>
+  <br><br>
+  <!-- Link -->
+ 
+
+  <!-- si se necesita cambiar tamaño de modal agregar modal-lg a la linea 
+  <div class="modal-dialog"> por <div class="modal-dialog modal-lg">-->
+
+  <!-- Modal-->
+  <div class="modal fade" id="mi_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel">Formulario de Adopción</h4>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

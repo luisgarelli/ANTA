@@ -26,6 +26,7 @@ export class UsuariosListarComponent implements OnInit {
   constructor(private usuarioService: UsuariosService) {
     this.usuario = { nombre: "", email: "", password: "", rol:"", alta :"",activado:"", perfil:"",sexo:"", provincia:""};
     this.usuario2 = { nombre: "", email: "", password: "", rol:"", alta :"",activado:"", perfil:"",sexo:"", provincia:""};
+    
     /*
     replace(/\/+/g,'-')
        this.sinCaracter= this.auto.descripcion?.replace(/[\/\\]+/g,'-');;

@@ -41,7 +41,7 @@ class UserController {
             if (yield bcrypt_1.default.compare(password, result.password)) {
                 console.log("CONTRASEÑA CORRECTA");
                 const token = jsonwebtoken_1.default.sign({ _id: result.id }, "secretKey");
-                res.json({ "login": "ok", "mensaje": "Bienvenido " + result.nombre, token: token, "rol": result.rol, "password": password });
+                res.json({ "login": "ok", "mensaje": "Bienvenido ", "nombre": result.nombre, token: token, "rol": result.rol, "password": password });
                 return;
             }
             else {

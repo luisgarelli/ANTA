@@ -57,24 +57,23 @@
   <div class="card-group mt-2">
  <div  class="row">
   <div class="col-md-4" style="width: 18rem;"    *ngFor=" let animal of animales"  >
-    <img class="card-img-top"  src="https://www.elfinanciero.com.mx/resizer/031BMWo-U9oB5WJP4DdPbNx9vII=/400x225/filters:format(jpg):quality(70)/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/G4FLWTZ57VE2JPYATUTCB4GJ7E.jpg" alt="Card image cap">
+   <!-- <img class="card-img-top"  src="https://www.elfinanciero.com.mx/resizer/031BMWo-U9oB5WJP4DdPbNx9vII=/400x225/filters:format(jpg):quality(70)/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/G4FLWTZ57VE2JPYATUTCB4GJ7E.jpg" alt="Card image cap">-->
+   <img class="card-img-top" [src]="animal.imagen" alt="Card image cap">
     <div class="card-body" >
     Nombre: {{animal.nombre}} <br>
     Edad:  {{animal.edad}}<br>
     Sexo: {{animal.sexo}}  <br>
     Descripción: {{animal.descripcion}}
+  
       <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
       <div class="card text-center">
-        <a class="btn btn-info"    (click)="cambiarSeleccion(animal.id)" (click)="modelo()">Ver animal</a> 
+        <a class="btn btn-info"    (click)="cambiarSeleccion(animal.id)" >Ver animal</a> 
+
     </div>
     </div>
   </div>
 </div>
 </div>
 </div>
-<input type="file" (change)="onChangee($event)" />
 
-<div *ngIf="myimagess">
-  <img [src]="myimagess | async" width="200px" height="200px" alt="" />
-</div>
 </body>

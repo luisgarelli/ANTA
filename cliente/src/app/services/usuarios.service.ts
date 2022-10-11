@@ -90,6 +90,13 @@ export class UsuariosService {
 	getRol() {
 		return localStorage.getItem('rol');
 	}
+	setNombre(nombre: string) {
+		localStorage.setItem('nombre', nombre)
+	}
+	
+	getNombre() {
+		return localStorage.getItem('nombre');
+	}
 
 
 }

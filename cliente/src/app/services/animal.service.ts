@@ -76,6 +76,9 @@ export class AnimalService {
 		//si no funciona usar 
 		//return this.http.get(this.API_URI+'/list');
 	}
+	guardarAdopcion(auto: Animal){
+		return this.http.post(`${this.API_URI}/adopcion`,auto);
+	}
 	
 	  
 }

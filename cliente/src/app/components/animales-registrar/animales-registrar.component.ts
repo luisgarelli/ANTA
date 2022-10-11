@@ -10,7 +10,7 @@ import { from, Observable } from 'rxjs';
 import { Subscriber } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
 import { toBase64String } from '@angular/compiler/src/output/source_map';
-import { Storage,ref, uploadBytes, listAll, getDownloadURL  } from '@angular/fire/storage';
+import { Storage,ref, uploadBytes, listAll,getDownloadURL,UploadTaskSnapshot,uploadBytesResumable } from '@angular/fire/storage';
 import { AnyForUntypedForms } from '@angular/forms';
 @Component({
   selector: 'app-animales-registrar',
@@ -60,6 +60,7 @@ export class AnimalesRegistrarComponent implements OnInit {
   localidades: any = [];
   fecha:any;
   algo:any;
+  imgUsuario:any;
 //--
  //--
  errorMoPatente=0;
@@ -166,8 +167,13 @@ selecciona($event: any) {
   const imgRef = ref(this.storage, `images/${file.name}`);
 
   uploadBytes(imgRef, file).then(x => {
-    //this.getImages();
+   // this.getImages();
+  
   }).catch(error => console.log(error));
+  const task = uploadBytesResumable(imgRef, file);
+  getDownloadURL(task.snapshot.ref).then((downLoadURL)=>
+  this.imgUsuario = downLoadURL);
+  
 }
 dataURLtoFile(dataurl:any, filename:any) {
  
@@ -313,7 +319,7 @@ console.log(btoa(binaryString));
    this.animal.raza= this.razaAnimal;
     this.animal.alta = this.fecha;
    this.animal.provincia = this.provinciaUser;
-  this.animal.imagen = this.algo;
+  this.animal.imagen = this.imgUsuario;
    this.animal.localidad = this.localidadUser;
    //this.imagenes(this.animal.imagen);
    //this.transform(this.animal.imagen);

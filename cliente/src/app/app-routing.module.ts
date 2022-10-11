@@ -83,10 +83,9 @@ const routes: Routes = [
 		component: AnimalesRegistrarComponent,
 		canActivate: [AuthGuard]
 	},
+	
 	{
-		path: 'animales/informacion',
-		component: AnimalesInformacionComponent,
-		canActivate: [AuthGuard]
+		path:'animales/informacion/:id',component : AnimalesInformacionComponent
 	}
 	
 

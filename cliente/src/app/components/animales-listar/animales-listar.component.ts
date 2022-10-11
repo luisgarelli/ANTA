@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { observable, Subscriber } from 'rxjs';
 import { Animal } from 'src/app/models/animalModel';
 import { Observable } from 'rxjs';
 import { AnimalService } from '../../services/animal.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import {Router} from '@angular/router';
-
+import { UsuariosService } from '../../services/usuarios.service';
 
 @Component({
   selector: 'app-animales-listar',
@@ -18,12 +18,14 @@ export class AnimalesListarComponent implements OnInit {
   myimage!: Observable<any>;
   base64code!: any
   combo:any;
+  idAnimal:any;
   elegido:any;
   id: string = "";
   animal2: Animal;//Usado para instancial el auto a modificar
   animales: any = [];
   letigo:any;
-  constructor(private animalService: AnimalService,  private router:Router) {
+  nombreUsuario:any;
+  constructor(private animalService: AnimalService,  private router:Router, private usuariosService: UsuariosService) {
     this.animal = { nombre: "", edad: "",  sexo: "" , raza: "", descripcion: "", alta: "",imagen:""  };
     this.animal2 = {nombre: "", edad: "",  sexo: "" , raza: "", descripcion: "", alta: ""  };
    
@@ -33,12 +35,14 @@ export class AnimalesListarComponent implements OnInit {
     this.auto.descripcion = this.sinCaracter;
     */
   }
+  
   ngOnInit(): void {
    
     this.animalService.listarAnimal().subscribe(
      
       res => {
-        console.log("Datos del Servicio");
+
+        console.log("Datos del Servicio", this.usuariosService.getNombre());
      //this.mostrar();
      //empieza
    
@@ -55,17 +59,12 @@ export class AnimalesListarComponent implements OnInit {
     this.animalService.listarAnimal().subscribe((data:any)=>{
       this.combo= data;
       })
+     
     //---------------------------------------------
   
     
   }
-  modelo(){
-    for(let image of this.animales){
-        console.log(image.id);
-        this.letigo = image.imagen;
-    }
-   
-  }
+
  
  
   onChange = ($event: Event) => {
@@ -101,10 +100,12 @@ export class AnimalesListarComponent implements OnInit {
       subscriber.complete();
     };
   }
-  cambiarSeleccion(e:any){
-    console.log(e);
-  this.elegido =e;
-    this.router.navigate(['animales/informacion']); 
+  cambiarSeleccion(id:any){
+    console.log(id);
+   
+    
+   // this.router.navigate(['animales/informacion']);
+    this.router.navigate(['animales/informacion',id]);
     }
 
 // -------------------------------------------------------------

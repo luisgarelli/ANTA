@@ -199,6 +199,20 @@ class AnimalController {
             return res.json({ text: 'deleting an auto ' + id });
         });
     }
+    agregaAdopcion(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const animal = req.body;
+            //delete slot.repassword;
+            console.log(req.body);
+            //res.send('Usuario agregado!!!');
+            const busqueda = yield animalModel_1.default.buscarAdopcion(animal.slot);
+            if (!busqueda) {
+                const result = yield animalModel_1.default.crearAdopcion(animal);
+                return res.json({ mensaje: 'Slot saved!!' });
+            }
+            return res.json({ mensaje: 'Slot exists!!' });
+        });
+    }
 }
 //Instanciamos el objeto controlador y lo exportamos
 const animalController = new AnimalController();

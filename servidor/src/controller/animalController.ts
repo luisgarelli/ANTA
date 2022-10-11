@@ -204,6 +204,21 @@ class AnimalController
         const result = await animalModel.eliminar(id);
         return res.json({ text: 'deleting an auto ' + id });
 	}
+
+    public async agregaAdopcion(req:Request,res:Response)
+    {
+        const animal = req.body;
+        //delete slot.repassword;
+        console.log(req.body);
+        //res.send('Usuario agregado!!!');
+        const busqueda = await animalModel.buscarAdopcion(animal.slot);
+        if (!busqueda) {
+            const result = await animalModel.crearAdopcion(animal);
+            return res.json({ mensaje: 'Slot saved!!' });
+        }
+        return res.json({ mensaje: 'Slot exists!!' });
+      
+	}
 	//FIN CRUD
 
     
