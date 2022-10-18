@@ -27,6 +27,7 @@ import { environment } from '../environments/environment';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxToastNotifierModule } from 'ngx-toast-notifier';
+import { FiltroPipe } from './cliente/pipes/filtro.pipe';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { NgxToastNotifierModule } from 'ngx-toast-notifier';
     AnimalesListarComponent,
     RegistrarComponent,
     AnimalesRegistrarComponent,
-    AnimalesInformacionComponent
+    AnimalesInformacionComponent,
+    FiltroPipe
   
    
     

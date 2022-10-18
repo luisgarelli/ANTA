@@ -46,6 +46,7 @@ class AnimalRoutes
 		this.router.get('/listaProvincia',TokenValidation,animalController.listarProvincia);
 		this.router.get('/listaLocalidad',TokenValidation,animalController.listarLocalidad);
 		this.router.post('/adopcion',TokenValidation,animalController.agregaAdopcion);	
+		this.router.get('/busc/:id',TokenValidation,animalController.buscarId);
 
 
 	}

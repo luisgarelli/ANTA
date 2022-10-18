@@ -40,6 +40,7 @@ class AnimalRoutes {
         this.router.get('/listaProvincia', verifyToken_1.TokenValidation, animalController_1.default.listarProvincia);
         this.router.get('/listaLocalidad', verifyToken_1.TokenValidation, animalController_1.default.listarLocalidad);
         this.router.post('/adopcion', verifyToken_1.TokenValidation, animalController_1.default.agregaAdopcion);
+        this.router.get('/busc/:id', verifyToken_1.TokenValidation, animalController_1.default.buscarId);
     }
 }
 //Exportamos el enrutador con 

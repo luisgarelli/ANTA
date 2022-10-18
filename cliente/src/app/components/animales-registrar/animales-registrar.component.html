@@ -25,13 +25,13 @@
             </div>
             </div>
           
-            <div class="col-md-12">
+          <!--  <div class="col-md-12">
                 <label for="edad" class="form-label">Edad (en años)</label>
                 <div class="input-group  ">
                    
                     <input type="text" name="edad" [(ngModel)]="animal.edad" placeholder="1">
                 </div>
-                </div>
+                </div>-->
 
 
             
@@ -81,10 +81,26 @@
 
             
         </div>
+
+        <fieldset>
+          <h4 style="color: black">¿Tamaño del animal? </h4>
+          <label>
+              <input type="radio" name="tama" value="Pequeño"  [(ngModel)]="animal.tamanio" > Pequeño.
+          </label>
+          <label>
+              <input type="radio" name="tama" value="Mediano" [(ngModel)]="animal.tamanio" > Mediano.
+          </label>
+          <label>
+            <input type="radio" name="tama" value="Grande" [(ngModel)]="animal.tamanio" > Grande.
+        </label>
+         
+      </fieldset>
+          <br>
+     
             
           <br>
           
-           Fecha: <input type="date" [(ngModel)]="animal.alta" (change)="fechaSeleccionada($event)">
+           <!--Fecha: <input type="date" [(ngModel)]="animal.alta" (change)="fechaSeleccionada($event)">-->
       
 
 
@@ -101,7 +117,19 @@
               </div>
            <div>
          
-
+            <fieldset>
+              <legend style="color: black">indique la edad del animal </legend>
+              <label>
+                  <input type="radio" name="tip" value="Cachorro"  [(ngModel)]="animal.tipo" > Cachorro.
+              </label>
+              <label>
+                  <input type="radio" name="tip" value="Adulto" [(ngModel)]="animal.tipo" > Adulto.
+              </label>
+              <label>
+                <input type="radio" name="tip" value="Anciano" [(ngModel)]="animal.tipo" > Anciano.
+            </label>
+             
+          </fieldset>
      <!--  <div>
 
           <label for="imagen" class="form-label">imagen:</label>

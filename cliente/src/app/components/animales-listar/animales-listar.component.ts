@@ -25,9 +25,10 @@ export class AnimalesListarComponent implements OnInit {
   animales: any = [];
   letigo:any;
   nombreUsuario:any;
+ public page: number=0;
   constructor(private animalService: AnimalService,  private router:Router, private usuariosService: UsuariosService) {
-    this.animal = { nombre: "", edad: "",  sexo: "" , raza: "", descripcion: "", alta: "",imagen:""  };
-    this.animal2 = {nombre: "", edad: "",  sexo: "" , raza: "", descripcion: "", alta: ""  };
+    this.animal = { nombre: "",   sexo: "" , raza: "", descripcion: "", alta: "",imagen:"",tamanio:"",tipo:""  };
+    this.animal2 = {nombre: "",   sexo: "" , raza: "", descripcion: "", alta: ""  };
    
     /*
     replace(/\/+/g,'-')
@@ -65,7 +66,14 @@ export class AnimalesListarComponent implements OnInit {
     
   }
 
- 
+ nextPage(){
+this.page += 5;
+ }
+ prevPage(){
+  if(this.page > 0 )
+  this.page -= 5;
+  
+ }
  
   onChange = ($event: Event) => {
     const target = $event.target as HTMLInputElement;

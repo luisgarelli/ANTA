@@ -1,7 +1,6 @@
 export interface Animal{
 	id?: string;
 	nombre?: string;
-	edad?: string;
 	sexo?: string;
 	raza?: string;
 	descripcion?: string;
@@ -10,4 +9,7 @@ export interface Animal{
 	localidad?: string;
 	animal_codigo?: string;
 	imagen?: string;
+	estado?: string;
+	tamanio?: string;
+	tipo?: string;
 }

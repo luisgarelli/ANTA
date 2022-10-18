@@ -51,6 +51,9 @@ export class AnimalService {
 	buscarAnimal(id:string){
 		return this.http.get(`${this.API_URI}/buscar/${id}`);
 	}
+	buscarId(id:string){
+		return this.http.get(`${this.API_URI}/busc/${id}`);
+	}
 	guardarAnimal(auto: Animal){
 		return this.http.post(`${this.API_URI}/agregar`,auto);
 	}

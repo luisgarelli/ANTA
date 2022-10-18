@@ -17,7 +17,7 @@ class AnimalModel
         ({
 		
             host: 'localhost',
-			port:3306,
+			port:33065,
             user: 'root',
             password: '',
             database: 'estacionamiento',
@@ -102,6 +102,17 @@ class AnimalModel
 		return result;
 	}
 	async buscarAdopcion(nombre: string)
+    {
+		const encontrado: any = await this.db.query('SELECT * FROM adopcion WHERE id_animal = ?', [nombre]);
+		//Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
+		
+        if (encontrado.length > 1)
+
+			return encontrado[0][0];
+
+		return null;
+	}
+	async buscarIdAnimal(nombre: string)
     {
 		const encontrado: any = await this.db.query('SELECT * FROM adopcion WHERE id_animal = ?', [nombre]);
 		//Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar

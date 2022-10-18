@@ -155,6 +155,16 @@ class AnimalController {
             //res.send('Listado de usuarios!!!');
         });
     }
+    buscarId(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.params.id);
+            const { id } = req.params;
+            const usuario = yield animalModel_1.default.buscarIdAnimal(id);
+            if (usuario)
+                return res.json(usuario);
+            res.status(404).json({ text: "User doesn't exists" });
+        });
+    }
     buscar(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.params.id);
@@ -202,6 +212,8 @@ class AnimalController {
     agregaAdopcion(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const animal = req.body;
+            const { id_usuario } = req.body;
+            const { id_animal } = req.body;
             //delete slot.repassword;
             console.log(req.body);
             //res.send('Usuario agregado!!!');

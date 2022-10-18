@@ -53,6 +53,7 @@ export class AnimalesRegistrarComponent implements OnInit {
   descripcionCaracter:any;
  imagen:any;
  imagen2:any;
+ estadoAnimal = "Disponible";
   //--
   errorPatente=0;
   errorTelefono=0;
@@ -70,8 +71,8 @@ export class AnimalesRegistrarComponent implements OnInit {
  img:any;
 //--
   constructor(private animalService: AnimalService, private _sanitizer:DomSanitizer, private storage : Storage) {
-    this.animal = { nombre: "", edad: "",  sexo: "" , raza: "", descripcion: "", alta: "", provincia: "", localidad: "" , animal_codigo: "",imagen:"" };
-    this.animal2 = {nombre: "", edad: "",  sexo: "" , raza: "", descripcion: "", alta: ""  };
+    this.animal = { nombre: "",   sexo: "" , raza: "", descripcion: "", provincia: "", localidad: "" , animal_codigo: "",imagen:"", estado:"",tamanio:"",tipo:"" };
+    this.animal2 = {nombre: "",   sexo: "" , raza: "", descripcion: "", alta: ""  };
     this.sexo = { id: "", sexo: "" };
     this.raza = { id: "", raza: "" };
     /*
@@ -317,10 +318,11 @@ console.log(btoa(binaryString));
    this.animal.sexo= this.sexoAnimal;
     this.animal.animal_codigo = this.tipoAnimal;
    this.animal.raza= this.razaAnimal;
-    this.animal.alta = this.fecha;
+  //  this.animal.alta = this.fecha;
    this.animal.provincia = this.provinciaUser;
   this.animal.imagen = this.imgUsuario;
    this.animal.localidad = this.localidadUser;
+   this.animal.estado = this.estadoAnimal;
    //this.imagenes(this.animal.imagen);
    //this.transform(this.animal.imagen);
     this.animalService.guardarAnimal(this.animal).subscribe(

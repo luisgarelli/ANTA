@@ -156,6 +156,18 @@ class AnimalController
 
 
 	}
+    public async buscarId(req:Request,res:Response)
+    {
+        console.log(req.params.id);
+        const { id } = req.params;
+        const usuario = await animalModel.buscarIdAnimal(id);
+
+        if (usuario)
+        
+            return res.json(usuario);
+
+        res.status(404).json({ text: "User doesn't exists" });
+	}
     public async buscar(req:Request,res:Response)
     {
         console.log(req.params.id);
@@ -208,11 +220,15 @@ class AnimalController
     public async agregaAdopcion(req:Request,res:Response)
     {
         const animal = req.body;
+        const { id_usuario} = req.body
+        const { id_animal} = req.body
         //delete slot.repassword;
         console.log(req.body);
         //res.send('Usuario agregado!!!');
         const busqueda = await animalModel.buscarAdopcion(animal.slot);
+
         if (!busqueda) {
+
             const result = await animalModel.crearAdopcion(animal);
             return res.json({ mensaje: 'Slot saved!!' });
         }

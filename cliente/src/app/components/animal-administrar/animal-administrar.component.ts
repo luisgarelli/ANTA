@@ -37,8 +37,8 @@ export class AnimalAdministrarComponent implements OnInit {
  errorMoDescripcion=0;
 //--
   constructor(private animalService: AnimalService) {
-    this.animal = { nombre: "", edad: "",  sexo: "" , raza: "", descripcion: "", alta: ""  };
-    this.animal2 = {nombre: "", edad: "",  sexo: "" , raza: "", descripcion: "", alta: ""  };
+    this.animal = { nombre: "",  sexo: "" , raza: "", descripcion: "", alta: ""  };
+    this.animal2 = {nombre: "",  sexo: "" , raza: "", descripcion: "", alta: ""  };
     this.sexo = { id: "", sexo: "" };
     this.raza = { id: "", raza: "" };
     /*
