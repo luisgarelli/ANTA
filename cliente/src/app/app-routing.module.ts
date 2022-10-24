@@ -15,6 +15,8 @@ import { AnimalesListarComponent } from './components/animales-listar/animales-l
 import { RegistrarComponent } from './components/registrar/registrar.component';
 import { AnimalesRegistrarComponent } from './components/animales-registrar/animales-registrar.component';
 import { AnimalesInformacionComponent } from './components/animales-informacion/animales-informacion.component';
+import { AnimalesRegistradosComponent } from './components/animales-registrados/animales-registrados.component';
+import { InteresadosInformacionComponent } from './components/interesados-informacion/interesados-informacion.component';
 const routes: Routes = [
 	{
 		path: '',
@@ -79,6 +81,11 @@ const routes: Routes = [
 		canActivate: [AuthGuard]
 	},
 	{
+		path: 'animales/registrados',
+		component: AnimalesRegistradosComponent,
+		canActivate: [AuthGuard]
+	},
+	{
 		path: 'animales/registrar',
 		component: AnimalesRegistrarComponent,
 		canActivate: [AuthGuard]
@@ -86,9 +93,11 @@ const routes: Routes = [
 	
 	{
 		path:'animales/informacion/:id',component : AnimalesInformacionComponent
-	}
+	},
+	{
+		path:'interesados/informacion/:id',component : InteresadosInformacionComponent
 	
-
+	}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

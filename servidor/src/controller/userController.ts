@@ -38,7 +38,7 @@ class UserController
             console.log("CONTRASEÑA CORRECTA");
 
             const token:string=jwt.sign({_id: result.id},"secretKey");
-            res.json({ "login":"ok","mensaje":"Bienvenido ","nombre": result.nombre, token:token, "rol": result.rol, "password": password});
+            res.json({ "login":"ok","mensaje":"Bienvenido ","nombre": result.nombre, token:token, "rol": result.rol, "password": password , "id":result.id});
 
             return;        
         }

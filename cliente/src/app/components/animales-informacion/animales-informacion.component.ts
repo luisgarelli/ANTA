@@ -7,6 +7,7 @@ import { Adopcion } from 'src/app/models/adopcionModel';
 import { UsuariosService } from '../../services/usuarios.service';
 import { NgxToastService } from 'ngx-toast-notifier';
 import { Animal } from 'src/app/models/animalModel';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-animales-informacion',
@@ -18,7 +19,12 @@ export class AnimalesInformacionComponent implements OnInit {
 variable :any;
 AnimalID: any = [];
 Animal :any = [];
+usuario :any = [];
+registrado :any = [];
+verificarUsuario :any = [];
+interesados:any=[];
 id = "";
+
 idAnimal:any;
 nombreUsuario:any;
 adopcion: Adopcion;
@@ -26,21 +32,38 @@ cont=0;
 boleano: boolean = false;
 estadoAnimal ="Pendiente";
 animal2: Animal;
+idUsuario:any;
+codCelular= 549; 
+numeroUsuario = 5491164048188;
+celular:any;
+nomCelular:any;
+animalElegido:any;
+disabledValue= false;
+disabledValu= false;
+valor= true;
+idRegistrado:any;
 constructor( private ngxToastService: NgxToastService, private rutaActiva: ActivatedRoute, private animalService: AnimalService,  private usuarioService: UsuariosService) { 
-  this.adopcion = {  id_animal: "",  id_usuario: "",tipo_vivienda:"", tipo_propietario:"", caso_alquilar:"", animal_castrado:"",compromiso_animal:"" , balcones:"", acuerdo_familiar:"", animal_propiedad:"", animal_pasear:"" };
+  this.adopcion = {  id_animal: "",  id_usuario: "",tipo_vivienda:"", tipo_propietario:"", caso_alquilar:"", animal_castrado:"",compromiso_animal:"" , balcones:"", acuerdo_familiar:"", animal_propiedad:"", animal_pasear:"",id_registrado:"" };
   this.animal2 = { estado: "" };
+ 
 }
  
 
 
   ngOnInit(): void {
+  
     this.rutaActiva.params.subscribe(routeParams => {
       this.AnimalID = this.rutaActiva.snapshot.params
       
       console.log("Animal", this.AnimalID);
+      
+      
      
       });
       this.animalCargarDatos();
+
+      
+     
       /*this.animal.buscarAnimal(this.AnimalID.id).subscribe(
         res => {
           console.log("Datos del Servicio");
@@ -51,6 +74,56 @@ constructor( private ngxToastService: NgxToastService, private rutaActiva: Activ
         err => console.log(err)
       );*/
     
+      //-------------------------------------
+      this.idUsuario = this.usuarioService.getId();
+
+      /*this.usuarioService.buscarUsuario(this.idUsuario).subscribe(
+        res => {
+          this.usuario = res
+          console.log(this.usuario);
+          console.log(this.usuario.numero);
+          this.nomCelular = this.usuario.numero;
+       
+          this.celular = `${this.codCelular}${this.nomCelular}`;
+          console.log(this.celular);
+        },
+        err => console.log(err)
+      );*/
+      //--------------------------
+      this.animalService.buscarUsuario(this.idUsuario).subscribe(
+        res => {
+          this.verificarUsuario = res
+          console.log("verificar usuario",this.verificarUsuario);
+          this.animalElegido = this.verificarUsuario.id;
+          console.log(this.animalElegido);
+          console.log("animal id real",this.AnimalID.id);
+         
+
+          for(let usuario of this.verificarUsuario) {
+            console.log(usuario.id);
+            if(this.AnimalID.id == usuario.id){
+                console.log("encontrado",usuario.id);
+                this.disabledValue = true;
+                this.disabledValu = true
+                this.valor = false;
+                //valor= true;
+            }
+     
+         }
+   
+        },
+        err => console.log(err)
+      );
+      this.animalService.buscAnimalAdopcion(this.AnimalID.id).subscribe(
+        res => {
+          this.interesados = res
+          console.log("verificar interesados",this.interesados);
+         
+   
+        },
+        err => console.log(err)
+      );
+      
   }
   ngOnDestroy(): void {
     this.AnimalID = [];
@@ -62,16 +135,33 @@ constructor( private ngxToastService: NgxToastService, private rutaActiva: Activ
       res => {
         this.Animal = res
         console.log(this.Animal);
-
+        console.log(" id de usuario q lo registro", this.Animal.id_usuario);
+        this.idRegistrado = this.Animal.id_usuario;
+        console.log("registrado",this.idRegistrado);
+        this.usuarioService.buscarUsuario(this.idRegistrado).subscribe(
+          res => {
+            this.registrado = res;
+            console.log(res);
+            console.log(this.registrado.numero);
+          this.nomCelular = this.registrado.numero;
+       
+          this.celular = `${this.codCelular}${this.nomCelular}`;
+          console.log(this.celular);
+          },
+          err => console.log(err)
+        );
         
       },
       err => console.log(err)
     );
-
+   
+    
+   
   }
   agregar(animal:any){
 
     this.adopcion.id_animal = animal;
+   
     this.nombreUsuario = this.usuarioService.getNombre();
   this.adopcion.id_usuario = this.nombreUsuario;
 
@@ -123,7 +213,7 @@ this.idAnimal = idAnim;
  agrega(){
  
   this.adopcion.id_animal = this.idAnimal;
- 
+  this.adopcion.id_registrado = this.idUsuario;
   this.nombreUsuario = this.usuarioService.getNombre();
   this.adopcion.id_usuario = this.nombreUsuario;
   this.animalService.buscarId(this.idAnimal).subscribe(

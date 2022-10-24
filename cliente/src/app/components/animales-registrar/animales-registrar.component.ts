@@ -12,6 +12,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { toBase64String } from '@angular/compiler/src/output/source_map';
 import { Storage,ref, uploadBytes, listAll,getDownloadURL,UploadTaskSnapshot,uploadBytesResumable } from '@angular/fire/storage';
 import { AnyForUntypedForms } from '@angular/forms';
+import { UsuariosService } from '../../services/usuarios.service';
 @Component({
   selector: 'app-animales-registrar',
   templateUrl: './animales-registrar.component.html',
@@ -69,9 +70,10 @@ export class AnimalesRegistrarComponent implements OnInit {
  errorMoDescripcion=0;
  imagePath:any;
  img:any;
+ idUsuario:any;
 //--
-  constructor(private animalService: AnimalService, private _sanitizer:DomSanitizer, private storage : Storage) {
-    this.animal = { nombre: "",   sexo: "" , raza: "", descripcion: "", provincia: "", localidad: "" , animal_codigo: "",imagen:"", estado:"",tamanio:"",tipo:"" };
+  constructor(private animalService: AnimalService, private _sanitizer:DomSanitizer, private storage : Storage, private usuarioService : UsuariosService) {
+    this.animal = { nombre: "",   sexo: "" , raza: "", descripcion: "", provincia: "", localidad: "" , animal_codigo: "",imagen:"", estado:"",tamanio:"",tipo:"",id_usuario:"" };
     this.animal2 = {nombre: "",   sexo: "" , raza: "", descripcion: "", alta: ""  };
     this.sexo = { id: "", sexo: "" };
     this.raza = { id: "", raza: "" };
@@ -85,6 +87,7 @@ export class AnimalesRegistrarComponent implements OnInit {
   ngOnInit(): void {
     //this.imageSource = this._sanitizer.bypassSecurityTrustResourceUrl(`data:image/png;base64, ${image}`);
     this.getImages();
+    this.idUsuario = this.usuarioService.getId();
     this.animalService.listarAnimal().subscribe(
      
       res => {
@@ -323,6 +326,7 @@ console.log(btoa(binaryString));
   this.animal.imagen = this.imgUsuario;
    this.animal.localidad = this.localidadUser;
    this.animal.estado = this.estadoAnimal;
+   this.animal.id_usuario = this.idUsuario;
    //this.imagenes(this.animal.imagen);
    //this.transform(this.animal.imagen);
     this.animalService.guardarAnimal(this.animal).subscribe(

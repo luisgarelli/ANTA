@@ -51,15 +51,27 @@ export class AnimalService {
 	buscarAnimal(id:string){
 		return this.http.get(`${this.API_URI}/buscar/${id}`);
 	}
+	buscarUsuario(id:string){
+		return this.http.get(`${this.API_URI}/buscusuario/${id}`);
+	}
 	buscarId(id:string){
 		return this.http.get(`${this.API_URI}/busc/${id}`);
+	}
+	buscAnimalAdopcion(id:string){
+		return this.http.get(`${this.API_URI}/buscadop/${id}`);
 	}
 	guardarAnimal(auto: Animal){
 		return this.http.post(`${this.API_URI}/agregar`,auto);
 	}
+	guardarAdopciones(auto: Animal){
+		return this.http.post(`${this.API_URI}/agregaradopciones`,auto);
+	}
 	
 	eleminarAnimal(id:string){
 		return this.http.delete(`${this.API_URI}/eliminar/${id}`);
+	}
+	eliminarInteresado(id:string){
+		return this.http.delete(`${this.API_URI}/eliminteresado/${id}`);
 	}
 	
 	modificarAnimal(id:string, modificarAnimal: Animal):Observable<Animal>{

@@ -6,7 +6,10 @@
                 <a routerLink="../../animales/listar" class="btn btn-success" >  Listado de Animales <span class="sr-only">(current)</span></a> 
             </div>
             <div class="card text-center" *ngIf= "rol=='user'">
-                <a routerLink="../../animales/registrar" class="btn btn-danger" >Registrar Animal<span class="sr-only">(current)</span></a> 
+                <a routerLink="../../animales/registrar" class="btn btn-success" >Registrar Animal<span class="sr-only">(current)</span></a> 
+            </div>
+            <div class="card text-center" *ngIf= "rol=='user'">
+                <a routerLink="../../animales/registrados" class="btn btn-success" > Mis publicaciones<span class="sr-only">(current)</span></a> 
             </div>
           <!-- <div class="card text-center">
                 <a routerLink="../../historial/listar" class="btn btn-success" > Historial <span class="sr-only">(current)</span></a> 

@@ -97,6 +97,13 @@ export class UsuariosService {
 	getNombre() {
 		return localStorage.getItem('nombre');
 	}
+	setId(id: string) {
+		localStorage.setItem('id', id)
+	}
+	
+	getId() {
+		return localStorage.getItem('id');
+	}
 
 
 }

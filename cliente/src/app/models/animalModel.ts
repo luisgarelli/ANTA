@@ -12,4 +12,5 @@ export interface Animal{
 	estado?: string;
 	tamanio?: string;
 	tipo?: string;
+	id_usuario?: string;
 }

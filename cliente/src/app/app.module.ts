@@ -28,6 +28,8 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxToastNotifierModule } from 'ngx-toast-notifier';
 import { FiltroPipe } from './cliente/pipes/filtro.pipe';
+import { AnimalesRegistradosComponent } from './components/animales-registrados/animales-registrados.component';
+import { InteresadosInformacionComponent } from './components/interesados-informacion/interesados-informacion.component';
 
 
 @NgModule({
@@ -48,7 +50,9 @@ import { FiltroPipe } from './cliente/pipes/filtro.pipe';
     RegistrarComponent,
     AnimalesRegistrarComponent,
     AnimalesInformacionComponent,
-    FiltroPipe
+    FiltroPipe,
+    AnimalesRegistradosComponent,
+    InteresadosInformacionComponent
   
    
     

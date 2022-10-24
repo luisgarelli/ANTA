@@ -30,9 +30,12 @@ class AnimalRoutes {
         this.router.post('/agregar', verifyToken_1.TokenValidation, animalController_1.default.agregaAnimal);
         this.router.get('/listar', verifyToken_1.TokenValidation, animalController_1.default.listaAnimal);
         this.router.get('/buscar/:id', verifyToken_1.TokenValidation, animalController_1.default.buscarAnimal);
+        this.router.get('/buscusuario/:id', verifyToken_1.TokenValidation, animalController_1.default.buscarUsua);
+        this.router.get('/buscadop/:id', verifyToken_1.TokenValidation, animalController_1.default.buscaAdopcionUsu);
         this.router.get('/buscaLocal/:id', verifyToken_1.TokenValidation, animalController_1.default.buscar);
         this.router.get('/buscaRaza/:id', verifyToken_1.TokenValidation, animalController_1.default.buscarRaza);
         this.router.put('/modificar/:id', verifyToken_1.TokenValidation, animalController_1.default.actualizar);
+        this.router.get('/busqueda/:id', verifyToken_1.TokenValidation, animalController_1.default.busqueAnimal);
         this.router.delete('/eliminar/:id', verifyToken_1.TokenValidation, animalController_1.default.eliminar);
         this.router.get('/listarSexo', verifyToken_1.TokenValidation, animalController_1.default.listaSexo);
         this.router.get('/listaRaza', verifyToken_1.TokenValidation, animalController_1.default.listarRaza);
@@ -41,6 +44,8 @@ class AnimalRoutes {
         this.router.get('/listaLocalidad', verifyToken_1.TokenValidation, animalController_1.default.listarLocalidad);
         this.router.post('/adopcion', verifyToken_1.TokenValidation, animalController_1.default.agregaAdopcion);
         this.router.get('/busc/:id', verifyToken_1.TokenValidation, animalController_1.default.buscarId);
+        this.router.delete('/eliminteresado/:id', verifyToken_1.TokenValidation, animalController_1.default.eliminarInteresa);
+        this.router.post('/agregaradopciones', verifyToken_1.TokenValidation, animalController_1.default.agregarAdopciones);
     }
 }
 //Exportamos el enrutador con 

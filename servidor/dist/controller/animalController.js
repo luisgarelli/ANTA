@@ -123,6 +123,36 @@ class AnimalController {
                res.status(404).json({ text: "User doesn't exists" });*/
         });
     }
+    buscarUsua(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.params.id);
+            const { id } = req.params;
+            const auto = yield animalModel_1.default.buscarUsuario(id);
+            if (auto)
+                return res.json(auto);
+            res.status(404).json({ text: "Auto doesn't exists" });
+        });
+    }
+    buscaAdopcionUsu(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.params.id);
+            const { id } = req.params;
+            const auto = yield animalModel_1.default.buscarUsuarioAdopcion(id);
+            if (auto)
+                return res.json(auto);
+            res.status(404).json({ text: "Auto doesn't exists" });
+        });
+    }
+    busqueAnimal(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.params.id);
+            const { id } = req.params;
+            const auto = yield animalModel_1.default.busquedaAnimal(id);
+            if (auto)
+                return res.json(auto);
+            res.status(404).json({ text: "Auto doesn't exists" });
+        });
+    }
     listarProvincia(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             // console.log(req.body);
@@ -209,6 +239,21 @@ class AnimalController {
             return res.json({ text: 'deleting an auto ' + id });
         });
     }
+    eliminarInteresa(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            /*console.log(req.body);
+            //res.send('Usuario '+ req.params.id +' Eliminado!!!');
+            const { id } = req.params; // hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.
+            const result = await userModel.eliminar(id);
+            return res.json({ text: 'deleting a user ' + id });*/
+            //  return res.json({ text: 'eliminando ' });
+            console.log(req.body);
+            //res.send('Usuario '+ req.params.id +' Eliminado!!!');
+            const { id } = req.params; // hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.
+            const result = yield animalModel_1.default.eliminarInteresado(id);
+            return res.json({ text: 'deleting un interesado' + id });
+        });
+    }
     agregaAdopcion(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const animal = req.body;
@@ -223,6 +268,22 @@ class AnimalController {
                 return res.json({ mensaje: 'Slot saved!!' });
             }
             return res.json({ mensaje: 'Slot exists!!' });
+        });
+    }
+    agregarAdopciones(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const animal = req.body;
+            const { id_usuario } = req.body;
+            const { id_animal } = req.body;
+            //delete slot.repassword;
+            console.log(req.body);
+            //res.send('Usuario agregado!!!');
+            const busqueda = yield animalModel_1.default.buscarAdopciones(animal.slot);
+            if (!busqueda) {
+                const result = yield animalModel_1.default.crearAdopciones(animal);
+                return res.json({ mensaje: 'animal saved!!' });
+            }
+            return res.json({ mensaje: 'animal exists!!' });
         });
     }
 }

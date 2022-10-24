@@ -36,9 +36,12 @@ class AnimalRoutes
 		this.router.post('/agregar',TokenValidation,animalController.agregaAnimal);		
 		this.router.get('/listar',TokenValidation,animalController.listaAnimal);
 		this.router.get('/buscar/:id',TokenValidation,animalController.buscarAnimal);
+		this.router.get('/buscusuario/:id',TokenValidation,animalController.buscarUsua);
+		this.router.get('/buscadop/:id',TokenValidation,animalController.buscaAdopcionUsu);
 		this.router.get('/buscaLocal/:id',TokenValidation,animalController.buscar);
 		this.router.get('/buscaRaza/:id',TokenValidation,animalController.buscarRaza);
 		this.router.put('/modificar/:id',TokenValidation,animalController.actualizar);
+		this.router.get('/busqueda/:id',TokenValidation,animalController.busqueAnimal);
 		this.router.delete('/eliminar/:id',TokenValidation,animalController.eliminar);
 		this.router.get('/listarSexo',TokenValidation,animalController.listaSexo);
 		this.router.get('/listaRaza',TokenValidation,animalController.listarRaza);
@@ -47,6 +50,8 @@ class AnimalRoutes
 		this.router.get('/listaLocalidad',TokenValidation,animalController.listarLocalidad);
 		this.router.post('/adopcion',TokenValidation,animalController.agregaAdopcion);	
 		this.router.get('/busc/:id',TokenValidation,animalController.buscarId);
+		this.router.delete('/eliminteresado/:id',TokenValidation,animalController.eliminarInteresa);
+		this.router.post('/agregaradopciones',TokenValidation,animalController.agregarAdopciones);	
 
 
 	}

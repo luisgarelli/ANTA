@@ -119,6 +119,36 @@ class AnimalController
 
         res.status(404).json({ text: "User doesn't exists" });*/
 	}
+    public async buscarUsua(req:Request,res:Response)
+    {
+        console.log(req.params.id);
+        const { id } = req.params;
+        const auto = await animalModel.buscarUsuario(id);
+        if (auto)
+            return res.json(auto);
+        res.status(404).json({ text: "Auto doesn't exists" });
+    
+	}
+    public async buscaAdopcionUsu(req:Request,res:Response)
+    {
+        console.log(req.params.id);
+        const { id } = req.params;
+        const auto = await animalModel.buscarUsuarioAdopcion(id);
+        if (auto)
+            return res.json(auto);
+        res.status(404).json({ text: "Auto doesn't exists" });
+    
+	}
+    public async busqueAnimal(req:Request,res:Response)
+    {
+        console.log(req.params.id);
+        const { id } = req.params;
+        const auto = await animalModel.busquedaAnimal(id);
+        if (auto)
+            return res.json(auto);
+        res.status(404).json({ text: "Auto doesn't exists" });
+    
+	}
 
     public async listarProvincia(req:Request,res:Response)
     {
@@ -216,6 +246,20 @@ class AnimalController
         const result = await animalModel.eliminar(id);
         return res.json({ text: 'deleting an auto ' + id });
 	}
+    public async eliminarInteresa(req:Request,res:Response){
+		/*console.log(req.body);
+        //res.send('Usuario '+ req.params.id +' Eliminado!!!');
+        const { id } = req.params; // hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.
+        const result = await userModel.eliminar(id);
+        return res.json({ text: 'deleting a user ' + id });*/
+      //  return res.json({ text: 'eliminando ' });
+
+         console.log(req.body);
+        //res.send('Usuario '+ req.params.id +' Eliminado!!!');
+        const { id } = req.params; // hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.
+        const result = await animalModel.eliminarInteresado(id);
+        return res.json({ text: 'deleting un interesado' + id });
+	}
 
     public async agregaAdopcion(req:Request,res:Response)
     {
@@ -233,6 +277,24 @@ class AnimalController
             return res.json({ mensaje: 'Slot saved!!' });
         }
         return res.json({ mensaje: 'Slot exists!!' });
+      
+	}
+    public async agregarAdopciones(req:Request,res:Response)
+    {
+        const animal = req.body;
+        const { id_usuario} = req.body
+        const { id_animal} = req.body
+        //delete slot.repassword;
+        console.log(req.body);
+        //res.send('Usuario agregado!!!');
+        const busqueda = await animalModel.buscarAdopciones(animal.slot);
+
+        if (!busqueda) {
+
+            const result = await animalModel.crearAdopciones(animal);
+            return res.json({ mensaje: 'animal saved!!' });
+        }
+        return res.json({ mensaje: 'animal exists!!' });
       
 	}
 	//FIN CRUD

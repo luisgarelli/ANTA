@@ -101,9 +101,38 @@ class AnimalModel
 
 		return result;
 	}
+	async crearAdopciones(usuario: object)
+    {
+		const result = (await this.db.query('INSERT INTO adopciones SET ?', [usuario]))[0].affectedRows;
+		console.log(result);
+
+		return result;
+	}
 	async buscarAdopcion(nombre: string)
     {
 		const encontrado: any = await this.db.query('SELECT * FROM adopcion WHERE id_animal = ?', [nombre]);
+		//Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
+		
+        if (encontrado.length > 1)
+
+			return encontrado[0][0];
+
+		return null;
+	}
+	async buscarUsuarioAdopcion(nombre: string)
+    {
+		const encontrado: any = await this.db.query('SELECT * FROM adopcion WHERE id_animal = ?', [nombre]);
+		//Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
+		
+        if (encontrado.length > 1)
+
+			return encontrado[0];
+
+		return null;
+	}
+	async buscarAdopciones(nombre: string)
+    {
+		const encontrado: any = await this.db.query('SELECT * FROM adopciones WHERE id_animal = ?', [nombre]);
 		//Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
 		
         if (encontrado.length > 1)
@@ -123,6 +152,29 @@ class AnimalModel
 
 		return null;
 	}
+	async buscarUsuario(nombre: string)
+    {
+		const encontrado: any = await this.db.query('SELECT * FROM animal WHERE id_usuario = ?', [nombre]);
+		//Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
+		
+        if (encontrado.length > 1)
+
+			return encontrado[0];
+
+		return null;
+	}
+	async busquedaAnimal(nombre: string)
+    {
+		const encontrado: any = await this.db.query('SELECT * FROM animal WHERE id = ?', [nombre]);
+		//Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
+		
+        if (encontrado.length > 1)
+
+			return encontrado[0][0];
+
+		return null;
+	}
+	
 
 	//Devuelve 1 si logro actualizar el usuario indicado por id
 	async actualizar(usuario: object, id: string)
@@ -137,6 +189,13 @@ class AnimalModel
 	async eliminar(id: string)
     {
 		const user = (await this.db.query('DELETE FROM animal WHERE id = ?', [id]))[0].affectedRows;
+		console.log(user);
+        
+		return user;
+	}
+	async eliminarInteresado(id: string)
+    {
+		const user = (await this.db.query('DELETE FROM adopcion WHERE id_registrado = ?', [id]))[0].affectedRows;
 		console.log(user);
         
 		return user;

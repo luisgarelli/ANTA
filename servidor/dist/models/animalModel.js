@@ -99,6 +99,13 @@ class AnimalModel {
             return result;
         });
     }
+    crearAdopciones(usuario) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const result = (yield this.db.query('INSERT INTO adopciones SET ?', [usuario]))[0].affectedRows;
+            console.log(result);
+            return result;
+        });
+    }
     buscarAdopcion(nombre) {
         return __awaiter(this, void 0, void 0, function* () {
             const encontrado = yield this.db.query('SELECT * FROM adopcion WHERE id_animal = ?', [nombre]);
@@ -108,9 +115,45 @@ class AnimalModel {
             return null;
         });
     }
+    buscarUsuarioAdopcion(nombre) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const encontrado = yield this.db.query('SELECT * FROM adopcion WHERE id_animal = ?', [nombre]);
+            //Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
+            if (encontrado.length > 1)
+                return encontrado[0];
+            return null;
+        });
+    }
+    buscarAdopciones(nombre) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const encontrado = yield this.db.query('SELECT * FROM adopciones WHERE id_animal = ?', [nombre]);
+            //Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
+            if (encontrado.length > 1)
+                return encontrado[0][0];
+            return null;
+        });
+    }
     buscarIdAnimal(nombre) {
         return __awaiter(this, void 0, void 0, function* () {
             const encontrado = yield this.db.query('SELECT * FROM adopcion WHERE id_animal = ?', [nombre]);
+            //Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
+            if (encontrado.length > 1)
+                return encontrado[0][0];
+            return null;
+        });
+    }
+    buscarUsuario(nombre) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const encontrado = yield this.db.query('SELECT * FROM animal WHERE id_usuario = ?', [nombre]);
+            //Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
+            if (encontrado.length > 1)
+                return encontrado[0];
+            return null;
+        });
+    }
+    busquedaAnimal(nombre) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const encontrado = yield this.db.query('SELECT * FROM animal WHERE id = ?', [nombre]);
             //Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
             if (encontrado.length > 1)
                 return encontrado[0][0];
@@ -129,6 +172,13 @@ class AnimalModel {
     eliminar(id) {
         return __awaiter(this, void 0, void 0, function* () {
             const user = (yield this.db.query('DELETE FROM animal WHERE id = ?', [id]))[0].affectedRows;
+            console.log(user);
+            return user;
+        });
+    }
+    eliminarInteresado(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const user = (yield this.db.query('DELETE FROM adopcion WHERE id_registrado = ?', [id]))[0].affectedRows;
             console.log(user);
             return user;
         });

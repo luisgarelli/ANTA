@@ -1,4 +1,16 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
 <br>
 <div class="container-fluid">
   <div class="row text-white text-center">
@@ -9,13 +21,14 @@
 
 <p style="color: white;">Tamaño: {{Animal.tamanio}}</p>
 <p style="color: white;">Tipo: {{Animal.tipo}}</p>  
+ 
 <p style="color: white;">Fecha de ingreso: {{Animal.alta| date: 'dd/MM/yyyy'}}</p>
-
+<input type="hidden" name="hiddenInput" id="hiddenInput" value="3" />
   <!--<button class="btn btn-primary "  (click)="agregar(Animal.id)" (click)="addSuccess()" >Adoptar</button>-->
   <div class="container">
     <br>
     <!-- Boton -->
-    <button data-toggle="modal"  href="#mi_modal" class="btn btn-primary" (click)="seleccion(Animal.id)"  >Formulario  de adopción</button>
+    <button [disabled]= "disabledValue" data-toggle="modal"  href="#mi_modal" class="btn btn-primary" (click)="seleccion(Animal.id)"  >Formulario  de adopción</button>
     <br><br>
     <!-- Link -->
    
@@ -215,11 +228,68 @@
   </div>
 </div>-->
 <ngx-toast-notifier></ngx-toast-notifier>
+<br>
+<div class="container-fluid">
+  <div class="row text-white text-center">
+    <div class="col-7 bg-dark border">
+      <h4 style="color: white;">Datos del usuario que lo Registro</h4>
+      <p style="color: white;">Nombre: {{registrado.nombre}}</p>
+<p style="color: white;">Email: {{registrado.email}}</p>
+<p style="color: white;">Numero: {{registrado.numero}}</p>
+<p style="color: white;">Fecha de ingreso: {{registrado.alta| date: 'dd/MM/yyyy'}}</p>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<a *ngIf="valor " href="https://api.whatsapp.com/send?phone={{celular}}&text=Hola%21%20estoy%20interesado%20en%20tu%20publicación%20."   class="btn btn-success  btn-lg"  target="_blank">
+<i  *ngIf="valor " class="fa fa-whatsapp my-float"></i>
+</a>
+</div>
+</div>
+</div>
+<br>
+<br>
 
-
-<!-- Button trigger modal -->
-
-
+<!--
+<br>
+<h3 style="text-align: center;" *ngIf="valor">Interesados</h3>
+<table class="table table-striped table-dark" *ngIf="valor">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Tipo vivienda</th>
+      <th>Tipo propietario</th>
+      <th>Caso alquilar</th>
+      <th>Animal castrado</th>
+      <th>Compromiso animal</th>
+      <th>Balcones</th>
+      <th>Acuerdo familiar</th>
+      <th>Animal propiedad</th>
+      <th>Animal pasear</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="interesados.length > 0; else fila">
+    <tr *ngFor=" let usuarios of interesados">
+        <td>{{usuarios.id_usuario}}</td>
+        <td>{{usuarios.tipo_vivienda}}</td>
+        <td>{{usuarios.tipo_propietario}}</td>
+        <td>{{usuarios.caso_alquilar}}</td>
+        <td>{{usuarios.tipo_animal_castrado}}</td>
+        <td>{{usuarios.compromiso_animal}}</td>
+        <td>{{usuarios.balcones}}</td>
+        <td>{{usuarios.acuerdo_familiar}}</td>
+        <td>{{usuarios.animal_propiedad}}</td>
+        <td>{{usuarios.acuerdo_animal_pasear}}</td>
+        
+    </tr>
+    
+  </tbody>
+  <ng-template #fila>
+    <tbody>
+        <tr>
+            <td colspan="4">No hay mas filas</td>
+        </tr>
+    </tbody>
+</ng-template>
+</table>
+-->
 <!--
 
 
@@ -236,3 +306,5 @@
           </label>
         </div>
 -->
+
+</body>

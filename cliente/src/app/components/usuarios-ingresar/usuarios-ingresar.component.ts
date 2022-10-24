@@ -49,7 +49,9 @@ export class UsuariosIngresarComponent implements OnInit {
            // localStorage.setItem('token', 'LogInOK');
            this.usuariosService.setToken(result.token);
            this.usuariosService.setRol(result.rol);
+          
            this.usuariosService.setNombre(result.nombre);
+           this.usuariosService.setId(result.id);
             this.router.navigate(['usuarios/home']);
             this.mensaje = result.mensaje;
             break;

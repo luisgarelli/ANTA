@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:33065
--- Tiempo de generación: 19-10-2022 a las 01:38:31
+-- Tiempo de generación: 24-10-2022 a las 03:17:18
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -39,17 +39,47 @@ CREATE TABLE `adopcion` (
   `balcones` varchar(50) NOT NULL,
   `acuerdo_familiar` varchar(50) NOT NULL,
   `animal_propiedad` varchar(50) NOT NULL,
-  `animal_pasear` varchar(50) NOT NULL
+  `animal_pasear` varchar(50) NOT NULL,
+  `id_registrado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `adopcion`
 --
 
-INSERT INTO `adopcion` (`id`, `id_usuario`, `id_animal`, `tipo_vivienda`, `tipo_propietario`, `caso_alquilar`, `animal_castrado`, `compromiso_animal`, `balcones`, `acuerdo_familiar`, `animal_propiedad`, `animal_pasear`) VALUES
-(66, 'Hugo', 128, '', '', '', '', '', '', '', '', ''),
-(88, 'karina', 136, 'Casa', 'Inquilino', 'SÍ, pregunté y se puede tener mascotas.', 'Algunas Si y otras No.', 'Si', 'Si, tengo rejas.', 'Si', '2 a 3', '1'),
-(89, 'nicolas', 136, 'Casa', 'Propietario', 'NO alquilo.', '', '', '', 'Si', '1 a 2', '2');
+INSERT INTO `adopcion` (`id`, `id_usuario`, `id_animal`, `tipo_vivienda`, `tipo_propietario`, `caso_alquilar`, `animal_castrado`, `compromiso_animal`, `balcones`, `acuerdo_familiar`, `animal_propiedad`, `animal_pasear`, `id_registrado`) VALUES
+(66, 'Hugo', 128, '', '', '', '', '', '', '', '', '', 0),
+(88, 'karina', 136, 'Casa', 'Inquilino', 'SÍ, pregunté y se puede tener mascotas.', 'Algunas Si y otras No.', 'Si', 'Si, tengo rejas.', 'Si', '2 a 3', '1', 0),
+(89, 'nicolas', 136, 'Casa', 'Propietario', 'NO alquilo.', '', '', '', 'Si', '1 a 2', '2', 0),
+(90, 'Hugo', 138, '', '', 'SÍ, pregunté y se puede tener mascotas.', '', '', '', '', '', '', 0),
+(91, 'Hugo', 138, '', '', '', '', '', '', '', '', '2', 0),
+(92, 'karina', 142, 'Casa', 'Propietario', 'NO pregunté.', '', '', '', '', '2 a 3', 'Más de 3 ', 14),
+(95, 'Hugo', 141, '', '', '', '', '', '', '', '2 a 3', '1', 2),
+(96, 'Hugo', 141, '', '', '', '', '', '', '', '2 a 3', '1', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `adopciones`
+--
+
+CREATE TABLE `adopciones` (
+  `id` int(11) NOT NULL,
+  `id_animal` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `alta` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `adopciones`
+--
+
+INSERT INTO `adopciones` (`id`, `id_animal`, `id_usuario`, `alta`) VALUES
+(1, 4, 6, '2022-10-22 23:58:44'),
+(2, 5, 19, '2022-10-23 00:01:24'),
+(3, 4, 19, '2022-10-23 00:01:33'),
+(4, 4, 19, '2022-10-23 00:06:43'),
+(5, 142, 14, '2022-10-23 00:36:19');
 
 -- --------------------------------------------------------
 
@@ -70,29 +100,33 @@ CREATE TABLE `animal` (
   `imagen` varchar(300) NOT NULL,
   `estado` varchar(20) NOT NULL,
   `tamanio` varchar(20) NOT NULL,
-  `tipo` varchar(20) NOT NULL
+  `tipo` varchar(20) NOT NULL,
+  `id_usuario` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `animal`
 --
 
-INSERT INTO `animal` (`id`, `nombre`, `sexo`, `raza`, `descripcion`, `alta`, `provincia`, `localidad`, `animal_codigo`, `imagen`, `estado`, `tamanio`, `tipo`) VALUES
-(103, 'ramon', 'macho', 3, 'muy activo', '2022-10-06 03:00:00', 2, 143, 1, 'https://firebasestorage.googleapis.com/v0/b/imag-43b3a.appspot.com/o/images%2F761245.jpg?alt=media&token=370b2e8d-e077-4284-89c1-e7633259b796', '', '', ''),
-(104, 'ramo', 'macho', 3, 'muy activo', '2022-10-06 03:00:00', 2, 143, 1, 'https://firebasestorage.googleapis.com/v0/b/imag-43b3a.appspot.com/o/images%2F761245.jpg?alt=media&token=370b2e8d-e077-4284-89c1-e7633259b796', '', '', ''),
-(106, 'pedro', 'macho', 16, '', '2022-10-03 21:26:58', 1, 19, 5, 'https://firebasestorage.googleapis.com/v0/b/imag-43b3a.appspot.com/o/images%2Fcomo-mejorar-el-habitat-de-tu-tortuga-terrestre-1.jpg?alt=media&token=378bb5b5-4cec-41f9-aaed-cff89bfdca23', '', '', ''),
-(111, 'marcelo', 'macho', 4, '', '2022-10-03 21:34:54', 2, 148, 2, 'https://firebasestorage.googleapis.com/v0/b/imag-43b3a.appspot.com/o/images%2F3e23b104f085eae5214eff920fa15023.jpg?alt=media&token=4f6353f2-f84c-41b0-863c-2a725813f5c2', 'Pendiente', '', ''),
-(112, 'marcelo', 'macho', 4, '', '2022-10-03 21:35:14', 2, 148, 2, 'https://firebasestorage.googleapis.com/v0/b/imag-43b3a.appspot.com/o/images%2F7a2dd3c28c499aac0a5d3adcde944b3e.jpg?alt=media&token=8d0172e3-d712-4878-b477-f23fe0fa692a', '', '', ''),
-(118, '', '', 0, '', '2022-10-03 22:06:10', 0, 0, 0, 'https://firebasestorage.googleapis.com/v0/b/imag-43b3a.appspot.com/o/images%2F3e23b104f085eae5214eff920fa15023.jpg?alt=media&token=da1713b0-d193-4e31-9a5d-743878165486', '', '', ''),
-(122, 'daniel', 'macho', 3, 'enérgico', '2022-10-12 03:00:00', 2, 143, 1, 'https://firebasestorage.googleapis.com/v0/b/imag-43b3a.appspot.com/o/images%2F3e23b104f085eae5214eff920fa15023.jpg?alt=media&token=2f431fb2-4e8c-4725-8fa0-f1b5efd369c4', '', '', ''),
-(126, '', '', 0, '', '2022-10-17 09:16:48', 0, 0, 0, 'https://firebasestorage.googleapis.com/v0/b/imag-43b3a.appspot.com/o/images%2F3e23b104f085eae5214eff920fa15023.jpg?alt=media&token=a6cca950-8fc8-4fb8-a87d-e569f235d4b4', '', '', ''),
-(127, 'ana', '', 2, 'enérgico', '2022-10-17 20:21:41', 16, 1558, 2, 'https://firebasestorage.googleapis.com/v0/b/imag-43b3a.appspot.com/o/images%2Ff009ead47a0467e79f5362650bdbf8b4.jpg?alt=media&token=ca9a0c01-1489-40e6-b3a9-4fcf22fb64a9', '', '', ''),
-(128, 'ana', 'hembra', 0, '', '2022-10-17 20:27:43', 1, 2, 2, 'https://firebasestorage.googleapis.com/v0/b/imag-43b3a.appspot.com/o/images%2F6ba206756137a462018fd26e98ac2c9c.jpg?alt=media&token=cc3a81be-54f7-4cbb-8259-9fa75b75c074', '', '', ''),
-(134, 'perla', 'hembra', 2, 'tranquilo', '2022-10-18 18:09:50', 3, 285, 1, 'https://firebasestorage.googleapis.com/v0/b/imag-43b3a.appspot.com/o/images%2F3e23b104f085eae5214eff920fa15023.jpg?alt=media&token=a6cca950-8fc8-4fb8-a87d-e569f235d4b4', 'Pendiente', 'Pequeño', 'Adulto'),
-(135, 'leo', 'macho', 4, 'enérgico', '2022-10-18 20:42:31', 3, 285, 2, 'https://firebasestorage.googleapis.com/v0/b/imag-43b3a.appspot.com/o/images%2F6ba206756137a462018fd26e98ac2c9c.jpg?alt=media&token=ecbe1371-1ce9-4d90-8d6a-bb17b77cc876', 'Pendiente', 'Mediano', 'Adulto'),
-(136, 'ana', 'hembra', 6, 'tranquilo', '2022-10-18 21:45:04', 3, 283, 2, 'https://firebasestorage.googleapis.com/v0/b/imag-43b3a.appspot.com/o/images%2Ff009ead47a0467e79f5362650bdbf8b4.jpg?alt=media&token=4b42a501-e79e-4710-9d37-6fd181e3a923', 'Pendiente', 'Mediano', 'Adulto'),
-(137, 'franco', 'macho', 1, 'tranquilo ', '2022-10-18 23:06:02', 3, 283, 1, 'https://firebasestorage.googleapis.com/v0/b/imag-43b3a.appspot.com/o/images%2F3e23b104f085eae5214eff920fa15023.jpg?alt=media&token=bc322ca0-b54f-44b1-9d58-702a33fda5d5', 'Disponible', 'Grande', 'Adulto'),
-(138, 'franco', 'macho', 1, 'tranquilo ', '2022-10-18 23:06:48', 3, 283, 1, 'https://firebasestorage.googleapis.com/v0/b/imag-43b3a.appspot.com/o/images%2F3e23b104f085eae5214eff920fa15023.jpg?alt=media&token=bc322ca0-b54f-44b1-9d58-702a33fda5d5', 'Disponible', 'Grande', 'Adulto');
+INSERT INTO `animal` (`id`, `nombre`, `sexo`, `raza`, `descripcion`, `alta`, `provincia`, `localidad`, `animal_codigo`, `imagen`, `estado`, `tamanio`, `tipo`, `id_usuario`) VALUES
+(103, 'ramon', 'macho', 3, 'muy activo', '2022-10-06 03:00:00', 2, 143, 1, 'https://firebasestorage.googleapis.com/v0/b/imag-43b3a.appspot.com/o/images%2F761245.jpg?alt=media&token=370b2e8d-e077-4284-89c1-e7633259b796', '', '', '', ''),
+(104, 'ramo', 'macho', 3, 'muy activo', '2022-10-06 03:00:00', 2, 143, 1, 'https://firebasestorage.googleapis.com/v0/b/imag-43b3a.appspot.com/o/images%2F761245.jpg?alt=media&token=370b2e8d-e077-4284-89c1-e7633259b796', '', '', '', ''),
+(106, 'pedro', 'macho', 16, '', '2022-10-03 21:26:58', 1, 19, 5, 'https://firebasestorage.googleapis.com/v0/b/imag-43b3a.appspot.com/o/images%2Fcomo-mejorar-el-habitat-de-tu-tortuga-terrestre-1.jpg?alt=media&token=378bb5b5-4cec-41f9-aaed-cff89bfdca23', '', '', '', ''),
+(111, 'marcelo', 'macho', 4, '', '2022-10-03 21:34:54', 2, 148, 2, 'https://firebasestorage.googleapis.com/v0/b/imag-43b3a.appspot.com/o/images%2F3e23b104f085eae5214eff920fa15023.jpg?alt=media&token=4f6353f2-f84c-41b0-863c-2a725813f5c2', 'Pendiente', '', '', ''),
+(112, 'marcelo', 'macho', 4, '', '2022-10-03 21:35:14', 2, 148, 2, 'https://firebasestorage.googleapis.com/v0/b/imag-43b3a.appspot.com/o/images%2F7a2dd3c28c499aac0a5d3adcde944b3e.jpg?alt=media&token=8d0172e3-d712-4878-b477-f23fe0fa692a', '', '', '', ''),
+(118, '', '', 0, '', '2022-10-03 22:06:10', 0, 0, 0, 'https://firebasestorage.googleapis.com/v0/b/imag-43b3a.appspot.com/o/images%2F3e23b104f085eae5214eff920fa15023.jpg?alt=media&token=da1713b0-d193-4e31-9a5d-743878165486', '', '', '', ''),
+(122, 'daniel', 'macho', 3, 'enérgico', '2022-10-12 03:00:00', 2, 143, 1, 'https://firebasestorage.googleapis.com/v0/b/imag-43b3a.appspot.com/o/images%2F3e23b104f085eae5214eff920fa15023.jpg?alt=media&token=2f431fb2-4e8c-4725-8fa0-f1b5efd369c4', '', '', '', ''),
+(126, '', '', 0, '', '2022-10-17 09:16:48', 0, 0, 0, 'https://firebasestorage.googleapis.com/v0/b/imag-43b3a.appspot.com/o/images%2F3e23b104f085eae5214eff920fa15023.jpg?alt=media&token=a6cca950-8fc8-4fb8-a87d-e569f235d4b4', '', '', '', ''),
+(127, 'ana', '', 2, 'enérgico', '2022-10-17 20:21:41', 16, 1558, 2, 'https://firebasestorage.googleapis.com/v0/b/imag-43b3a.appspot.com/o/images%2Ff009ead47a0467e79f5362650bdbf8b4.jpg?alt=media&token=ca9a0c01-1489-40e6-b3a9-4fcf22fb64a9', '', '', '', ''),
+(128, 'ana', 'hembra', 0, '', '2022-10-17 20:27:43', 1, 2, 2, 'https://firebasestorage.googleapis.com/v0/b/imag-43b3a.appspot.com/o/images%2F6ba206756137a462018fd26e98ac2c9c.jpg?alt=media&token=cc3a81be-54f7-4cbb-8259-9fa75b75c074', '', '', '', ''),
+(134, 'perla', 'hembra', 2, 'tranquilo', '2022-10-18 18:09:50', 3, 285, 1, 'https://firebasestorage.googleapis.com/v0/b/imag-43b3a.appspot.com/o/images%2F3e23b104f085eae5214eff920fa15023.jpg?alt=media&token=a6cca950-8fc8-4fb8-a87d-e569f235d4b4', 'Pendiente', 'Pequeño', 'Adulto', ''),
+(135, 'leo', 'macho', 4, 'enérgico', '2022-10-18 20:42:31', 3, 285, 2, 'https://firebasestorage.googleapis.com/v0/b/imag-43b3a.appspot.com/o/images%2F6ba206756137a462018fd26e98ac2c9c.jpg?alt=media&token=ecbe1371-1ce9-4d90-8d6a-bb17b77cc876', 'Pendiente', 'Mediano', 'Adulto', ''),
+(136, 'ana', 'hembra', 6, 'tranquilo', '2022-10-18 21:45:04', 3, 283, 2, 'https://firebasestorage.googleapis.com/v0/b/imag-43b3a.appspot.com/o/images%2Ff009ead47a0467e79f5362650bdbf8b4.jpg?alt=media&token=4b42a501-e79e-4710-9d37-6fd181e3a923', 'Pendiente', 'Mediano', 'Adulto', '2'),
+(137, 'franco', 'macho', 1, 'tranquilo ', '2022-10-18 23:06:02', 3, 283, 1, 'https://firebasestorage.googleapis.com/v0/b/imag-43b3a.appspot.com/o/images%2F3e23b104f085eae5214eff920fa15023.jpg?alt=media&token=bc322ca0-b54f-44b1-9d58-702a33fda5d5', 'Disponible', 'Grande', 'Adulto', ''),
+(139, '', '', 0, '', '2022-10-19 17:37:45', 0, 0, 0, '', 'Disponible', '', '', ''),
+(140, '', '', 0, '', '2022-10-19 22:37:00', 0, 0, 5, '', 'Disponible', '', '', '14'),
+(141, 'fabian', 'macho', 5, 'divertido', '2022-10-19 23:17:14', 3, 301, 2, 'https://firebasestorage.googleapis.com/v0/b/imag-43b3a.appspot.com/o/images%2F6ba206756137a462018fd26e98ac2c9c.jpg?alt=media&token=e7a0e824-5ba0-417b-8894-dc8df991b367', 'Pendiente', 'Mediano', 'Anciano', '14'),
+(142, 'celeste', '', 2, '', '2022-10-20 00:06:20', 18, 0, 1, 'https://firebasestorage.googleapis.com/v0/b/imag-43b3a.appspot.com/o/images%2Ff009ead47a0467e79f5362650bdbf8b4.jpg?alt=media&token=eff67279-a451-43e6-91c1-9038970137db', 'Pendiente', '', '', '2');
 
 -- --------------------------------------------------------
 
@@ -2782,29 +2816,30 @@ CREATE TABLE `usuarios` (
   `perfil` varchar(1000) DEFAULT NULL,
   `sexo` varchar(11) NOT NULL,
   `provincia` varchar(30) NOT NULL,
-  `localidad` int(11) NOT NULL
+  `localidad` int(11) NOT NULL,
+  `numero` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombre`, `email`, `password`, `rol`, `alta`, `activado`, `perfil`, `sexo`, `provincia`, `localidad`) VALUES
-(1, 'Pedro', 'pedro@friendface.com', '$2a$10$xRV//BCZ5y2p/7NZnQOYnuVNmUDFyrWV0cYWZO2/fS5IXM9Vn6y3W', 'admin', '2020-09-08 17:45:47', NULL, NULL, '', '', 0),
-(2, 'Hugo', 'hugo@friendface.com', '$2a$10$xRV//BCZ5y2p/7NZnQOYnuVNmUDFyrWV0cYWZO2/fS5IXM9Vn6y3W', 'user', '2018-11-26 17:14:50', NULL, NULL, '', '', 0),
-(3, 'Pepe', 'pepe@gmail.com', '$2a$10$xRV//BCZ5y2p/7NZnQOYnuVNmUDFyrWV0cYWZO2/fS5IXM9Vn6y3W', 'admin', '2022-06-15 02:29:06', NULL, NULL, '', '', 0),
-(5, 'pablo', 'pablo@gmail.com', '1137907', 'admin', '2022-08-22 11:04:34', NULL, NULL, '', '', 0),
-(6, 'ana', 'ana@gmail.com', 'ana123', 'admin', '2022-08-22 20:41:06', NULL, NULL, '', '', 0),
-(9, 'ana', 'anabel@gmail.com', 'ana123', 'admin', '2022-08-22 20:44:13', NULL, NULL, '', '', 0),
-(10, 'laura', 'laura@gmail.com', 'laura123', 'admin', '2022-08-22 21:03:58', NULL, NULL, 'indefinido', '', 0),
-(11, 'anastacia', 'anastacia@gmail.com', '123456', 'admin', '2022-08-22 22:28:31', NULL, NULL, 'mujer', 'BUENOS AIRES', 0),
-(12, 'juana', 'juana@gmail.com', 'juana123', 'admin', '2022-08-23 19:32:05', NULL, NULL, 'mujer', '2', 0),
-(13, 'giselle', 'giselle@gmail.com', '123456', 'admin', '2022-08-23 20:35:36', NULL, NULL, 'mujer', '7', 0),
-(14, 'karina', 'karina@gmail.com', '$2a$10$xRV//BCZ5y2p/7NZnQOYnuVNmUDFyrWV0cYWZO2/fS5IXM9Vn6y3W', 'user', '2022-08-23 22:16:40', NULL, NULL, 'mujer', '3', 0),
-(15, 'julia', 'julia@gmail.com', '123456', 'admin', '2022-08-23 22:19:22', NULL, NULL, 'mujer', '3', 2),
-(16, 'nicolas', 'nicolas@gmail.com', '$2a$10$xRV//BCZ5y2p/7NZnQOYnuVNmUDFyrWV0cYWZO2/fS5IXM9Vn6y3W', 'user', '2022-08-23 22:33:25', NULL, NULL, 'hombre', '3', 2),
-(17, 'Pedro', 'pedro@gmail.com', '123456', 'admin', '2022-08-29 09:26:02', NULL, NULL, 'indefinido', '2', 3),
-(18, 'matias', 'matias@gmail.com', '1$2a$10$xRV//BCZ5y2p/7NZnQOYnuVNmUDFyrWV0cYWZO2/fS5IXM9Vn6y3W', 'admin', '2022-10-18 22:39:13', NULL, NULL, 'hombre', '3', 285);
+INSERT INTO `usuarios` (`id`, `nombre`, `email`, `password`, `rol`, `alta`, `activado`, `perfil`, `sexo`, `provincia`, `localidad`, `numero`) VALUES
+(1, 'Pedro', 'pedro@friendface.com', '$2a$10$xRV//BCZ5y2p/7NZnQOYnuVNmUDFyrWV0cYWZO2/fS5IXM9Vn6y3W', 'admin', '2020-09-08 17:45:47', NULL, NULL, '', '', 0, 0),
+(2, 'Hugo', 'hugo@friendface.com', '$2a$10$xRV//BCZ5y2p/7NZnQOYnuVNmUDFyrWV0cYWZO2/fS5IXM9Vn6y3W', 'user', '2018-11-26 17:14:50', NULL, NULL, '', '', 0, 1164048188),
+(3, 'Pepe', 'pepe@gmail.com', '$2a$10$xRV//BCZ5y2p/7NZnQOYnuVNmUDFyrWV0cYWZO2/fS5IXM9Vn6y3W', 'admin', '2022-06-15 02:29:06', NULL, NULL, '', '', 0, 0),
+(5, 'pablo', 'pablo@gmail.com', '1137907', 'admin', '2022-08-22 11:04:34', NULL, NULL, '', '', 0, 0),
+(6, 'ana', 'ana@gmail.com', 'ana123', 'admin', '2022-08-22 20:41:06', NULL, NULL, '', '', 0, 0),
+(9, 'ana', 'anabel@gmail.com', 'ana123', 'admin', '2022-08-22 20:44:13', NULL, NULL, '', '', 0, 0),
+(10, 'laura', 'laura@gmail.com', 'laura123', 'admin', '2022-08-22 21:03:58', NULL, NULL, 'indefinido', '', 0, 0),
+(11, 'anastacia', 'anastacia@gmail.com', '123456', 'admin', '2022-08-22 22:28:31', NULL, NULL, 'mujer', 'BUENOS AIRES', 0, 0),
+(12, 'juana', 'juana@gmail.com', 'juana123', 'admin', '2022-08-23 19:32:05', NULL, NULL, 'mujer', '2', 0, 0),
+(13, 'giselle', 'giselle@gmail.com', '123456', 'admin', '2022-08-23 20:35:36', NULL, NULL, 'mujer', '7', 0, 0),
+(14, 'karina', 'karina@gmail.com', '$2a$10$xRV//BCZ5y2p/7NZnQOYnuVNmUDFyrWV0cYWZO2/fS5IXM9Vn6y3W', 'user', '2022-08-23 22:16:40', NULL, NULL, 'mujer', '3', 0, 1137979430),
+(15, 'julia', 'julia@gmail.com', '123456', 'admin', '2022-08-23 22:19:22', NULL, NULL, 'mujer', '3', 2, 0),
+(16, 'nicolas', 'nicolas@gmail.com', '$2a$10$xRV//BCZ5y2p/7NZnQOYnuVNmUDFyrWV0cYWZO2/fS5IXM9Vn6y3W', 'user', '2022-08-23 22:33:25', NULL, NULL, 'hombre', '3', 2, 0),
+(17, 'Pedro', 'pedro@gmail.com', '123456', 'admin', '2022-08-29 09:26:02', NULL, NULL, 'indefinido', '2', 3, 0),
+(18, 'matias', 'matias@gmail.com', '1$2a$10$xRV//BCZ5y2p/7NZnQOYnuVNmUDFyrWV0cYWZO2/fS5IXM9Vn6y3W', 'admin', '2022-10-18 22:39:13', NULL, NULL, 'hombre', '3', 285, 0);
 
 --
 -- Índices para tablas volcadas
@@ -2814,6 +2849,12 @@ INSERT INTO `usuarios` (`id`, `nombre`, `email`, `password`, `rol`, `alta`, `act
 -- Indices de la tabla `adopcion`
 --
 ALTER TABLE `adopcion`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `adopciones`
+--
+ALTER TABLE `adopciones`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -2893,13 +2934,19 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `adopcion`
 --
 ALTER TABLE `adopcion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+
+--
+-- AUTO_INCREMENT de la tabla `adopciones`
+--
+ALTER TABLE `adopciones`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `animal`
 --
 ALTER TABLE `animal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
 
 --
 -- AUTO_INCREMENT de la tabla `animales`
