@@ -28,7 +28,7 @@ class AnimalModel
     async listar()
     { //Devuelve todas las filas de la tabla usuario
 		//const db=this.connection;
-		const usuarios = await this.db.query('SELECT * FROM animal');
+		const usuarios = await this.db.query('SELECT * FROM animal ');
 		//console.log(usuarios[0]);
 		//devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
 		return usuarios[0];
@@ -152,10 +152,45 @@ class AnimalModel
 
 		return null;
 	}
+	async buscarSolicitud(nombre: string)
+    {
+		const encontrado: any = await this.db.query('SELECT * FROM adopcion WHERE id_registrado = ?', [nombre]);
+		//Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
+		
+        if (encontrado.length > 1)
+
+			return encontrado[0];
+
+		return null;
+	}
+	async buscaSolicitud(nombre: string)
+    {
+		const encontrado: any = await this.db.query('SELECT * FROM solicitud WHERE id_usuario = ?', [nombre]);
+		//Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
+		
+        if (encontrado.length > 1)
+
+			return encontrado[0];
+
+		return null;
+	}
 	async buscarUsuario(nombre: string)
     {
-		const encontrado: any = await this.db.query('SELECT * FROM animal WHERE id_usuario = ?', [nombre]);
+		const encontrado: any = await this.db.query('SELECT * FROM animal WHERE estado = "Disponible" AND id_usuario = ?', [nombre]);
 		//Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
+		//const encontrado: any = await this.db.query('SELECT * FROM animal WHERE estado = "Disponible" AND id_usuario = ?', [nombre]);
+		
+        if (encontrado.length > 1)
+
+			return encontrado[0];
+
+		return null;
+	}
+	async buscarAdoptado(nombre: string)
+    {
+		const encontrado: any = await this.db.query('SELECT * FROM animal WHERE estado = "Adoptado" AND id_usuario = ?', [nombre]);
+		//Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
+		//const encontrado: any = await this.db.query('SELECT * FROM animal WHERE estado = "Disponible" AND id_usuario = ?', [nombre]);
 		
         if (encontrado.length > 1)
 
@@ -180,6 +215,13 @@ class AnimalModel
 	async actualizar(usuario: object, id: string)
     {
 		const result = (await this.db.query('UPDATE animal SET ? WHERE id = ?', [usuario, id]))[0].affectedRows;
+		console.log(result);
+
+		return result;
+	}
+	async modificar(usuario: object, id: string)
+    {
+		const result = (await this.db.query('UPDATE adopcion SET ? WHERE id_registrado  = ?', [usuario, id]))[0].affectedRows;
 		console.log(result);
 
 		return result;
@@ -238,6 +280,62 @@ class AnimalModel
 
 		return null;
 	}
+	async buscaradop(nombre: string,nom: string)
+    {
+		const encontrado: any = await this.db.query('SELECT * FROM adopcion WHERE id_animal = ? AND id_registrado = ?', [nombre,nom]);
+		//Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
+		//const encontrado: any = await this.db.query('SELECT * FROM animal WHERE estado = "Disponible" AND id_usuario = ?', [nombre]);
+		
+        if (encontrado.length > 1)
+
+			return encontrado[0][0];
+
+		return null;
+	}
+	async actualiadopcion(usuario: object, id: string,nom:string)
+    {
+		const result = (await this.db.query('UPDATE solicitud SET ?  WHERE id_animal = ? AND id_usuario = ?', [usuario, id,nom]))[0].affectedRows;
+		console.log(result);
+
+		return result;
+	}
+	async crearSolicitud(usuario: object)
+    {
+		const result = (await this.db.query('INSERT INTO solicitud SET ?', [usuario]))[0].affectedRows;
+		console.log(result);
+
+		return result;
+	}
+	async buscarSolici(id: string)
+    {
+		const encontrado: any = await this.db.query('SELECT * FROM solicitud WHERE id = ?', [id]);
+		//Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
+		
+        if (encontrado.length > 1)
+
+			return encontrado[0][0];
+
+		return null;
+	}
+	async eliminarSolicitud(id: string)
+    {
+		const user = (await this.db.query('DELETE FROM solicitud WHERE id = ?', [id]))[0].affectedRows;
+		console.log(user);
+        
+		return user;
+	}
+	async busAdopciones(nombre: string)
+    {
+		const encontrado: any = await this.db.query('SELECT * FROM adopciones WHERE id_animal = ?', [nombre]);
+		//Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
+		
+        if (encontrado.length > 1)
+
+			return encontrado[0][0];
+
+		return null;
+	}
+	
 }
 
 //Nota: Aqui cada uno tiene que setear los parametros de su propio servidor MySQL / MariaDB.

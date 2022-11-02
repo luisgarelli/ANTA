@@ -133,6 +133,36 @@ class AnimalController {
             res.status(404).json({ text: "Auto doesn't exists" });
         });
     }
+    buscarSolicitud(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.params.id);
+            const { id } = req.params;
+            const auto = yield animalModel_1.default.buscarSolicitud(id);
+            if (auto)
+                return res.json(auto);
+            res.status(404).json({ text: "Auto doesn't exists" });
+        });
+    }
+    buscaSolicitud(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.params.id);
+            const { id } = req.params;
+            const auto = yield animalModel_1.default.buscaSolicitud(id);
+            if (auto)
+                return res.json(auto);
+            res.status(404).json({ text: "Auto doesn't exists" });
+        });
+    }
+    buscarDados(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.params.id);
+            const { id } = req.params;
+            const auto = yield animalModel_1.default.buscarAdoptado(id);
+            if (auto)
+                return res.json(auto);
+            res.status(404).json({ text: "Auto doesn't exists" });
+        });
+    }
     buscaAdopcionUsu(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.params.id);
@@ -224,6 +254,15 @@ class AnimalController {
             return res.json({ text: 'updating a slot ' + id });
         });
     }
+    modificar(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body);
+            const { id } = req.params;
+            const result = yield animalModel_1.default.modificar(req.body, id);
+            //res.send('Usuario '+ req.params.id +' actualizado!!!');
+            return res.json({ text: 'updating a slot ' + id });
+        });
+    }
     eliminar(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             /*console.log(req.body);
@@ -241,16 +280,19 @@ class AnimalController {
     }
     eliminarInteresa(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            /*console.log(req.body);
-            //res.send('Usuario '+ req.params.id +' Eliminado!!!');
-            const { id } = req.params; // hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.
-            const result = await userModel.eliminar(id);
-            return res.json({ text: 'deleting a user ' + id });*/
-            //  return res.json({ text: 'eliminando ' });
             console.log(req.body);
             //res.send('Usuario '+ req.params.id +' Eliminado!!!');
             const { id } = req.params; // hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.
             const result = yield animalModel_1.default.eliminarInteresado(id);
+            return res.json({ text: 'deleting un interesado' + id });
+        });
+    }
+    eliminarSolicitud(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body);
+            //res.send('Usuario '+ req.params.id +' Eliminado!!!');
+            const { id } = req.params; // hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.
+            const result = yield animalModel_1.default.eliminarSolicitud(id);
             return res.json({ text: 'deleting un interesado' + id });
         });
     }
@@ -284,6 +326,53 @@ class AnimalController {
                 return res.json({ mensaje: 'animal saved!!' });
             }
             return res.json({ mensaje: 'animal exists!!' });
+        });
+    }
+    buscaradop(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.params.id);
+            const { id } = req.params;
+            const { use } = req.params;
+            const usuario = yield animalModel_1.default.buscaradop(id, use);
+            if (usuario)
+                return res.json(usuario);
+            res.status(404).json({ text: "User doesn't exists" });
+        });
+    }
+    actualizadopcion(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body);
+            const { id } = req.params;
+            const { nom } = req.params;
+            const result = yield animalModel_1.default.actualiadopcion(req.body, id, nom);
+            //res.send('Usuario '+ req.params.id +' actualizado!!!');
+            return res.json({ text: 'updating a slot ' + id });
+        });
+    }
+    agregarSolicitud(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const animal = req.body;
+            const { id_usuario } = req.body;
+            const { id_animal } = req.body;
+            //delete slot.repassword;
+            console.log(req.body);
+            //res.send('Usuario agregado!!!');
+            const busqueda = yield animalModel_1.default.buscarSolici(animal.slot);
+            if (!busqueda) {
+                const result = yield animalModel_1.default.crearSolicitud(animal);
+                return res.json({ mensaje: 'animal saved!!' });
+            }
+            return res.json({ mensaje: 'animal exists!!' });
+        });
+    }
+    busAdopcione(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.params.id);
+            const { id } = req.params;
+            const usuario = yield animalModel_1.default.busAdopciones(id);
+            if (usuario)
+                return res.json(usuario);
+            res.status(404).json({ text: "User doesn't exists" });
         });
     }
 }

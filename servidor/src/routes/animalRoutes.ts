@@ -52,6 +52,15 @@ class AnimalRoutes
 		this.router.get('/busc/:id',TokenValidation,animalController.buscarId);
 		this.router.delete('/eliminteresado/:id',TokenValidation,animalController.eliminarInteresa);
 		this.router.post('/agregaradopciones',TokenValidation,animalController.agregarAdopciones);	
+		this.router.get('/buscardados/:id',TokenValidation,animalController.buscarDados);
+		this.router.get('/solicitud/:id',TokenValidation,animalController.buscarSolicitud);
+		this.router.put('/modsolicitud/:id',TokenValidation,animalController.modificar);
+		this.router.get('/buscaradopciones/:id/:use',TokenValidation,animalController.buscaradop);
+		this.router.put('/modsolicitud/:id/:nom',TokenValidation,animalController.actualizadopcion);
+		this.router.post('/agregarsolicitud',TokenValidation,animalController.agregarSolicitud);	
+		this.router.get('/buscasolicitu/:id',TokenValidation,animalController.buscaSolicitud);	
+		this.router.delete('/eliminasolicitud/:id',TokenValidation,animalController.eliminarSolicitud);
+		this.router.get('/busadopciones/:id',TokenValidation,animalController.busAdopcione);
 
 
 	}

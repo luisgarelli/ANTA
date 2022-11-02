@@ -12,4 +12,6 @@ export interface Adopcion{
 	animal_propiedad?: string;
 	animal_pasear?: string;
 	id_registrado?: string;
+	estado?: string;
+	descripcion?: string;
 }

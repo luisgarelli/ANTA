@@ -30,6 +30,8 @@ import { NgxToastNotifierModule } from 'ngx-toast-notifier';
 import { FiltroPipe } from './cliente/pipes/filtro.pipe';
 import { AnimalesRegistradosComponent } from './components/animales-registrados/animales-registrados.component';
 import { InteresadosInformacionComponent } from './components/interesados-informacion/interesados-informacion.component';
+import { AnimalesAdoptadosComponent } from './components/animales-adoptados/animales-adoptados.component';
+import { UsuariosSolicitudesComponent } from './components/usuarios-solicitudes/usuarios-solicitudes.component';
 
 
 @NgModule({
@@ -52,7 +54,9 @@ import { InteresadosInformacionComponent } from './components/interesados-inform
     AnimalesInformacionComponent,
     FiltroPipe,
     AnimalesRegistradosComponent,
-    InteresadosInformacionComponent
+    InteresadosInformacionComponent,
+    AnimalesAdoptadosComponent,
+    UsuariosSolicitudesComponent
   
    
     

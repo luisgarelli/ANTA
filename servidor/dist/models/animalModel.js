@@ -29,7 +29,7 @@ class AnimalModel {
     listar() {
         return __awaiter(this, void 0, void 0, function* () {
             //const db=this.connection;
-            const usuarios = yield this.db.query('SELECT * FROM animal');
+            const usuarios = yield this.db.query('SELECT * FROM animal ');
             //console.log(usuarios[0]);
             //devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
             return usuarios[0];
@@ -142,10 +142,39 @@ class AnimalModel {
             return null;
         });
     }
+    buscarSolicitud(nombre) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const encontrado = yield this.db.query('SELECT * FROM adopcion WHERE id_registrado = ?', [nombre]);
+            //Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
+            if (encontrado.length > 1)
+                return encontrado[0];
+            return null;
+        });
+    }
+    buscaSolicitud(nombre) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const encontrado = yield this.db.query('SELECT * FROM solicitud WHERE id_usuario = ?', [nombre]);
+            //Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
+            if (encontrado.length > 1)
+                return encontrado[0];
+            return null;
+        });
+    }
     buscarUsuario(nombre) {
         return __awaiter(this, void 0, void 0, function* () {
-            const encontrado = yield this.db.query('SELECT * FROM animal WHERE id_usuario = ?', [nombre]);
+            const encontrado = yield this.db.query('SELECT * FROM animal WHERE estado = "Disponible" AND id_usuario = ?', [nombre]);
             //Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
+            //const encontrado: any = await this.db.query('SELECT * FROM animal WHERE estado = "Disponible" AND id_usuario = ?', [nombre]);
+            if (encontrado.length > 1)
+                return encontrado[0];
+            return null;
+        });
+    }
+    buscarAdoptado(nombre) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const encontrado = yield this.db.query('SELECT * FROM animal WHERE estado = "Adoptado" AND id_usuario = ?', [nombre]);
+            //Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
+            //const encontrado: any = await this.db.query('SELECT * FROM animal WHERE estado = "Disponible" AND id_usuario = ?', [nombre]);
             if (encontrado.length > 1)
                 return encontrado[0];
             return null;
@@ -164,6 +193,13 @@ class AnimalModel {
     actualizar(usuario, id) {
         return __awaiter(this, void 0, void 0, function* () {
             const result = (yield this.db.query('UPDATE animal SET ? WHERE id = ?', [usuario, id]))[0].affectedRows;
+            console.log(result);
+            return result;
+        });
+    }
+    modificar(usuario, id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const result = (yield this.db.query('UPDATE adopcion SET ? WHERE id_registrado  = ?', [usuario, id]))[0].affectedRows;
             console.log(result);
             return result;
         });
@@ -216,6 +252,55 @@ class AnimalModel {
             //Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
             if (encontrado.length > 1)
                 return encontrado[0];
+            return null;
+        });
+    }
+    buscaradop(nombre, nom) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const encontrado = yield this.db.query('SELECT * FROM adopcion WHERE id_animal = ? AND id_registrado = ?', [nombre, nom]);
+            //Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
+            //const encontrado: any = await this.db.query('SELECT * FROM animal WHERE estado = "Disponible" AND id_usuario = ?', [nombre]);
+            if (encontrado.length > 1)
+                return encontrado[0][0];
+            return null;
+        });
+    }
+    actualiadopcion(usuario, id, nom) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const result = (yield this.db.query('UPDATE solicitud SET ?  WHERE id_animal = ? AND id_usuario = ?', [usuario, id, nom]))[0].affectedRows;
+            console.log(result);
+            return result;
+        });
+    }
+    crearSolicitud(usuario) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const result = (yield this.db.query('INSERT INTO solicitud SET ?', [usuario]))[0].affectedRows;
+            console.log(result);
+            return result;
+        });
+    }
+    buscarSolici(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const encontrado = yield this.db.query('SELECT * FROM solicitud WHERE id = ?', [id]);
+            //Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
+            if (encontrado.length > 1)
+                return encontrado[0][0];
+            return null;
+        });
+    }
+    eliminarSolicitud(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const user = (yield this.db.query('DELETE FROM solicitud WHERE id = ?', [id]))[0].affectedRows;
+            console.log(user);
+            return user;
+        });
+    }
+    busAdopciones(nombre) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const encontrado = yield this.db.query('SELECT * FROM adopciones WHERE id_animal = ?', [nombre]);
+            //Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
+            if (encontrado.length > 1)
+                return encontrado[0][0];
             return null;
         });
     }

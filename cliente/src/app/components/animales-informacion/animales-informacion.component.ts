@@ -8,6 +8,7 @@ import { UsuariosService } from '../../services/usuarios.service';
 import { NgxToastService } from 'ngx-toast-notifier';
 import { Animal } from 'src/app/models/animalModel';
 import { ThisReceiver } from '@angular/compiler';
+import { Solicitud } from 'src/app/models/solicitudModel';
 
 @Component({
   selector: 'app-animales-informacion',
@@ -28,9 +29,11 @@ id = "";
 idAnimal:any;
 nombreUsuario:any;
 adopcion: Adopcion;
+solicitudes: Solicitud;
 cont=0;
 boleano: boolean = false;
 estadoAnimal ="Pendiente";
+descripcion ="Ninguna";
 animal2: Animal;
 idUsuario:any;
 codCelular= 549; 
@@ -42,9 +45,14 @@ disabledValue= false;
 disabledValu= false;
 valor= true;
 idRegistrado:any;
+adopcion2: Adopcion;
+nombreAnimal:any;
 constructor( private ngxToastService: NgxToastService, private rutaActiva: ActivatedRoute, private animalService: AnimalService,  private usuarioService: UsuariosService) { 
-  this.adopcion = {  id_animal: "",  id_usuario: "",tipo_vivienda:"", tipo_propietario:"", caso_alquilar:"", animal_castrado:"",compromiso_animal:"" , balcones:"", acuerdo_familiar:"", animal_propiedad:"", animal_pasear:"",id_registrado:"" };
+  this.adopcion = {  id_animal: "",  id_usuario: "",tipo_vivienda:"", tipo_propietario:"", caso_alquilar:"", animal_castrado:"",compromiso_animal:"" , balcones:"", acuerdo_familiar:"", animal_propiedad:"", animal_pasear:"",id_registrado:"",estado:""};
   this.animal2 = { estado: "" };
+  this.adopcion2 = { estado: "" };
+  this.solicitudes = { id_usuario:"",id_animal:"",estado: "",descripcion:"",nombre_animal:"" };
+
  
 }
  
@@ -138,6 +146,8 @@ constructor( private ngxToastService: NgxToastService, private rutaActiva: Activ
         console.log(" id de usuario q lo registro", this.Animal.id_usuario);
         this.idRegistrado = this.Animal.id_usuario;
         console.log("registrado",this.idRegistrado);
+        console.log("nombre del animal", this.Animal.nombre);
+        this.nombreAnimal = this.Animal.nombre;
         this.usuarioService.buscarUsuario(this.idRegistrado).subscribe(
           res => {
             this.registrado = res;
@@ -165,6 +175,7 @@ constructor( private ngxToastService: NgxToastService, private rutaActiva: Activ
     this.nombreUsuario = this.usuarioService.getNombre();
   this.adopcion.id_usuario = this.nombreUsuario;
 
+
   /*this.animal2.estado = this.estadoAnimal;
   this.animalService.modificarAnimal(this.AnimalID,this.animal2).subscribe(
     res => {
@@ -174,6 +185,9 @@ constructor( private ngxToastService: NgxToastService, private rutaActiva: Activ
     },
     err => console.log(err)
   );*/
+  //
+ 
+  //
     this.animalService.guardarAdopcion(this.adopcion).subscribe(
       res => {
         console.log("Datos del Servicio");
@@ -213,6 +227,7 @@ this.idAnimal = idAnim;
  agrega(){
  
   this.adopcion.id_animal = this.idAnimal;
+  this.adopcion.estado = this.estadoAnimal;
   this.adopcion.id_registrado = this.idUsuario;
   this.nombreUsuario = this.usuarioService.getNombre();
   this.adopcion.id_usuario = this.nombreUsuario;
@@ -225,9 +240,25 @@ this.idAnimal = idAnim;
     },
     err => console.log(err)
   );
+  //
+  this.solicitudes.id_usuario = this.idUsuario;
+  this.solicitudes.id_animal = this.idAnimal;
+  this.solicitudes.estado = this.estadoAnimal;
+  this.solicitudes.descripcion = this.descripcion;
+  this.solicitudes.nombre_animal = this.nombreAnimal;
+  this.animalService.guardarSolicitud(this.solicitudes).subscribe(
+    res => {
+      console.log("Datos del Servicio");
+      console.log(res);
+
+      this.ngOnInit();
+    },
+    err => console.log(err)
+  );
+  //
 if(this.boleano == false){
   console.log("se puede adoptar");
-  this.animal2.estado = this.estadoAnimal;
+  /*this.animal2.estado = this.estadoAnimal;
   this.animalService.modificarAnimal(this.idAnimal,this.animal2).subscribe(
     res => {
       console.log("Datos del Servicio");
@@ -235,7 +266,7 @@ if(this.boleano == false){
 
     },
     err => console.log(err)
-  );
+  );*/
   this.ngxToastService.onSuccess('Exitoso!','La solicitud de la adopción está pendiente del administrador')
   this.animalService.guardarAdopcion(this.adopcion).subscribe(
     res => {

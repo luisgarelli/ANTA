@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from '../../services/usuarios.service';
 import { Router } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Adopcion } from 'src/app/models/adopcionModel';
 
+import { NgxToastService } from 'ngx-toast-notifier';
+import { Animal } from 'src/app/models/animalModel';
+import { ThisReceiver } from '@angular/compiler';
+import { Adopciones } from 'src/app/models/adopcionesModel';
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
@@ -15,14 +21,18 @@ export class NavigationComponent implements OnInit {
   rol: any;
   roladmin: boolean = false;
   datosMenu=[{'titulo':'','url':''}];
-
+nombreUsuario :any;
   constructor(private usuariosService:UsuariosService, private router:Router)
   { 
     this.token= usuariosService.getToken();
     this.rol= usuariosService.getRol();
+     
   }
 
   ngOnInit(): void {
+
+    this.nombreUsuario = this.usuariosService.getNombre();
+   
     this.ValidarToken()
     this.ValidarRol();
     this.MostrarMenu();
@@ -108,6 +118,7 @@ export class NavigationComponent implements OnInit {
     this.usuariosService.logOut();
     this.tokenValidado = false;
     this.token="";
+    this.nombreUsuario = "";
     console.log("Cerrando sesion!!!");
     this.router.navigate(['usuarios/principal']);
   }

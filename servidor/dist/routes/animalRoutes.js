@@ -46,6 +46,15 @@ class AnimalRoutes {
         this.router.get('/busc/:id', verifyToken_1.TokenValidation, animalController_1.default.buscarId);
         this.router.delete('/eliminteresado/:id', verifyToken_1.TokenValidation, animalController_1.default.eliminarInteresa);
         this.router.post('/agregaradopciones', verifyToken_1.TokenValidation, animalController_1.default.agregarAdopciones);
+        this.router.get('/buscardados/:id', verifyToken_1.TokenValidation, animalController_1.default.buscarDados);
+        this.router.get('/solicitud/:id', verifyToken_1.TokenValidation, animalController_1.default.buscarSolicitud);
+        this.router.put('/modsolicitud/:id', verifyToken_1.TokenValidation, animalController_1.default.modificar);
+        this.router.get('/buscaradopciones/:id/:use', verifyToken_1.TokenValidation, animalController_1.default.buscaradop);
+        this.router.put('/modsolicitud/:id/:nom', verifyToken_1.TokenValidation, animalController_1.default.actualizadopcion);
+        this.router.post('/agregarsolicitud', verifyToken_1.TokenValidation, animalController_1.default.agregarSolicitud);
+        this.router.get('/buscasolicitu/:id', verifyToken_1.TokenValidation, animalController_1.default.buscaSolicitud);
+        this.router.delete('/eliminasolicitud/:id', verifyToken_1.TokenValidation, animalController_1.default.eliminarSolicitud);
+        this.router.get('/busadopciones/:id', verifyToken_1.TokenValidation, animalController_1.default.busAdopcione);
     }
 }
 //Exportamos el enrutador con 

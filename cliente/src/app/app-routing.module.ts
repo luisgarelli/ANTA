@@ -17,6 +17,8 @@ import { AnimalesRegistrarComponent } from './components/animales-registrar/anim
 import { AnimalesInformacionComponent } from './components/animales-informacion/animales-informacion.component';
 import { AnimalesRegistradosComponent } from './components/animales-registrados/animales-registrados.component';
 import { InteresadosInformacionComponent } from './components/interesados-informacion/interesados-informacion.component';
+import { AnimalesAdoptadosComponent } from './components/animales-adoptados/animales-adoptados.component';
+import { UsuariosSolicitudesComponent } from './components/usuarios-solicitudes/usuarios-solicitudes.component';
 const routes: Routes = [
 	{
 		path: '',
@@ -75,9 +77,20 @@ const routes: Routes = [
 		component: AnimalesListarComponent,
 		canActivate: [AuthGuard]
 	},
+	
+	{
+		path: 'usuarios/solicitudes',
+		component: UsuariosSolicitudesComponent,
+		canActivate: [AuthGuard]
+	},
 	{
 		path: 'usuario/registrar',
 		component: RegistrarComponent,
+		canActivate: [AuthGuard]
+	},
+	{
+		path: 'animales/adoptados',
+		component: AnimalesAdoptadosComponent,
 		canActivate: [AuthGuard]
 	},
 	{

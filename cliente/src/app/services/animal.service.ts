@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import { Animal } from '../models/animalModel';
 import { Observable } from 'rxjs';
 import { Sexo } from '../models/sexoModel';
+import { Adopcion } from '../models/adopcionModel';
 @Injectable({
   providedIn: 'root'
 })
@@ -73,9 +74,15 @@ export class AnimalService {
 	eliminarInteresado(id:string){
 		return this.http.delete(`${this.API_URI}/eliminteresado/${id}`);
 	}
+	eliminarSolicitud(id:string){
+		return this.http.delete(`${this.API_URI}/eliminasolicitud/${id}`);
+	}
 	
 	modificarAnimal(id:string, modificarAnimal: Animal):Observable<Animal>{
 		return this.http.put(`${this.API_URI}/modificar/${id}`,modificarAnimal);
+	}
+	modificarSolicitud(id:string, modificarAnimal: Animal):Observable<Animal>{
+		return this.http.put(`${this.API_URI}/modsolicitud/${id}`,modificarAnimal);
 	}
 	listarProvincia() {
 		//para expandir/especializar las variables usamos ` y no ' o "
@@ -94,6 +101,26 @@ export class AnimalService {
 	guardarAdopcion(auto: Animal){
 		return this.http.post(`${this.API_URI}/adopcion`,auto);
 	}
-	
+	buscarDados(id:string){
+		return this.http.get(`${this.API_URI}/buscardados/${id}`);
+	}
+	buscarSolicitud(id:string){
+		return this.http.get(`${this.API_URI}/solicitud/${id}`);
+	}
+	buscaSolicitu(id:string){
+		return this.http.get(`${this.API_URI}/buscasolicitu/${id}`);
+	}
+	buscaradopciones(id:string, use:string){
+		return this.http.get(`${this.API_URI}/buscaradopciones/${id}/${use}`);
+	}
+	modSolicitudes(id:string, use:string, modificarAnimal: Animal):Observable<Animal>{
+		return this.http.put(`${this.API_URI}/modsolicitud/${id}/${use}`,modificarAnimal);
+	}
+	guardarSolicitud(auto: Animal){
+		return this.http.post(`${this.API_URI}/agregarsolicitud`,auto);
+	}
+	buscadopc(id:string){
+		return this.http.get(`${this.API_URI}/busadopciones/${id}`);
+	}
 	  
 }
