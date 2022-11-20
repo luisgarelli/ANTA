@@ -9,5 +9,7 @@ export interface Usuarios{
 	perfil?: string;
 	sexo?: string;
 	provincia?: string;
+	localidad?: string;
 	numero?: string;
+	
 }

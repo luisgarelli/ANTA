@@ -23,13 +23,20 @@ export class AnimalesListarComponent implements OnInit {
   id: string = "";
   animal2: Animal;//Usado para instancial el auto a modificar
   animales: any = [];
+  nuevo: any = [];
   letigo:any;
   nombreUsuario:any;
  public page: number=0;
+ search:string='';
+ search2:string='';
+ user:any;
+ prov:any;
+ filterPost = '';
+ searchText: any;
   constructor(private animalService: AnimalService,  private router:Router, private usuariosService: UsuariosService) {
     this.animal = { nombre: "",   sexo: "" , raza: "", descripcion: "", alta: "",imagen:"",tamanio:"",tipo:""  };
     this.animal2 = {nombre: "",   sexo: "" , raza: "", descripcion: "", alta: ""  };
-   
+   this.nuevo =[];
     /*
     replace(/\/+/g,'-')
        this.sinCaracter= this.auto.descripcion?.replace(/[\/\\]+/g,'-');;
@@ -38,29 +45,36 @@ export class AnimalesListarComponent implements OnInit {
   }
   
   ngOnInit(): void {
-   
-    this.animalService.listarAnimal().subscribe(
+   this.user = this.usuariosService.getId()
+    this.animalService.buscarListado(this.user).subscribe(
      
       res => {
 
         console.log("Datos del Servicio", this.usuariosService.getNombre());
-     //this.mostrar();
-     //empieza
-   
-  
-    //termina
-
+ 
+       
+        this.animales= res;
+        console.log("mensaje", this.animales.provincia);
+ 
         console.log(res);
-        this.animales  = res
+        
+        /*for (let ani of this.animales){
+        
+         
+          console.log(ani.provincia);
+         //console.log(ani.provincia)
+        }*/
         
       
       },
       err => console.log(err)
-    )
+    );
+   
     this.animalService.listarAnimal().subscribe((data:any)=>{
       this.combo= data;
       })
-     
+    
+    
     //---------------------------------------------
   
     
@@ -74,7 +88,22 @@ this.page += 5;
   this.page -= 5;
   
  }
- 
+ onSearch(search:string){
+  this.page =0;
+this.search = search.charAt(0).toUpperCase();
+console.log(search);
+
+ }
+ onSearch2(loc:string){
+  this.page =0;
+this.search2 = loc.charAt(0).toUpperCase();
+console.log(loc);
+
+ }
+ provincia(tipo:any)
+ {
+  console.log(tipo);
+ }
   onChange = ($event: Event) => {
     const target = $event.target as HTMLInputElement;
     const file: File = (target.files as FileList)[0];

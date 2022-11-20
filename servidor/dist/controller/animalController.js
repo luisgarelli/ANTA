@@ -133,6 +133,26 @@ class AnimalController {
             res.status(404).json({ text: "Auto doesn't exists" });
         });
     }
+    buscarListado(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.params.id);
+            const { id } = req.params;
+            const auto = yield animalModel_1.default.listadoBuscar(id);
+            if (auto)
+                return res.json(auto);
+            res.status(404).json({ text: "Auto doesn't exists" });
+        });
+    }
+    buscarProv(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.params.id);
+            const { id } = req.params;
+            const auto = yield animalModel_1.default.busProvincia(id);
+            if (auto)
+                return res.json(auto);
+            res.status(404).json({ text: "Auto doesn't exists" });
+        });
+    }
     buscarSolicitud(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.params.id);
@@ -235,6 +255,16 @@ class AnimalController {
             res.status(404).json({ text: "User doesn't exists" });
         });
     }
+    busLocalidad(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.params.id);
+            const { id } = req.params;
+            const usuario = yield animalModel_1.default.busProvin(id);
+            if (usuario)
+                return res.json(usuario);
+            res.status(404).json({ text: "User doesn't exists" });
+        });
+    }
     buscarRaza(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.params.id);
@@ -250,6 +280,15 @@ class AnimalController {
             console.log(req.body);
             const { id } = req.params;
             const result = yield animalModel_1.default.actualizar(req.body, id);
+            //res.send('Usuario '+ req.params.id +' actualizado!!!');
+            return res.json({ text: 'updating a slot ' + id });
+        });
+    }
+    actualizarUsuari(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body);
+            const { id } = req.params;
+            const result = yield animalModel_1.default.actualizarUsuario(req.body, id);
             //res.send('Usuario '+ req.params.id +' actualizado!!!');
             return res.json({ text: 'updating a slot ' + id });
         });

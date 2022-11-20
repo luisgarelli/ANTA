@@ -61,6 +61,10 @@ class AnimalRoutes
 		this.router.get('/buscasolicitu/:id',TokenValidation,animalController.buscaSolicitud);	
 		this.router.delete('/eliminasolicitud/:id',TokenValidation,animalController.eliminarSolicitud);
 		this.router.get('/busadopciones/:id',TokenValidation,animalController.busAdopcione);
+		this.router.get('/buscalistado/:id',TokenValidation,animalController.buscarListado);
+		this.router.get('/busprovincias/:id',TokenValidation,animalController.buscarProv);
+		this.router.get('/buslocali/:id',TokenValidation,animalController.busLocalidad);
+		this.router.put('/modifiusuario/:id',TokenValidation,animalController.actualizarUsuari);
 
 
 	}

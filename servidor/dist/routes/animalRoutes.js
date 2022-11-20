@@ -55,6 +55,10 @@ class AnimalRoutes {
         this.router.get('/buscasolicitu/:id', verifyToken_1.TokenValidation, animalController_1.default.buscaSolicitud);
         this.router.delete('/eliminasolicitud/:id', verifyToken_1.TokenValidation, animalController_1.default.eliminarSolicitud);
         this.router.get('/busadopciones/:id', verifyToken_1.TokenValidation, animalController_1.default.busAdopcione);
+        this.router.get('/buscalistado/:id', verifyToken_1.TokenValidation, animalController_1.default.buscarListado);
+        this.router.get('/busprovincias/:id', verifyToken_1.TokenValidation, animalController_1.default.buscarProv);
+        this.router.get('/buslocali/:id', verifyToken_1.TokenValidation, animalController_1.default.busLocalidad);
+        this.router.put('/modifiusuario/:id', verifyToken_1.TokenValidation, animalController_1.default.actualizarUsuari);
     }
 }
 //Exportamos el enrutador con 

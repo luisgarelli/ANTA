@@ -28,7 +28,7 @@ class AnimalModel
     async listar()
     { //Devuelve todas las filas de la tabla usuario
 		//const db=this.connection;
-		const usuarios = await this.db.query('SELECT * FROM animal ');
+		const usuarios = await this.db.query('SELECT * FROM animal WHERE estado = "Disponible"   ');
 		//console.log(usuarios[0]);
 		//devuelve tabla mas propiedades. Solo debemos devolver tabla. Posicion 0 del array devuelto.
 		return usuarios[0];
@@ -186,6 +186,18 @@ class AnimalModel
 
 		return null;
 	}
+	async listadoBuscar(nombre: string)
+    {
+		const encontrado: any = await this.db.query('SELECT * FROM animal WHERE estado = "Disponible" AND id_usuario != ?', [nombre]);
+		//Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
+		//const encontrado: any = await this.db.query('SELECT * FROM animal WHERE estado = "Disponible" AND id_usuario = ?', [nombre]);
+		
+        if (encontrado.length > 1)
+
+			return encontrado[0];
+
+		return null;
+	}
 	async buscarAdoptado(nombre: string)
     {
 		const encontrado: any = await this.db.query('SELECT * FROM animal WHERE estado = "Adoptado" AND id_usuario = ?', [nombre]);
@@ -215,6 +227,13 @@ class AnimalModel
 	async actualizar(usuario: object, id: string)
     {
 		const result = (await this.db.query('UPDATE animal SET ? WHERE id = ?', [usuario, id]))[0].affectedRows;
+		console.log(result);
+
+		return result;
+	}
+	async actualizarUsuario(usuario: object, id: string)
+    {
+		const result = (await this.db.query('UPDATE usuarios SET ? WHERE id = ?', [usuario, id]))[0].affectedRows;
 		console.log(result);
 
 		return result;
@@ -266,6 +285,17 @@ class AnimalModel
         if (encontrado.length > 1)
 
 			return encontrado[0];
+
+		return null;
+	}
+	async busProvin(id: string)
+    {
+		const encontrado: any = await this.db.query('SELECT * FROM localidades WHERE id = ?', [id]);
+		//Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
+		
+        if (encontrado.length > 1)
+
+			return encontrado[0][0];
 
 		return null;
 	}
@@ -327,6 +357,17 @@ class AnimalModel
 	async busAdopciones(nombre: string)
     {
 		const encontrado: any = await this.db.query('SELECT * FROM adopciones WHERE id_animal = ?', [nombre]);
+		//Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
+		
+        if (encontrado.length > 1)
+
+			return encontrado[0][0];
+
+		return null;
+	}
+	async busProvincia(nombre: string)
+    {
+		const encontrado: any = await this.db.query('SELECT * FROM provincias WHERE id = ?', [nombre]);
 		//Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
 		
         if (encontrado.length > 1)

@@ -129,6 +129,28 @@ class AnimalController
         res.status(404).json({ text: "Auto doesn't exists" });
     
 	}
+    public async buscarListado(req:Request,res:Response)
+    {
+        console.log(req.params.id);
+        const { id } = req.params;
+        const auto = await animalModel.listadoBuscar(id);
+        if (auto)
+            return res.json(auto);
+        res.status(404).json({ text: "Auto doesn't exists" });
+    
+	}
+
+
+    public async buscarProv(req:Request,res:Response)
+    {
+        console.log(req.params.id);
+        const { id } = req.params;
+        const auto = await animalModel.busProvincia(id);
+        if (auto)
+            return res.json(auto);
+        res.status(404).json({ text: "Auto doesn't exists" });
+    
+	}
     public async buscarSolicitud(req:Request,res:Response)
     {
         console.log(req.params.id);
@@ -240,6 +262,18 @@ class AnimalController
 
         res.status(404).json({ text: "User doesn't exists" });
 	}
+    public async busLocalidad(req:Request,res:Response)
+    {
+        console.log(req.params.id);
+        const { id } = req.params;
+        const usuario = await animalModel.busProvin(id);
+
+        if (usuario)
+        
+            return res.json(usuario);
+
+        res.status(404).json({ text: "User doesn't exists" });
+	}
     public async buscarRaza(req:Request,res:Response)
     {
         console.log(req.params.id);
@@ -257,6 +291,15 @@ class AnimalController
         console.log(req.body);
         const { id } = req.params;
         const result = await animalModel.actualizar(req.body, id);
+        //res.send('Usuario '+ req.params.id +' actualizado!!!');
+        return res.json({ text: 'updating a slot ' + id });
+
+	}
+    public async actualizarUsuari(req:Request,res:Response)
+    {
+        console.log(req.body);
+        const { id } = req.params;
+        const result = await animalModel.actualizarUsuario(req.body, id);
         //res.send('Usuario '+ req.params.id +' actualizado!!!');
         return res.json({ text: 'updating a slot ' + id });
 

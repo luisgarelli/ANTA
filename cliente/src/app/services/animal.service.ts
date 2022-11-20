@@ -81,6 +81,9 @@ export class AnimalService {
 	modificarAnimal(id:string, modificarAnimal: Animal):Observable<Animal>{
 		return this.http.put(`${this.API_URI}/modificar/${id}`,modificarAnimal);
 	}
+	modificarUsuario(id:string, modificarAnimal: Animal):Observable<Animal>{
+		return this.http.put(`${this.API_URI}/modifiusuario/${id}`,modificarAnimal);
+	}
 	modificarSolicitud(id:string, modificarAnimal: Animal):Observable<Animal>{
 		return this.http.put(`${this.API_URI}/modsolicitud/${id}`,modificarAnimal);
 	}
@@ -122,5 +125,13 @@ export class AnimalService {
 	buscadopc(id:string){
 		return this.http.get(`${this.API_URI}/busadopciones/${id}`);
 	}
-	  
+	buscarListado(id: string) {
+		return this.http.get(`${this.API_URI}/buscalistado/${id}`);
+	}
+	buscarProvincias(id: string) {
+		return this.http.get(`${this.API_URI}/busprovincias/${id}`);
+	}
+	buscarlocal(id: string) {
+		return this.http.get(`${this.API_URI}/buslocali/${id}`);
+	}
 }

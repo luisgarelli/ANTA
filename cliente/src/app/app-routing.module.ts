@@ -19,6 +19,7 @@ import { AnimalesRegistradosComponent } from './components/animales-registrados/
 import { InteresadosInformacionComponent } from './components/interesados-informacion/interesados-informacion.component';
 import { AnimalesAdoptadosComponent } from './components/animales-adoptados/animales-adoptados.component';
 import { UsuariosSolicitudesComponent } from './components/usuarios-solicitudes/usuarios-solicitudes.component';
+import { UsuarioPerfilComponent } from './components/usuario-perfil/usuario-perfil.component';
 const routes: Routes = [
 	{
 		path: '',
@@ -110,6 +111,11 @@ const routes: Routes = [
 	{
 		path:'interesados/informacion/:id',component : InteresadosInformacionComponent
 	
+	},
+	{
+		path: 'usuarios/perfil',
+		component: UsuarioPerfilComponent,
+		canActivate: [AuthGuard]
 	}
 ];
 @NgModule({

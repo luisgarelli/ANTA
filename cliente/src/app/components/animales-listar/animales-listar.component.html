@@ -54,16 +54,23 @@
   <button class="btn btn-primary" (click)="prevPage()">
     Anterior
   </button>
-  <button class="btn btn-primary"(click)="nextPage()">
+  <button class="btn btn-primary"(click)="nextPage()" [disabled]="(animales | filtro: page:search).length === 0">
     Siguiente
   </button>
   <body>
-  <div class="container">  
-  <div class="card-group mt-2">
- <div  class="row">
-  <div class="col-md-5" style="width: 18rem;"    *ngFor=" let animal of animales "  >
+  <!--<input type="text" class="form-control mb-2" placeholder="buscar nombre" #txtSearch (keyup)="onSearch(txtSearch.value)"/>-->
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <input type="text" class="form-control mb-2" id="tama" placeholder="Tamaño" #txtSearch (keyup)="onSearch(txtSearch.value)"/>
+    </div>
+    <div class="form-group col-md-3">
+    
+    </div>
+  </div>
+ <div class="row">
+  <div  style="width: 18rem;"    *ngFor=" let animal of animales | filtro: page:search "  >
    <!-- <img class="card-img-top"  src="https://www.elfinanciero.com.mx/resizer/031BMWo-U9oB5WJP4DdPbNx9vII=/400x225/filters:format(jpg):quality(70)/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/G4FLWTZ57VE2JPYATUTCB4GJ7E.jpg" alt="Card image cap">-->
-   <img class="card-img-top" [src]="animal.imagen" alt="Card image cap">
+   <img class="card-img-top" [src]="animal.imagen" style="width: 250px;" alt="Card image cap">
     <div class="card-body" >
     Nombre: {{animal.nombre}} <br>
     
@@ -71,14 +78,15 @@
     Descripción: {{animal.descripcion}}<br>
   Fecha de ingreso {{animal.alta | date: 'dd/MM/yyyy'}}<br>
   Tamaño: {{animal.tamanio}}<br>
-  Tipo: {{animal.tipo}}<br>
+  <p >Tipo: {{animal.tipo}}</p><br>
+
+  
       <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
       <div class="card text-center">
         <a class="btn btn-info"    (click)="cambiarSeleccion(animal.id)" >Ver animal</a> 
 
     </div>
-    </div>
-  </div>
+   
 </div>
 </div>
 </div>
