@@ -39,10 +39,15 @@ export class AnimalesRegistradosComponent implements OnInit {
       },
       err => console.log(err)
     );
+    
   }
   cambiarSeleccion(id:any){
       console.log(id);
       this.router.navigate(['interesados/informacion',id]);
   }
+  perfil(id:any){
+    console.log(id);
+    this.router.navigate(['animales/datos',id]);
+}
 
 }

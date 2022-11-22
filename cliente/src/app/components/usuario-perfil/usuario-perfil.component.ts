@@ -4,14 +4,14 @@ import { Animal } from 'src/app/models/animalModel';
 import { Sexo } from 'src/app/models/sexoModel';
 import { AnimalService } from '../../services/animal.service';
 import { Provincias } from 'src/app/models/provinciaModel';
-import  Swal  from 'sweetalert2';
+
 import { Localidades } from 'src/app/models/localidadModel';
 import { from, Observable } from 'rxjs';
 import { Subscriber } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
 import { toBase64String } from '@angular/compiler/src/output/source_map';
 import { Storage,ref, uploadBytes, listAll,getDownloadURL,UploadTaskSnapshot,uploadBytesResumable } from '@angular/fire/storage';
-import { AnyForUntypedForms } from '@angular/forms';
+
 import { UsuariosService } from '../../services/usuarios.service';
 import { Usuarios } from 'src/app/models/usuarioModel';
 @Component({

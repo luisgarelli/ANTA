@@ -20,6 +20,9 @@ import { InteresadosInformacionComponent } from './components/interesados-inform
 import { AnimalesAdoptadosComponent } from './components/animales-adoptados/animales-adoptados.component';
 import { UsuariosSolicitudesComponent } from './components/usuarios-solicitudes/usuarios-solicitudes.component';
 import { UsuarioPerfilComponent } from './components/usuario-perfil/usuario-perfil.component';
+import { UsuariosDatosComponent } from './components/usuarios-datos/usuarios-datos.component';
+import { AnimalesDatosComponent } from './components/animales-datos/animales-datos.component';
+import { AnimalesEditarComponent } from './components/animales-editar/animales-editar.component';
 const routes: Routes = [
 	{
 		path: '',
@@ -116,7 +119,21 @@ const routes: Routes = [
 		path: 'usuarios/perfil',
 		component: UsuarioPerfilComponent,
 		canActivate: [AuthGuard]
+	},
+	{
+		path: 'usuarios/datos',
+		component: UsuariosDatosComponent,
+		canActivate: [AuthGuard]
+	},
+	{
+		path:'animales/datos/:id',component : AnimalesDatosComponent
+	
+	},
+	{
+		path:'animales/editar/:id',component : AnimalesEditarComponent
+	
 	}
+	
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -34,6 +34,9 @@ import { AnimalesAdoptadosComponent } from './components/animales-adoptados/anim
 import { UsuariosSolicitudesComponent } from './components/usuarios-solicitudes/usuarios-solicitudes.component';
 import { BusquePipe } from './pipes/busque.pipe';
 import { UsuarioPerfilComponent } from './components/usuario-perfil/usuario-perfil.component';
+import { UsuariosDatosComponent } from './components/usuarios-datos/usuarios-datos.component';
+import { AnimalesDatosComponent } from './components/animales-datos/animales-datos.component';
+import { AnimalesEditarComponent } from './components/animales-editar/animales-editar.component';
 
 
 @NgModule({
@@ -60,7 +63,10 @@ import { UsuarioPerfilComponent } from './components/usuario-perfil/usuario-perf
     AnimalesAdoptadosComponent,
     UsuariosSolicitudesComponent,
     BusquePipe,
-    UsuarioPerfilComponent
+    UsuarioPerfilComponent,
+    UsuariosDatosComponent,
+    AnimalesDatosComponent,
+    AnimalesEditarComponent
   
    
     
