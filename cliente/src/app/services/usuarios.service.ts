@@ -72,6 +72,9 @@ export class UsuariosService {
 	//borra datos local storage
 	logOut() {
 		localStorage.removeItem('token');
+		localStorage.removeItem('rol');
+		localStorage.removeItem('id');
+		localStorage.removeItem('nombre');
 	}
 
 	setToken(token: string) {

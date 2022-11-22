@@ -21,7 +21,7 @@ export class NavigationComponent implements OnInit {
   rol: any;
   roladmin: boolean = false;
   datosMenu=[{'titulo':'','url':''}];
-nombreUsuario :any;
+  nombreUsuario :any;
   constructor(private usuariosService:UsuariosService, private router:Router)
   { 
     this.token= usuariosService.getToken();

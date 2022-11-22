@@ -17,7 +17,7 @@ class SlotModel
         ({
 		
             host: 'localhost',
-			port:33065,
+			port:3306,
             user: 'root',
             password: '',
             database: 'estacionamiento',
