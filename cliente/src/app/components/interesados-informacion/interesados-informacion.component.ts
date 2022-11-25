@@ -106,7 +106,7 @@ export class InteresadosInformacionComponent implements OnInit {
 
   agregar(id:any,animal:any) {
     console.log(id);
-    
+    //comentario
     console.log(animal);
 
     this.adopcion.id_usuario = id;
