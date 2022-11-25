@@ -106,7 +106,6 @@ export class InteresadosInformacionComponent implements OnInit {
 
   agregar(id:any,animal:any) {
     console.log(id);
-
     
     console.log(animal);
 
