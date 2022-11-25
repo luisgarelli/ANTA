@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Router } from '@angular/router';
 import { AnimalService } from '../../services/animal.service';
 import { AnimalesListarComponent } from '../animales-listar/animales-listar.component';
@@ -102,8 +103,11 @@ export class InteresadosInformacionComponent implements OnInit {
     )
   }
 
+
   agregar(id:any,animal:any) {
     console.log(id);
+
+    
     console.log(animal);
 
     this.adopcion.id_usuario = id;
