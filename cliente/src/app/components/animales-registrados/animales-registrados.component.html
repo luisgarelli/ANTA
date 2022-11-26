@@ -1,9 +1,7 @@
 
 <div class="container">  
     <div class="card-group mt-2">
-   
     <div class="col-md-5" style="width: 18rem; background-color: beige;"    *ngFor=" let animal of verificarUsuario "  >
-     <!-- <img class="card-img-top"  src="https://www.elfinanciero.com.mx/resizer/031BMWo-U9oB5WJP4DdPbNx9vII=/400x225/filters:format(jpg):quality(70)/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/G4FLWTZ57VE2JPYATUTCB4GJ7E.jpg" alt="Card image cap">-->
      <img class="card-img-top" [src]="animal.imagen" alt="Card image cap">
       <div class="card-body" >
       Nombre: {{animal.nombre}} <br>
