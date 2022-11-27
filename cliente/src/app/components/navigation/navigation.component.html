@@ -1,89 +1,34 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light-cac" >
+<nav class="navbar navbar-expand-lg navbar-light bg-light-cac">
 
-    <a class="navbar-brand" routerLink="usuarios/principal">Home</a>
+  <a class="navbar-brand" routerLink="usuarios/home">Home</a>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-<!--
-        <nav class="navbar nav">
-            <ul class="navbar-nav">
-              <li class="nav-item active" *ngFor="let data of datosMenu">
-                <a class="nav-link" routerLink="{{data.url}}">{{data.titulo}}</a>
-              </li> 
-            </ul>
-        </nav>
--->	
-        <ul class="navbar-nav">
-
-          <div class="btn-group" *ngIf= "tokenValidado == true">
-                <button type="button" class="btn btn-default dropdown-toggle"
-                        data-toggle="dropdown">
-                  Mi Perfil <span class="caret"></span>
-                </button>
-              
-                <ul class="dropdown-menu" role="menu">
-                  <li><a routerLink="../../animales/registrados" class="btn btn-info" > Mis publicaciones<span class="sr-only">(current)</span></a> </li>
-                  <li><a routerLink="../../animales/adoptados" class="btn btn-info" > Dados en Adopción<span class="sr-only">(current)</span></a></li>
-                  <li><a routerLink="../../usuarios/solicitudes" class="btn btn-info" > Solicitudes<span class="sr-only">(current)</span></a></li>
-                  <li class="divider"></li>
-                  <li class="nav-item" >
-                    <a class="nav-link" id="logout" (click)="logout()" class="btn btn-info"> Cerrar sesion </a>
-                </li>
-                <li><a routerLink="../../usuarios/datos" class="btn btn-info" > Mi Perfil<span class="sr-only">(current)</span></a> </li>	
-                </ul>
-          </div>
-          
-            <!--
-                   <li class="nav-item active">
-                <a class="nav-link" routerLink="usuarios/home"> Mi Perfil <span class="sr-only">(current)</span></a>
-
-                <div class="btn-group">
-    <button type="button" class="btn btn-default dropdown-toggle"
-            data-toggle="dropdown">
-      Título del botón <span class="caret"></span>
-    </button>
-  
-    <ul class="dropdown-menu" role="menu">
-      <li><a href="#">Acción #1</a></li>
-      <li><a href="#">Acción #2</a></li>
-      <li><a href="#">Acción #3</a></li>
-      <li class="divider"></li>
-      <li><a href="#">Acción #4</a></li>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    
+    <ul class="navbar-nav">
+      <div class="dropdown" *ngIf="tokenValidado == true">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+          Mi Perfil
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" routerLink="../../animales/registrados">Mis publicaciones</a>
+          <a class="dropdown-item" routerLink="../../animales/adoptados">Dados en Adopción</a>
+          <a class="dropdown-item" routerLink="../../usuarios/solicitudes">Solicitudes</a>
+          <a class="dropdown-item" id="logout" (click)="logout()">Cerrar sesión</a>
+        </div>
+      </div>
+      <li class="nav-item active" *ngIf="tokenValidado == false">
+        <a class="nav-link" routerLink="usuarios/ingresar">Iniciar sesión<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item" *ngIf="tokenValidado == false">
+        <a class="nav-link" routerLink="usuarios/registrar">Registrarse</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="animales/listar">Galeria de Animales</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="animales/registrar">Dar en Adopción</a>
+      </li>
     </ul>
   </div>
-            --> 
-
-            <!--<li class="nav-item active">
-                <a class="nav-link" routerLink="autos/listar"> Listar <span class="sr-only">(current)</span></a>
-            </li> --> 
-
-           <!-- <li class="nav-item active" *ngIf= "rol=='admin'">
-                <a class="nav-link" routerLink="autos/administrar"> Administrar <span class="sr-only">(current)</span></a>
-            </li> --> 
-
-            <li class="nav-item active" *ngIf= "tokenValidado == false">
-                <a class="nav-link" routerLink="usuarios/ingresar"> Iniciar sesión <span class="sr-only">(current)</span></a>
-            </li>
-
-            <li class="nav-item" *ngIf= "tokenValidado == false">
-                <a class="nav-link" routerLink="usuarios/registrar"> Registrarse </a>
-            </li>
-
-          
-            <li class="nav-item" >
-                <a class="nav-link" routerLink="animales/listar"> Galeria de Animales </a>
-            </li>	
-            <li class="nav-item" >
-                <a class="nav-link" routerLink="animales/registrar"> Dar en Adopción </a>
-            </li>
-          
-        </ul>
-        
-         
-    </div>
-    <h4 style="text-align: right;">{{nombreUsuario}}</h4> 
+  <h4>{{nombreUsuario}}</h4>
 </nav>
