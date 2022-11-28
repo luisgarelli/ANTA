@@ -6,3 +6,6 @@
     width: 18rem; 
     background-color: white;
 }
+html {
+    scroll-behavior: smooth;
+}
