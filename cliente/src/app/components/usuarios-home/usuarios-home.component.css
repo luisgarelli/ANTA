@@ -1,0 +1,134 @@
+
+.cac-container-carousel .carousel-indicators {
+    background-color: gray;
+}
+
+.parrafo{
+    background-color: whitesmoke;
+    text-align: center;
+  }
+
+h4 .card-text{
+    background-color: white;
+}
+.mt-4{
+    margin-block-end: 1.5rem!important;
+}
+
+#hero{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    height: 90vh;
+    background-image: linear-gradient(
+        0deg,
+        rgba(0,0,0,0.0),
+        rgba(0,0,0,0.0)
+    ) 
+    ,url("https://techronga.com/wp-content/uploads/2019/11/no-compre-adopta.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+footer p{
+    margin:0;
+    padding: 12px;
+    /* color:rgb(100, 100, 100); */
+}
+
+footer .container{
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+
+/* UTILIZADO COMO PRUEBA
+
+#nuestros-recursos{
+    color: white;
+    text-align: center;
+}
+
+#nuestros-recursos .container{
+    padding: 150px 12px;
+}
+#nuestros-recursos h2{
+    margin-top: 0;
+    font-size: 3.2em;
+}
+
+#nuestros-recursos p{
+    display: none;
+}
+
+#nuestros-recursos .carta{
+    background-position: center center center;
+    background-size: cover;
+    padding: 50px;
+    margin: 30px;
+    border-radius: 15px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.0);
+}
+.carta:first-child{
+    background-image: linear-gradient(
+        0deg,
+        rgba(0,0,0,0.0),
+        rgba(0,0,0,0.0)
+    )
+    ,url("https://cdn-3.expansion.mx/dims4/default/b6c9321/2147483647/strip/true/crop/776x449+0+0/resize/600x347!/format/webp/quality/90/?url=https%3A%2F%2Fcdn-3.expansion.mx%2F73%2F74%2F4f889b9c4228a748422e816acbf9%2Fistock-1000301206.jpg");
+}
+.carta:nth-child(2){
+    background-image: linear-gradient(
+        0deg,
+        rgba(0,0,0,0.0),
+        rgba(0,0,0,0.0)
+    )
+    ,url("https://s1.eestatic.com/2020/06/30/curiosidades/mascotas/mascotas_501711745_154816138_1706x960.jpg");
+}
+.carta:nth-child(3){
+    background-image: linear-gradient(
+        0deg,
+        rgba(0,0,0,0.0),
+        rgba(0,0,0,0.0)
+    )
+    ,url("https://hanniko.com/blog/wp-content/uploads/2020/10/Hanniko-handmade-european-design-casa-hanniko-tener-perro-te-hace-mas-feliz-felicidad.jpg");
+}
+*/
+ 
+/* Utilizado como prueba
+
+@media (min-width: 850px){
+
+    #hero h1{
+        font-size: 5em;
+    }
+
+
+    #nuestros-recursos .recursos{
+        display: flex;
+        justify-content: center;
+    }
+
+    #nuestros-recursos p{
+        display: contents;
+        margin-bottom: 30px;
+    }
+
+    #nuestros-recursos h3{
+        margin-top: 0;
+    }
+
+    #nuestros-recursos .carta{
+        padding: 50px;
+    }
+
+    footer .container{
+        justify-content: flex-end;
+    }
+}
+*/

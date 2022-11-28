@@ -13,10 +13,10 @@ font-family: 'Numans', sans-serif;
 .container{
 height: 100%;
 align-content: center;
+padding: 1.5rem!important;
 }
 
 .card{
-height: 370px;
 margin-top: auto;
 margin-bottom: auto;
 width: 400px;
@@ -86,4 +86,8 @@ color: white;
 
 .links a{
 margin-left: 4px;
+}
+
+label{
+    color:aliceblue;
 }

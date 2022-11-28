@@ -1,25 +1,22 @@
+<h1>Mis Publicaciones</h1>
 
-<div class="container">  
-    <div class="card-group mt-2">
-   
-    <div class="col-md-5" style="width: 18rem; background-color: beige;"    *ngFor=" let animal of verificarUsuario "  >
-     <!-- <img class="card-img-top"  src="https://www.elfinanciero.com.mx/resizer/031BMWo-U9oB5WJP4DdPbNx9vII=/400x225/filters:format(jpg):quality(70)/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/G4FLWTZ57VE2JPYATUTCB4GJ7E.jpg" alt="Card image cap">-->
-     <img class="card-img-top" [src]="animal.imagen" alt="Card image cap">
-      <div class="card-body" >
-      Nombre: {{animal.nombre}} <br>
-      
-      Sexo: {{animal.sexo}}  <br>
-      Descripción: {{animal.descripcion}}<br>
-    Fecha de ingreso {{animal.alta | date: 'dd/MM/yyyy'}}<br>
-    Tamaño: {{animal.tamanio}}<br>
-    <p>Tipo: {{animal.tipo}} </p>  <br>
-        <!--<p class="card-text">[(ngModel)]="animal.animal_codigo" Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
-       <div class="card text-center">
-          <a class="btn btn-info"    (click)="cambiarSeleccion(animal.id)" >Ver  Interesados</a> 
-          <a class="btn btn-success"    (click)="perfil(animal.id)" >Ver Datos</a> 
-      </div>
+<div class="container">
+  <div class="card-group mt-3">
+    <div class="col-md-5" *ngFor=" let animal of verificarUsuario ">
+      <img class="card-img-top" [src]="animal.imagen" alt="Card image cap">
+      <div class="card-body">
+        Nombre: {{animal.nombre}} <br>
+        Sexo: {{animal.sexo}} <br>
+        Descripción: {{animal.descripcion}}<br>
+        Fecha de ingreso {{animal.alta | date: 'dd/MM/yyyy'}}<br>
+        Tamaño: {{animal.tamanio}}<br>
+        <p>Tipo: {{animal.tipo}} </p> 
+        <br>
+        <div class="card text-center">
+          <a class="btn btn-info" (click)="cambiarSeleccion(animal.id)">Ver Interesados</a>
+          <a class="btn btn-success" (click)="perfil(animal.id)">Ver Info</a>
+        </div>
       </div>
     </div>
-  
   </div>
-  </div>
+</div>

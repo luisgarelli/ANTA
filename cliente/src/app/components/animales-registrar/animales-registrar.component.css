@@ -1,0 +1,12 @@
+.col-7{
+    background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20191009/pngtree-cute-corgi-dog-face-pattern-image_318704.jpg'); 
+    width: 100%; 
+    background-size: cover;
+}
+h2{
+    color: rgb(0, 0, 0);
+}
+
+.row{
+    justify-content: center;
+}

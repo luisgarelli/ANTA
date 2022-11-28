@@ -1,5 +1,4 @@
 <div  style="width: 35rem; "   >
-    <!-- <img class="card-img-top"  src="https://www.elfinanciero.com.mx/resizer/031BMWo-U9oB5WJP4DdPbNx9vII=/400x225/filters:format(jpg):quality(70)/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/G4FLWTZ57VE2JPYATUTCB4GJ7E.jpg" alt="Card image cap">-->
     <br>
      <div class="card-body" style="background-color: white;" >
     <p style="color: black;"> Nombre: {{usuarios.nombre}} </p> 
@@ -9,7 +8,6 @@
         <input type="text" class="form-control" id="nombre" [(ngModel)]="usuario.nombre" aria-describedby="emailHelp" placeholder="Ingrese el nombre">
         <button class="btn btn-primary btn-sm" (click)="cambiarNombre2()"   >Aceptar</button> 
         <button class="btn btn-primary btn-sm" (click)="ocultar()"   >Ocultar</button>  
-        <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
       </div>
     <p style="color: black;">  Email:{{usuarios.email}}</p> 
     <button class="btn btn-primary btn-sm" (click)="mostrarse3()"   >Editar</button> <br>

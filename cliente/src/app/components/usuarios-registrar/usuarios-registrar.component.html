@@ -1,4 +1,3 @@
-
 <div class="container p-7">
     <div class="row">
         <div class="col-md-4 mx-auto">
@@ -6,93 +5,89 @@
                 <div class="card-header">
                     <h3>Sign Up</h3>
                 </div>
-                <div *ngIf="!reintentar" class="card-body" >
+                <div *ngIf="!reintentar" class="card-body">
                     <form (submit)="registrar()" method="post">
                         <div class="form-group">
                             <div class="input-group form-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-user"></i></span>
                                 </div>
-                            <input type="text" name="nombre" [(ngModel)]="user.nombre" (focus)="limpiarNombre()" placeholder="Nombre" class="form-control">
+                                <input type="text" name="nombre" [(ngModel)]="user.nombre" (focus)="limpiarNombre()"
+                                    placeholder="Nombre" class="form-control">
                             </div>
                             <div [ngSwitch]="errorNombre">
                                 <div *ngSwitchCase="1">Debes completar el campo</div>
                                 <div *ngSwitchCase="2">Nombre muy largo</div>
                                 <div *ngSwitchCase="3">Nombre debe ser alfabetico</div>
                             </div>
-                            
-
-                            
 
                             <div class="input-group form-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-user"></i></span>
                                 </div>
-                            <input type="password" name="password" [(ngModel)]="user.password" (focus)="limpiarPassword()" placeholder="Contraseña" class="form-control">
+                                <input type="password" name="password" [(ngModel)]="user.password"
+                                    (focus)="limpiarPassword()" placeholder="Contraseña" class="form-control">
                             </div>
                             <div [ngSwitch]="errrorPassword">
                                 <div *ngSwitchCase="1">Debes completar el campo</div>
                                 <div *ngSwitchCase="2">Contraseña muy larga</div>
                                 <div *ngSwitchCase="3">Contraseña debe ser alfanumerica y admite mayusculas.</div>
-                            </div>    
+                            </div>
                             <div class="input-group form-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-user"></i></span>
                                 </div>
-                            <input type="password" name="repassword" [(ngModel)]="user.repassword" (focus)="limpiarRePassword()" placeholder="Repetir Contraseña"class="form-control">
+                                <input type="password" name="repassword" [(ngModel)]="user.repassword"
+                                    (focus)="limpiarRePassword()" placeholder="Repetir Contraseña" class="form-control">
                             </div>
                             <div [ngSwitch]="errorRePassrword">
                                 <div *ngSwitchCase="1">Las contraseñas deben ser iguales</div>
-                            </div> 
-                            
+                            </div>
+
                             <div class="input-group form-group">
-                              
-                                <label for="sexo" class="form-label" style="color:aliceblue;">Sexo</label>
+
+                                <!--<label for="sexo" class="form-label">Sexo</label> -->
                                 <select class="form-select" [(ngModel)]="user.sexo" (change)="cambiarSeleccion($event)">
-                                   <!-- <option selected>Seleccione...</option>-->
-                                   <option disabled selected> Selecciona una opcion</option>
-                                    <option [value]="ani.sexo" *ngFor="let ani of combo1" >
-                                      {{ani.sexo}}
-                                  
-                                  </select>
-                              </div>
-                              <div class="input-group form-group">
-                           
-                                <label for="sexo" class="form-label" style="color:aliceblue ;">Provincia</label>
-                                <select class="form-select" [(ngModel)]="user.provincia" (change)="cambiarSeleccion2($event)" >
-                                   <!-- <option selected>Seleccione...</option>-->
-                                   <option disabled selected> Selecciona una opcion</option>
-                                    <option [value]="ani.id"   *ngFor="let ani of combo2" >
-                                      {{ani.provincia}}
-                                  
-                                  </select>
-                              </div>
-                              <div class="col-md-12">
-                             
-                                <label for="sexo" class="form-label">Localidad</label>
-                                <select class="form-select" [(ngModel)]="user.localidad" (change)="cambiarSeleccion3($event)">
-                                   <!-- <option selected>Seleccione...</option>-->
-                                   
-                                    <option [value]="ani.id" *ngFor="let ani of codigo" >
-                                      {{ani.localidad}}  
-                                  
-                                  </select>
-                              </div>
+                                    <option selected disabled>Seleccione el sexo</option>
+                                    <option [value]="ani.sexo" *ngFor="let ani of combo1">
+                                        {{ani.sexo}}
+                                </select>
+
+                            </div>
+                            <div class="input-group form-group">
+
+                                <!--<label for="sexo" class="form-label">Provincia</label> -->
+                                <select class="form-select" [(ngModel)]="user.provincia"
+                                    (change)="cambiarSeleccion2($event)">
+                                    <option selected disabled>Seleccione la Provincia</option>
+                                    <option [value]="ani.id" *ngFor="let ani of combo2">
+                                        {{ani.provincia}}
+                                </select>
+                            </div>
+
+                            <div class="input-group form-group">
+
+                               <!-- <label for="sexo" class="form-label">Localidad</label> -->
+                                <select class="form-select" [(ngModel)]="user.localidad"
+                                    (change)="cambiarSeleccion3($event)">
+                                    <option [value]="ani.id" *ngFor="let ani of codigo">
+                                        {{ani.localidad}}
+                                </select>
+                            </div>
+
                             <div class="input-group form-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-user"></i></span>
                                 </div>
-                            <input type="email" name="email" [(ngModel)]="user.email" (focus)="limpiarEmail()" placeholder="email"class="form-control">
+                                <input type="email" name="email" [(ngModel)]="user.email" (focus)="limpiarEmail()"
+                                    placeholder="email" class="form-control">
                             </div>
                             <div [ngSwitch]="errorEmail">
                                 <div *ngSwitchCase="1">Debes completar el campo</div>
                                 <div *ngSwitchCase="2">Email muy largo</div>
                                 <div *ngSwitchCase="3">Email debe ser nombre@dominio.algo .</div>
-                            </div>  
-                            
-                            
+                            </div>
 
-                          
                             <button class="btn btn-success btn-block" (click)="verificarForm()">Enviar</button>
                         </div>
                     </form>
@@ -100,8 +95,8 @@
                 </div>
                 <div *ngIf="reintentar" class="card-body">
                     {{mensaje}} <br>
-                    <a class="btn btn-info" (click)=recargarForm()>Reintentar</a> 
-                     <a class="btn btn-danger" routerLink="../principal">Cancelar</a>
+                    <a class="btn btn-info" (click)=recargarForm()>Reintentar</a>
+                    <a class="btn btn-danger" routerLink="../principal">Cancelar</a>
                 </div>
             </div>
         </div>
@@ -109,6 +104,4 @@
 </div>
 
 <div>
-<div>{{user.nombre}} {{user.password}} {{user.repassword}} {{user.email}}</div>
-
-
+    <div>{{user.nombre}} {{user.password}} {{user.repassword}} {{user.email}}</div>
