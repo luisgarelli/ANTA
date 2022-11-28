@@ -17,7 +17,7 @@ class AnimalModel
         ({
 		
             host: 'localhost',
-			port:3306,
+			port:33065,
             user: 'root',
             password: '',
             database: 'estacionamiento',
