@@ -46,8 +46,8 @@
         <td>{{usuarios.acuerdo_familiar}}</td>
         <td>{{usuarios.animal_propiedad}}</td>
         <td>{{usuarios.acuerdo_animal_pasear}}</td>
-        <td>  <button type="button" class="btn btn-danger" (click)="eliminarInteresados(usuarios.id_registrado,usuarios.id_animal)" >Rechazar</button></td>
-        <td>  <button type="button" class="btn btn-success" (click)="agregar(usuarios.id_registrado,usuarios.id_animal)" >Aceptar</button></td>
+        <td *ngIf="desaparecer">  <button type="button" class="btn btn-danger" (click)="eliminarInteresados(usuarios.id_registrado,usuarios.id_animal)" >Rechazar</button></td>
+        <td *ngIf="desaparecer">  <button type="button" class="btn btn-success" (click)="agregar(usuarios.id_registrado,usuarios.id_animal)" >Aceptar</button></td>
     </tr>
     
   </tbody>

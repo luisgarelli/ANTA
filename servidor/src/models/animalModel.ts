@@ -329,6 +329,13 @@ class AnimalModel
 
 		return result;
 	}
+	async actualizaEliminar(usuario: object, id: string,nom:string)
+    {
+		const result = (await this.db.query('UPDATE solicitud SET ? WHERE id_usuario != ? AND id_animal = ?', [ usuario,id,nom]))[0].affectedRows;
+		console.log(result);
+
+		return result;
+	}
 	async crearSolicitud(usuario: object)
     {
 		const result = (await this.db.query('INSERT INTO solicitud SET ?', [usuario]))[0].affectedRows;
@@ -375,6 +382,24 @@ class AnimalModel
 			return encontrado[0][0];
 
 		return null;
+	}
+	async eliminarTodos(id: string, nombre:string)
+    {
+		const user = (await this.db.query('DELETE FROM adopcion WHERE id_registrado != ? AND id_animal = ?', [id,nombre]))[0].affectedRows;
+		console.log(user);
+        
+		return user;
+	}
+	async contador(id: string)
+    {
+		const encontrado: any = await this.db.query('Select count (*) from adopcion WHERE id_animal = ?', [id]);
+		//Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
+		
+		if (encontrado.length > 1)
+
+		return encontrado[0][0];
+
+	return null;
 	}
 	
 }

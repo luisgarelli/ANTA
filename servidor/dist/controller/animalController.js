@@ -275,6 +275,16 @@ class AnimalController {
             res.status(404).json({ text: "User doesn't exists" });
         });
     }
+    contador(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.params.id);
+            const { id } = req.params;
+            const usuario = yield animalModel_1.default.contador(id);
+            if (usuario)
+                return res.json(usuario);
+            res.status(404).json({ text: "User doesn't exists" });
+        });
+    }
     actualizar(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.body);
@@ -314,6 +324,16 @@ class AnimalController {
             //res.send('Usuario '+ req.params.id +' Eliminado!!!');
             const { id } = req.params; // hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.
             const result = yield animalModel_1.default.eliminar(id);
+            return res.json({ text: 'deleting an auto ' + id });
+        });
+    }
+    eliminarTodos(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body);
+            //res.send('Usuario '+ req.params.id +' Eliminado!!!');
+            const { id } = req.params; // hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.
+            const { nombre } = req.params;
+            const result = yield animalModel_1.default.eliminarTodos(id, nombre);
             return res.json({ text: 'deleting an auto ' + id });
         });
     }
@@ -384,6 +404,16 @@ class AnimalController {
             const { id } = req.params;
             const { nom } = req.params;
             const result = yield animalModel_1.default.actualiadopcion(req.body, id, nom);
+            //res.send('Usuario '+ req.params.id +' actualizado!!!');
+            return res.json({ text: 'updating a slot ' + id });
+        });
+    }
+    actualizaElimina(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body);
+            const { id } = req.params;
+            const { nom } = req.params;
+            const result = yield animalModel_1.default.actualizaEliminar(req.body, id, nom);
             //res.send('Usuario '+ req.params.id +' actualizado!!!');
             return res.json({ text: 'updating a slot ' + id });
         });

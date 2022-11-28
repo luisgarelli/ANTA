@@ -59,6 +59,9 @@ class AnimalRoutes {
         this.router.get('/busprovincias/:id', verifyToken_1.TokenValidation, animalController_1.default.buscarProv);
         this.router.get('/buslocali/:id', verifyToken_1.TokenValidation, animalController_1.default.busLocalidad);
         this.router.put('/modifiusuario/:id', verifyToken_1.TokenValidation, animalController_1.default.actualizarUsuari);
+        this.router.delete('/eliminatodos/:id/:nombre', verifyToken_1.TokenValidation, animalController_1.default.eliminarTodos); //nuevo
+        this.router.put('/actuali/:id/:nom', verifyToken_1.TokenValidation, animalController_1.default.actualizaElimina); //nuevo
+        this.router.get('/contador/:id', verifyToken_1.TokenValidation, animalController_1.default.contador); //nuevo
     }
 }
 //Exportamos el enrutador con 

@@ -58,6 +58,9 @@ export class AnimalService {
 	buscarId(id:string){
 		return this.http.get(`${this.API_URI}/busc/${id}`);
 	}
+	contador(id:string){
+		return this.http.get(`${this.API_URI}/contador/${id}`);
+	}
 	buscAnimalAdopcion(id:string){
 		return this.http.get(`${this.API_URI}/buscadop/${id}`);
 	}
@@ -76,6 +79,9 @@ export class AnimalService {
 	}
 	eliminarSolicitud(id:string){
 		return this.http.delete(`${this.API_URI}/eliminasolicitud/${id}`);
+	}
+	eliminarTodos(id:string, nombre:string){
+		return this.http.delete(`${this.API_URI}/eliminatodos/${id}/${nombre}`);
 	}
 	
 	modificarAnimal(id:string, modificarAnimal: Animal):Observable<Animal>{
@@ -115,6 +121,9 @@ export class AnimalService {
 	}
 	buscaradopciones(id:string, use:string){
 		return this.http.get(`${this.API_URI}/buscaradopciones/${id}/${use}`);
+	}
+	actualizaEliminar(id:string, nom:string, modificarAnimal: Animal):Observable<Animal>{
+		return this.http.put(`${this.API_URI}/actuali/${id}/${nom}`,modificarAnimal);
 	}
 	modSolicitudes(id:string, use:string, modificarAnimal: Animal):Observable<Animal>{
 		return this.http.put(`${this.API_URI}/modsolicitud/${id}/${use}`,modificarAnimal);

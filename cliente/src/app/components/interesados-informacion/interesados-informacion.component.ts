@@ -10,7 +10,7 @@ import { NgxToastService } from 'ngx-toast-notifier';
 import { Animal } from 'src/app/models/animalModel';
 import { ThisReceiver } from '@angular/compiler';
 import { Adopciones } from 'src/app/models/adopcionesModel';
-
+import { Solicitud } from 'src/app/models/solicitudModel';
 import { Console } from 'console';
 @Component({
   selector: 'app-interesados-informacion',
@@ -25,9 +25,11 @@ export class InteresadosInformacionComponent implements OnInit {
   adopcion: Adopciones;
   verificarUsuario:any;
   animal2: Animal;
+  solici:Solicitud;
   estadoAnimal ="Adoptado";
     Solicitudes :any = [];
     adop: Adopcion;
+    desaparecer :boolean = true;
     estadoPersona="Aceptado";
     estadoPersona2="Rechazado";
     descripcion1="Su solicitud ha sido rechazada por no cumplir con los requisitos minimos para la adopción de este animal.";
@@ -36,6 +38,7 @@ export class InteresadosInformacionComponent implements OnInit {
     this.adopcion = {   id_animal: "" , id_usuario:"" };
     this.animal2 = { estado: "" };
     this.adop = { estado: "",descripcion:"" };
+    this.solici = {   estado: "" , descripcion:"" };
    }
 
   ngOnInit(): void {
@@ -91,6 +94,7 @@ export class InteresadosInformacionComponent implements OnInit {
         },
         err => console.log(err)
       );
+     
     this.animalService.eliminarInteresado(id).subscribe(
       res => {
         console.log("Datos del Servicio");
@@ -108,7 +112,7 @@ export class InteresadosInformacionComponent implements OnInit {
     console.log(id);
     //comentario
     console.log(animal);
-
+   this.desaparecer = false;
     this.adopcion.id_usuario = id;
     this.adopcion.id_animal = animal;
     this.animalService.buscaradopciones(animal,id).subscribe(
@@ -151,6 +155,29 @@ export class InteresadosInformacionComponent implements OnInit {
       },
       err => console.log(err)
     );
+    this.animalService.eliminarTodos(id,animal).subscribe(
+      res => {
+        console.log("Datos del Servicio");
+        console.log(res);
+      
+         
+        this.ngOnInit();
+      },
+      err => console.log(err)
+    );
+    this.solici.estado = this.estadoPersona2;
+    this.solici.descripcion = this.descripcion1;
+    this.animalService.actualizaEliminar(id,animal,this.solici).subscribe(
+      res => {
+        console.log("Datos del Servicio");
+        console.log(res);
+      
+         
+        this.ngOnInit();
+      },
+      err => console.log(err)
+    );
+
   }
 }
 

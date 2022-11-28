@@ -298,6 +298,13 @@ class AnimalModel {
             return result;
         });
     }
+    actualizaEliminar(usuario, id, nom) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const result = (yield this.db.query('UPDATE solicitud SET ? WHERE id_usuario != ? AND id_animal = ?', [usuario, id, nom]))[0].affectedRows;
+            console.log(result);
+            return result;
+        });
+    }
     crearSolicitud(usuario) {
         return __awaiter(this, void 0, void 0, function* () {
             const result = (yield this.db.query('INSERT INTO solicitud SET ?', [usuario]))[0].affectedRows;
@@ -333,6 +340,22 @@ class AnimalModel {
     busProvincia(nombre) {
         return __awaiter(this, void 0, void 0, function* () {
             const encontrado = yield this.db.query('SELECT * FROM provincias WHERE id = ?', [nombre]);
+            //Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
+            if (encontrado.length > 1)
+                return encontrado[0][0];
+            return null;
+        });
+    }
+    eliminarTodos(id, nombre) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const user = (yield this.db.query('DELETE FROM adopcion WHERE id_registrado != ? AND id_animal = ?', [id, nombre]))[0].affectedRows;
+            console.log(user);
+            return user;
+        });
+    }
+    contador(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const encontrado = yield this.db.query('Select count (*) from adopcion WHERE id_animal = ?', [id]);
             //Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
             if (encontrado.length > 1)
                 return encontrado[0][0];

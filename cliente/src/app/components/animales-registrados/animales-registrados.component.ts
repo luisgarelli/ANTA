@@ -16,6 +16,7 @@ import { ThisReceiver } from '@angular/compiler';
 export class AnimalesRegistradosComponent implements OnInit {
   idUsuario:any;
   usuario :any = [];
+  contador :any = [];
   verificarUsuario:any;
   constructor(private ngxToastService: NgxToastService, private rutaActiva: ActivatedRoute, private animalService: AnimalService,  private usuarioService: UsuariosService, private router:Router) { }
 
@@ -33,9 +34,9 @@ export class AnimalesRegistradosComponent implements OnInit {
     );
     this.animalService.buscarUsuario(this.idUsuario).subscribe(
       res => {
-        this.verificarUsuario = res
+        this.verificarUsuario = res;
         console.log("verificar usuario",this.verificarUsuario);
-        
+       
       },
       err => console.log(err)
     );
