@@ -1,4 +1,4 @@
-<h1 style="color: rgb(4, 14, 15); background-color: aliceblue;">Mis Publicaciones</h1>
+<h1 style="text-align: center; background-color: rgb(90, 214, 255);">Mis Publicaciones</h1>
 
 <div class="container">
   <div class="card-group mt-3">
@@ -15,6 +15,7 @@
         <div class="card text-center">
           <a class="btn btn-info" (click)="cambiarSeleccion(animal.id)">Ver Interesados</a>
           <a class="btn btn-success" (click)="perfil(animal.id)">Ver Info</a>
+          <a class="btn btn-danger" (click)="eliminarAnimal(animal.id)">Eliminar</a>
         </div>
       </div>
     </div>

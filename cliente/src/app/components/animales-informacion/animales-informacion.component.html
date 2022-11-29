@@ -164,21 +164,22 @@
                   </label>
 
                 </fieldset>
-
-
-                <button class="btn btn-success btn-block">Adoptar</button>
-
-              </form>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-              </div>
-            </div>
+               
+                  -->
+               
+               
+                  
+                <button *ngIf="boton" class="btn btn-success btn-block"   >Adoptar</button>
+            
+        </form>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
           </div>
         </div>
       </div>
     </div>
     <div class="col-10 bg-dark border">
-      <img class="circular--square" [src]="Animal.imagen" style="width: 300px;" alt="Card image cap">
+      <img class="circular--square" [src]="Animal.imagen"  style="width: 400px;" alt="Card image cap">
     </div>
   </div>
 </div>

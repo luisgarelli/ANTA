@@ -47,6 +47,7 @@ valor= true;
 idRegistrado:any;
 adopcion2: Adopcion;
 nombreAnimal:any;
+boton: boolean = true;
 constructor( private ngxToastService: NgxToastService, private rutaActiva: ActivatedRoute, private animalService: AnimalService,  private usuarioService: UsuariosService) { 
   this.adopcion = {  id_animal: "",  id_usuario: "",tipo_vivienda:"", tipo_propietario:"", caso_alquilar:"", animal_castrado:"",compromiso_animal:"" , balcones:"", acuerdo_familiar:"", animal_propiedad:"", animal_pasear:"",id_registrado:"",estado:""};
   this.animal2 = { estado: "" };
@@ -225,7 +226,7 @@ this.idAnimal = idAnim;
     this.ngOnInit();
   }
  agrega(){
- 
+ //this.boton = false;
   this.adopcion.id_animal = this.idAnimal;
   this.adopcion.estado = this.estadoAnimal;
   this.adopcion.id_registrado = this.idUsuario;

@@ -68,6 +68,8 @@ class AnimalRoutes
 		this.router.delete('/eliminatodos/:id/:nombre',TokenValidation,animalController.eliminarTodos);//nuevo
 		this.router.put('/actuali/:id/:nom',TokenValidation,animalController.actualizaElimina);//nuevo
 		this.router.get('/contador/:id',TokenValidation,animalController.contador);//nuevo
+		this.router.put('/actsolicitud/:id',TokenValidation,animalController.actualizarSolicitud);
+		this.router.delete('/elimindopcion/:id',TokenValidation,animalController.eliminarAdopcion);
 
 
 	}

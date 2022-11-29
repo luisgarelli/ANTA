@@ -294,6 +294,15 @@ class AnimalController {
             return res.json({ text: 'updating a slot ' + id });
         });
     }
+    actualizarSolicitud(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body);
+            const { id } = req.params;
+            const result = yield animalModel_1.default.actualizaSolicitud(req.body, id);
+            //res.send('Usuario '+ req.params.id +' actualizado!!!');
+            return res.json({ text: 'updating a slot ' + id });
+        });
+    }
     actualizarUsuari(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.body);
@@ -343,6 +352,15 @@ class AnimalController {
             //res.send('Usuario '+ req.params.id +' Eliminado!!!');
             const { id } = req.params; // hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.
             const result = yield animalModel_1.default.eliminarInteresado(id);
+            return res.json({ text: 'deleting un interesado' + id });
+        });
+    }
+    eliminarAdopcion(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body);
+            //res.send('Usuario '+ req.params.id +' Eliminado!!!');
+            const { id } = req.params; // hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.
+            const result = yield animalModel_1.default.eliminarAdopcion(id);
             return res.json({ text: 'deleting un interesado' + id });
         });
     }

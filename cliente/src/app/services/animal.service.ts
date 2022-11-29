@@ -80,12 +80,18 @@ export class AnimalService {
 	eliminarSolicitud(id:string){
 		return this.http.delete(`${this.API_URI}/eliminasolicitud/${id}`);
 	}
+	eliminarAdopcion(id:string){
+		return this.http.delete(`${this.API_URI}/elimindopcion/${id}`);
+	}
 	eliminarTodos(id:string, nombre:string){
 		return this.http.delete(`${this.API_URI}/eliminatodos/${id}/${nombre}`);
 	}
 	
 	modificarAnimal(id:string, modificarAnimal: Animal):Observable<Animal>{
 		return this.http.put(`${this.API_URI}/modificar/${id}`,modificarAnimal);
+	}
+	actualizarSolicitud(id:string, modificarAnimal: Animal):Observable<Animal>{
+		return this.http.put(`${this.API_URI}/actsolicitud/${id}`,modificarAnimal);
 	}
 	modificarUsuario(id:string, modificarAnimal: Animal):Observable<Animal>{
 		return this.http.put(`${this.API_URI}/modifiusuario/${id}`,modificarAnimal);
