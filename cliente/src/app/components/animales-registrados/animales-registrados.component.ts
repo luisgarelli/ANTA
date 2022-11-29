@@ -8,6 +8,7 @@ import { UsuariosService } from '../../services/usuarios.service';
 import { NgxToastService } from 'ngx-toast-notifier';
 import { Animal } from 'src/app/models/animalModel';
 import { ThisReceiver } from '@angular/compiler';
+import { Solicitud } from 'src/app/models/solicitudModel';
 @Component({
   selector: 'app-animales-registrados',
   templateUrl: './animales-registrados.component.html',
@@ -18,7 +19,12 @@ export class AnimalesRegistradosComponent implements OnInit {
   usuario :any = [];
   contador :any = [];
   verificarUsuario:any;
-  constructor(private ngxToastService: NgxToastService, private rutaActiva: ActivatedRoute, private animalService: AnimalService,  private usuarioService: UsuariosService, private router:Router) { }
+  solici:Solicitud;
+  estadoPersona2="Rechazado";
+    descripcion1="Su solicitud fue rechazada porque el animal fue eliminado por el dador";
+  constructor(private ngxToastService: NgxToastService, private rutaActiva: ActivatedRoute, private animalService: AnimalService,  private usuarioService: UsuariosService, private router:Router) { 
+    this.solici = {   estado: "" , descripcion:"" };
+  }
 
   ngOnInit(): void {
     this.idUsuario = this.usuarioService.getId();
@@ -49,6 +55,35 @@ export class AnimalesRegistradosComponent implements OnInit {
   perfil(id:any){
     console.log(id);
     this.router.navigate(['animales/datos',id]);
+}
+eliminarAnimal(id:any){
+  this.animalService.eleminarAnimal(id).subscribe(
+    res => {
+   console.log(res);
+     this.ngOnInit();
+    },
+    err => console.log(err)
+  );
+  this.animalService.eliminarAdopcion(id).subscribe(
+    res => {
+   console.log(res);
+     this.ngOnInit();
+    },
+    err => console.log(err)
+  );
+  this.solici.estado = this.estadoPersona2;
+  this.solici.descripcion = this.descripcion1;
+  this.animalService.actualizarSolicitud(id,this.solici).subscribe(
+    res => {
+      console.log("Datos del Servicio");
+      console.log(res);
+    
+       
+      this.ngOnInit();
+    },
+    err => console.log(err)
+  );
+
 }
 
 }

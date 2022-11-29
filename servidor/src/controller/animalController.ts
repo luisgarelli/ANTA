@@ -307,6 +307,15 @@ class AnimalController
         return res.json({ text: 'updating a slot ' + id });
 
 	}
+    public async actualizarSolicitud(req:Request,res:Response)
+    {
+        console.log(req.body);
+        const { id } = req.params;
+        const result = await animalModel.actualizaSolicitud(req.body, id);
+        //res.send('Usuario '+ req.params.id +' actualizado!!!');
+        return res.json({ text: 'updating a slot ' + id });
+
+	}
     public async actualizarUsuari(req:Request,res:Response)
     {
         console.log(req.body);
@@ -357,6 +366,14 @@ class AnimalController
         const result = await animalModel.eliminarInteresado(id);
         return res.json({ text: 'deleting un interesado' + id });
 	}
+    public async eliminarAdopcion(req:Request,res:Response){
+	
+        console.log(req.body);
+       //res.send('Usuario '+ req.params.id +' Eliminado!!!');
+       const { id } = req.params; // hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.
+       const result = await animalModel.eliminarAdopcion(id);
+       return res.json({ text: 'deleting un interesado' + id });
+   }
     public async eliminarSolicitud(req:Request,res:Response){
 	
         console.log(req.body);

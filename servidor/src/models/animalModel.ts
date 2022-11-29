@@ -401,6 +401,21 @@ class AnimalModel
 
 	return null;
 	}
+
+	async actualizaSolicitud(usuario: object, id: string)
+    {
+		const result = (await this.db.query('UPDATE solicitud SET ? WHERE id_animal = ?', [ usuario,id]))[0].affectedRows;
+		console.log(result);
+
+		return result;
+	}
+	async eliminarAdopcion(id: string)
+    {
+		const user = (await this.db.query('DELETE FROM adopcion WHERE id_animal = ?', [id]))[0].affectedRows;
+		console.log(user);
+        
+		return user;
+	}
 	
 }
 

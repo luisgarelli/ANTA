@@ -362,6 +362,20 @@ class AnimalModel {
             return null;
         });
     }
+    actualizaSolicitud(usuario, id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const result = (yield this.db.query('UPDATE solicitud SET ? WHERE id_animal = ?', [usuario, id]))[0].affectedRows;
+            console.log(result);
+            return result;
+        });
+    }
+    eliminarAdopcion(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const user = (yield this.db.query('DELETE FROM adopcion WHERE id_animal = ?', [id]))[0].affectedRows;
+            console.log(user);
+            return user;
+        });
+    }
 }
 //Nota: Aqui cada uno tiene que setear los parametros de su propio servidor MySQL / MariaDB.
 //Exportamos el objeto userModel con 
