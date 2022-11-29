@@ -1,232 +1,187 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <title>Hello, world!</title>
-  </head>
-  <body>
-<br>
 <div class="container-fluid">
   <div class="row text-white text-center">
     <div class="col-2 bg-dark border">
 
       <p style="color: white;">Nombre: {{Animal.nombre}}</p>
-<p style="color: white;">Sexo: {{Animal.sexo}}</p>
+      <p style="color: white;">Sexo: {{Animal.sexo}}</p>
 
-<p style="color: white;">Tamaño: {{Animal.tamanio}}</p>
-<p style="color: white;">Tipo: {{Animal.tipo}}</p>  
- 
-<p style="color: white;">Fecha de ingreso: {{Animal.alta| date: 'dd/MM/yyyy'}}</p>
-<input type="hidden" name="hiddenInput" id="hiddenInput" value="3" />
-  <!--<button class="btn btn-primary "  (click)="agregar(Animal.id)" (click)="addSuccess()" >Adoptar</button>-->
-  <div class="container">
-    <br>
-    <!-- Boton -->
-    <button [disabled]= "disabledValue" data-toggle="modal"  href="#mi_modal" class="btn btn-primary" (click)="seleccion(Animal.id)"  >Formulario  de adopción</button>
-    <br><br>
-    <!-- Link -->
-   
-  
-    <!-- si se necesita cambiar tamaño de modal agregar modal-lg a la linea 
-    <div class="modal-dialog"> por <div class="modal-dialog modal-lg">-->
-  
-    <!-- Modal-->
-    <div class="modal fade" id="mi_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">
-              <span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span>
-            </button>
-            <h4 class="modal-title" id="myModalLabel">Formulario de Adopción</h4>
-          </div>
-          <form (submit)="agrega()" method="post" >
-            <fieldset>
-              <legend style="color: black">¿En qué tipo de vivienda habitás?</legend>
-              <label>
-                  <input type="radio" name="color" value="Casa" [(ngModel)]="adopcion.tipo_vivienda">Casa
-              </label>
-              <label>
-                  <input type="radio" name="color" value="Departamento"  [(ngModel)]="adopcion.tipo_vivienda">Departamento
-            </label>
-          </fieldset>
-          <fieldset>
-              <legend style="color: black"> Seleccioná la opción correcta por favor  * </legend>
-              <label>
-                  <input type="radio" name="numero" value="Propietario"  [(ngModel)]="adopcion.tipo_propietario" > Propietario
-              </label>
-              <label>
-                  <input type="radio" name="numero" value="Inquilino" [(ngModel)]="adopcion.tipo_propietario" > Inquilino
-              </label>
-             
-          </fieldset>
-          <fieldset>
-            <legend style="color: black"> En caso de alquilar, ¿consultaste previamente con el dueño de la vivienda?  *  </legend>
-            <label>
-                <input type="radio" name="alquila" value="SÍ, pregunté y se puede tener mascotas."  [(ngModel)]="adopcion.caso_alquilar "> SÍ, pregunté y se puede tener mascotas.
-            </label>
-            <label>
-                <input type="radio" name="alquila" value="NO pregunté aun pero en el edificio hay mascotas." [(ngModel)]="adopcion.caso_alquilar" > NO pregunté aun pero en el edificio hay mascotas.
-            </label>
-            <label>
-              <input type="radio" name="alquila" value="NO pregunté."  [(ngModel)]="adopcion.caso_alquilar "> NO pregunté.
-          </label>
-          <label>
-              <input type="radio" name="alquila" value="NO alquilo." [(ngModel)]="adopcion.caso_alquilar" > NO alquilo.
-          </label>
-           
-        </fieldset>
+      <p style="color: white;">Tamaño: {{Animal.tamanio}}</p>
+      <p style="color: white;">Tipo: {{Animal.tipo}}</p>
 
-        <fieldset>
-          <legend style="color: black"> En caso  de tener otros animales, ¿están castrados? * </legend>
-          <label>
-              <input type="radio" name="caso" value="Si, todos están castrados."  [(ngModel)]="adopcion.animal_castrado" > Si, todos están castrados.
-          </label>
-          <label>
-              <input type="radio" name="caso" value="Algunas Si y otras No." [(ngModel)]="adopcion.animal_castrado" > Algunas Si y otras No.
-          </label>
-          <label>
-            <input type="radio" name="caso" value="No castré aún, pero lo voy a hacer ."  [(ngModel)]="adopcion.animal_castrado" > No castré aún, pero lo voy a hacer .
+      <p style="color: white;">Fecha de ingreso: {{Animal.alta| date: 'dd/MM/yyyy'}}</p>
+      <input type="hidden" name="hiddenInput" id="hiddenInput" value="3" />
 
-        </label>
-        <label>
-            <input type="radio" name="caso" value="No están castradas." [(ngModel)]="adopcion.animal_castrado" > No están castradas.
-        </label>
-        <label>
-          <input type="radio" name="caso" value="No tengo otros animales."  [(ngModel)]="adopcion.animal_castrado" > No tengo otros animales.
+      <div class="container">
+        <br>
+        <button [disabled]="disabledValue" data-toggle="modal" href="#mi_modal" class="btn btn-primary"
+          (click)="seleccion(Animal.id)">Formulario de adopción</button>
+        <br><br>
 
-      </label>
-     
-         
-      </fieldset>
-      <fieldset>
-        <legend style="color: black">¿Estás dispuesto a adoptar al animal de por vida con compromiso de vacunación anual, desparacitación y castración? *</legend>
-        <label>
-            <input type="radio" name="disp" value="Si"  [(ngModel)]="adopcion.compromiso_animal" > Si
-        </label>
-        <label>
-            <input type="radio" name="disp" value="No" [(ngModel)]="adopcion.compromiso_animal" > No
-        </label>
-       
-    </fieldset>
-    <fieldset>
-      <legend style="color: black">¿Tenés cerramientos en los balcones y/o ventanas? (red o rejas)</legend>
-      <label>
-          <input type="radio" name="balcones" value="Si, tengo red."  [(ngModel)]="adopcion.balcones" > Si, tengo red.
-      </label>
-      <label>
-          <input type="radio" name="nbalcones" value="Si, tengo rejas." [(ngModel)]="adopcion.balcones" > Si, tengo rejas.
-      </label>
-      <label>
-        <input type="radio" name="balcones" value="No, pero voy a colocar. " [(ngModel)]="adopcion.balcones" > No, pero voy a colocar.
-    </label>
-     
-  </fieldset>
-  <fieldset>
-    <legend style="color: black">¿Están todos los miembros de la familia de acuerdo en adoptar? (*)</legend>
-    <label>
-        <input type="radio" name="familia" value="Si"  [(ngModel)]="adopcion.acuerdo_familiar" > Si
-    </label>
-    <label>
-        <input type="radio" name="familia" value="No" [(ngModel)]="adopcion.acuerdo_familiar" > No
-    </label>
-   
-</fieldset>
-<fieldset>
-  <legend style="color: black">¿Cuántas horas calculás que el animal estará solo en la propiedad? (*) </legend>
-  <label>
-      <input type="radio" name="horas" value="1 a 2"  [(ngModel)]="adopcion.animal_propiedad" > 1 a 2
-  </label>
-  <label>
-      <input type="radio" name="horas" value="2 a 3" [(ngModel)]="adopcion.animal_propiedad" > 2 a 3
-  </label>
-  <label>
-    <input type="radio" name="horas" value="Más de 3 " [(ngModel)]="adopcion.animal_propiedad" > Más de 3 
-</label>
- 
-</fieldset>
-<fieldset>
-  <legend style="color: black">¿Cuántas veces pensás sacarlo a pasear por día?(*) </legend>
-  <label>
-      <input type="radio" name="pasear" value="1"  [(ngModel)]="adopcion.animal_pasear" > 1 
-  </label>
-  <label>
-      <input type="radio" name="pasear" value="2" [(ngModel)]="adopcion.animal_pasear" > 2 
-  </label>
-  <label>
-    <input type="radio" name="pasear" value="Más de 3 " [(ngModel)]="adopcion.animal_pasear" > Más de 3 
-</label>
- 
-</fieldset>
-            <!--
-            <div class="form-group">
-                <fieldset class="form-group">
-                  <div class="row">
-                  <legend class="col-form-label col-sm2 pt-8" style="color: black">¿En qué tipo de vivienda habitás? * </legend>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"  value="Casa"  [(ngModel)]="adopcion.tipo_vivienda"  >
-                  <label class="form-check-label" style="color: black" for="flexRadioDefault1">
-                           Casa
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="Departamento" [(ngModel)]="adopcion.tipo_vivienda"  checked>
-                  <label class="form-check-label" style="color: black" for="flexRadioDefault2">
-                             Departamento
-                  </label>
-                </div>
+        <div class="modal fade" id="mi_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                  <span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Formulario de Adopción</h4>
               </div>
-              </fieldset>
-              <fieldset class="form-group">
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"  value="Propietario"  [(ngModel)]="adopcion.tipo_propietario"  >
-                  <label class="form-check-label" style="color: black" for="flexRadioDefault1">
-                           Propietario
+              <form (submit)="agrega()" method="post">
+                <fieldset>
+                  <legend style="color: black">¿En qué tipo de vivienda habitás?</legend>
+                  <label>
+                    <input type="radio" name="color" value="Casa" [(ngModel)]="adopcion.tipo_vivienda">Casa
                   </label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="Inquilino" [(ngModel)]="adopcion.tipo_propietario"  checked>
-                  <label class="form-check-label" style="color: black" for="flexRadioDefault2">
-                            Inquilino
+                  <label>
+                    <input type="radio" name="color" value="Departamento"
+                      [(ngModel)]="adopcion.tipo_vivienda">Departamento
                   </label>
-                </div>
                 </fieldset>
-               
-                  -->
-               
-               
-                  
-                <button class="btn btn-success btn-block"   >Adoptar</button>
-            
-        </form>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <fieldset>
+                  <legend style="color: black"> Seleccioná la opción correcta por favor * </legend>
+                  <label>
+                    <input type="radio" name="numero" value="Propietario" [(ngModel)]="adopcion.tipo_propietario">
+                    Propietario
+                  </label>
+                  <label>
+                    <input type="radio" name="numero" value="Inquilino" [(ngModel)]="adopcion.tipo_propietario">
+                    Inquilino
+                  </label>
+
+                </fieldset>
+                <fieldset>
+                  <legend style="color: black"> En caso de alquilar, ¿consultaste previamente con el dueño de la
+                    vivienda? * </legend>
+                  <label>
+                    <input type="radio" name="alquila" value="SÍ, pregunté y se puede tener mascotas."
+                      [(ngModel)]="adopcion.caso_alquilar "> SÍ, pregunté y se puede tener mascotas.
+                  </label>
+                  <label>
+                    <input type="radio" name="alquila" value="NO pregunté aun pero en el edificio hay mascotas."
+                      [(ngModel)]="adopcion.caso_alquilar"> NO pregunté aun pero en el edificio hay mascotas.
+                  </label>
+                  <label>
+                    <input type="radio" name="alquila" value="NO pregunté." [(ngModel)]="adopcion.caso_alquilar "> NO
+                    pregunté.
+                  </label>
+                  <label>
+                    <input type="radio" name="alquila" value="NO alquilo." [(ngModel)]="adopcion.caso_alquilar"> NO
+                    alquilo.
+                  </label>
+
+                </fieldset>
+
+                <fieldset>
+                  <legend style="color: black"> En caso de tener otros animales, ¿están castrados? * </legend>
+                  <label>
+                    <input type="radio" name="caso" value="Si, todos están castrados."
+                      [(ngModel)]="adopcion.animal_castrado"> Si, todos están castrados.
+                  </label>
+                  <label>
+                    <input type="radio" name="caso" value="Algunas Si y otras No."
+                      [(ngModel)]="adopcion.animal_castrado"> Algunas Si y otras No.
+                  </label>
+                  <label>
+                    <input type="radio" name="caso" value="No castré aún, pero lo voy a hacer ."
+                      [(ngModel)]="adopcion.animal_castrado"> No castré aún, pero lo voy a hacer .
+
+                  </label>
+                  <label>
+                    <input type="radio" name="caso" value="No están castradas." [(ngModel)]="adopcion.animal_castrado">
+                    No están castradas.
+                  </label>
+                  <label>
+                    <input type="radio" name="caso" value="No tengo otros animales."
+                      [(ngModel)]="adopcion.animal_castrado"> No tengo otros animales.
+
+                  </label>
+
+
+                </fieldset>
+                <fieldset>
+                  <legend style="color: black">¿Estás dispuesto a adoptar al animal de por vida con compromiso de
+                    vacunación anual, desparacitación y castración? *</legend>
+                  <label>
+                    <input type="radio" name="disp" value="Si" [(ngModel)]="adopcion.compromiso_animal"> Si
+                  </label>
+                  <label>
+                    <input type="radio" name="disp" value="No" [(ngModel)]="adopcion.compromiso_animal"> No
+                  </label>
+
+                </fieldset>
+                <fieldset>
+                  <legend style="color: black">¿Tenés cerramientos en los balcones y/o ventanas? (red o rejas)</legend>
+                  <label>
+                    <input type="radio" name="balcones" value="Si, tengo red." [(ngModel)]="adopcion.balcones"> Si,
+                    tengo red.
+                  </label>
+                  <label>
+                    <input type="radio" name="nbalcones" value="Si, tengo rejas." [(ngModel)]="adopcion.balcones"> Si,
+                    tengo rejas.
+                  </label>
+                  <label>
+                    <input type="radio" name="balcones" value="No, pero voy a colocar. "
+                      [(ngModel)]="adopcion.balcones"> No, pero voy a colocar.
+                  </label>
+
+                </fieldset>
+                <fieldset>
+                  <legend style="color: black">¿Están todos los miembros de la familia de acuerdo en adoptar? (*)
+                  </legend>
+                  <label>
+                    <input type="radio" name="familia" value="Si" [(ngModel)]="adopcion.acuerdo_familiar"> Si
+                  </label>
+                  <label>
+                    <input type="radio" name="familia" value="No" [(ngModel)]="adopcion.acuerdo_familiar"> No
+                  </label>
+
+                </fieldset>
+                <fieldset>
+                  <legend style="color: black">¿Cuántas horas calculás que el animal estará solo en la propiedad? (*)
+                  </legend>
+                  <label>
+                    <input type="radio" name="horas" value="1 a 2" [(ngModel)]="adopcion.animal_propiedad"> 1 a 2
+                  </label>
+                  <label>
+                    <input type="radio" name="horas" value="2 a 3" [(ngModel)]="adopcion.animal_propiedad"> 2 a 3
+                  </label>
+                  <label>
+                    <input type="radio" name="horas" value="Más de 3 " [(ngModel)]="adopcion.animal_propiedad"> Más de 3
+                  </label>
+
+                </fieldset>
+                <fieldset>
+                  <legend style="color: black">¿Cuántas veces pensás sacarlo a pasear por día?(*) </legend>
+                  <label>
+                    <input type="radio" name="pasear" value="1" [(ngModel)]="adopcion.animal_pasear"> 1
+                  </label>
+                  <label>
+                    <input type="radio" name="pasear" value="2" [(ngModel)]="adopcion.animal_pasear"> 2
+                  </label>
+                  <label>
+                    <input type="radio" name="pasear" value="Más de 3 " [(ngModel)]="adopcion.animal_pasear"> Más de 3
+                  </label>
+
+                </fieldset>
+
+
+                <button class="btn btn-success btn-block">Adoptar</button>
+
+              </form>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-    </div>
     <div class="col-10 bg-dark border">
-      <img class="circular--square" [src]="Animal.imagen"  style="width: 300px;" alt="Card image cap">
+      <img class="circular--square" [src]="Animal.imagen" style="width: 300px;" alt="Card image cap">
     </div>
   </div>
 </div>
-<!--<div class="overlay">
- 
-  <div class="wrap-buttons">
-    <button class="btn btn-success" (click)="addSuccess()">Success Alert</button>
-    <button class="btn btn-info" (click)="addInfo()">Info Alert</button>
-    <button class="btn btn-warning" (click)="addWarning()">Warning Alert</button>
-    <button class="btn btn-danger" (click)="addDanger()">Danger Alert</button>
-  </div>
-</div>-->
 <ngx-toast-notifier></ngx-toast-notifier>
 <br>
 <div class="container-fluid">
@@ -234,80 +189,16 @@
     <div class="col-7 bg-dark border">
       <h4 style="color: white;">Datos del usuario que lo Registro</h4>
       <p style="color: white;">Nombre: {{registrado.nombre}}</p>
-<p style="color: white;">Email: {{registrado.email}}</p>
-<p style="color: white;">Numero: {{registrado.numero}}</p>
-<p style="color: white;">Fecha de ingreso: {{registrado.alta| date: 'dd/MM/yyyy'}}</p>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-<a *ngIf="valor " href="https://api.whatsapp.com/send?phone={{celular}}&text=Hola%21%20estoy%20interesado%20en%20tu%20publicación%20."   class="btn btn-success  btn-lg"  target="_blank">
-<i  *ngIf="valor " class="fa fa-whatsapp my-float"></i>
-</a>
-</div>
-</div>
+      <p style="color: white;">Email: {{registrado.email}}</p>
+      <p style="color: white;">Numero: {{registrado.numero}}</p>
+      <p style="color: white;">Fecha de ingreso: {{registrado.alta| date: 'dd/MM/yyyy'}}</p>
+      <a *ngIf="valor"
+        href="https://api.whatsapp.com/send?phone={{celular}}&text=Hola%21%20estoy%20interesado%20en%20tu%20publicación%20."
+        class="btn btn-success  btn-lg" target="_blank">
+        <i *ngIf="valor " class="fa fa-whatsapp my-float"></i>
+      </a>
+    </div>
+  </div>
 </div>
 <br>
 <br>
-
-<!--
-<br>
-<h3 style="text-align: center;" *ngIf="valor">Interesados</h3>
-<table class="table table-striped table-dark" *ngIf="valor">
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Tipo vivienda</th>
-      <th>Tipo propietario</th>
-      <th>Caso alquilar</th>
-      <th>Animal castrado</th>
-      <th>Compromiso animal</th>
-      <th>Balcones</th>
-      <th>Acuerdo familiar</th>
-      <th>Animal propiedad</th>
-      <th>Animal pasear</th>
-    </tr>
-  </thead>
-  <tbody *ngIf="interesados.length > 0; else fila">
-    <tr *ngFor=" let usuarios of interesados">
-        <td>{{usuarios.id_usuario}}</td>
-        <td>{{usuarios.tipo_vivienda}}</td>
-        <td>{{usuarios.tipo_propietario}}</td>
-        <td>{{usuarios.caso_alquilar}}</td>
-        <td>{{usuarios.tipo_animal_castrado}}</td>
-        <td>{{usuarios.compromiso_animal}}</td>
-        <td>{{usuarios.balcones}}</td>
-        <td>{{usuarios.acuerdo_familiar}}</td>
-        <td>{{usuarios.animal_propiedad}}</td>
-        <td>{{usuarios.acuerdo_animal_pasear}}</td>
-        
-    </tr>
-    
-  </tbody>
-  <ng-template #fila>
-    <tbody>
-        <tr>
-            <td colspan="4">No hay mas filas</td>
-        </tr>
-    </tbody>
-</ng-template>
-</table>
--->
-<!--
-
-
-     <div class="form-check">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"  value="hombre"   >
-          <label class="form-check-label" for="flexRadioDefault1">
-           hombre
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="mujer" checked>
-          <label class="form-check-label" for="flexRadioDefault2">
-          mujer
-          </label>
-        </div>
--->
-
-
-
-
-</body>
