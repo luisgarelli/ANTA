@@ -226,7 +226,7 @@ this.idAnimal = idAnim;
     this.ngOnInit();
   }
  agrega(){
- this.boton = false;
+ //this.boton = false;
   this.adopcion.id_animal = this.idAnimal;
   this.adopcion.estado = this.estadoAnimal;
   this.adopcion.id_registrado = this.idUsuario;
