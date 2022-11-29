@@ -18,7 +18,7 @@ class SlotModel {
         return __awaiter(this, void 0, void 0, function* () {
             this.db = yield (0, promise_1.createPool)({
                 host: 'localhost',
-                port: 33065,
+                port: 3306,
                 user: 'root',
                 password: '',
                 database: 'estacionamiento',
