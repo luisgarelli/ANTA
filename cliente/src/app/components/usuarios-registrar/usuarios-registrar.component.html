@@ -44,20 +44,18 @@
                                 <div *ngSwitchCase="1">Las contraseñas deben ser iguales</div>
                             </div>
 
-                            <div class="input-group form-group">
-
-                                <!--<label for="sexo" class="form-label">Sexo</label> -->
-                                <select class="form-select" [(ngModel)]="user.sexo" (change)="cambiarSeleccion($event)">
-                                    <option selected disabled>Seleccione el sexo</option>
-                                    <option [value]="ani.sexo" *ngFor="let ani of combo1">
-                                        {{ani.sexo}}
-                                </select>
-
+                            <div class="form-group">
+                                <label for="" class="col-4 col-form-label">Sexo</label>
+                                    <select class="form-select col-8" [(ngModel)]="user.sexo" (change)="cambiarSeleccion($event)">
+                                        <option selected disabled>Seleccione el sexo</option>
+                                        <option [value]="ani.sexo" *ngFor="let ani of combo1">
+                                            {{ani.sexo}}
+                                    </select>
                             </div>
-                            <div class="input-group form-group">
 
-                                <!--<label for="sexo" class="form-label">Provincia</label> -->
-                                <select class="form-select" [(ngModel)]="user.provincia"
+                            <div class="form-group">
+                                <label for="" class="col-4 col-form-label">Provincia</label>
+                                    <select class="form-select col-8" [(ngModel)]="user.provincia"
                                     (change)="cambiarSeleccion2($event)">
                                     <option selected disabled>Seleccione la Provincia</option>
                                     <option [value]="ani.id" *ngFor="let ani of combo2">
@@ -65,13 +63,12 @@
                                 </select>
                             </div>
 
-                            <div class="input-group form-group">
-
-                               <!-- <label for="sexo" class="form-label">Localidad</label> -->
-                                <select class="form-select" [(ngModel)]="user.localidad"
-                                    (change)="cambiarSeleccion3($event)">
-                                    <option [value]="ani.id" *ngFor="let ani of codigo">
-                                        {{ani.localidad}}
+                            <div class="form-group">
+                               <label for="" class="col-4 col-form-label">Localidad</label>
+                                <select class="form-select col-8" [(ngModel)]="user.localidad"
+                                (change)="cambiarSeleccion3($event)" >
+                                <option [value]="ani.id" *ngFor="let ani of codigo">
+                                    {{ani.localidad}}
                                 </select>
                             </div>
 

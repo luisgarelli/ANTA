@@ -1,12 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light-cac">
-
+  
   <a class="navbar-brand" routerLink="usuarios/home">Home</a>
 
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
 
     <ul class="navbar-nav">
-      <div class="dropdown" *ngIf="tokenValidado == true">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+      <div class="dropdown"*ngIf="tokenValidado == true">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"> 
           Mi Perfil
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -15,7 +15,6 @@
           <a class="dropdown-item" routerLink="../../usuarios/solicitudes">Solicitudes</a>
           <a class="dropdown-item" routerLink="../../usuarios/perfil">Mis Datos</a>
           <a class="dropdown-item" id="logout" (click)="logout()">Cerrar sesión</a>
-
         </div>
       </div>
       <li class="nav-item active" *ngIf="tokenValidado == false">
