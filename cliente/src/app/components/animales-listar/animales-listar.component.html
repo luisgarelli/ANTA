@@ -44,7 +44,7 @@
       <input type="text" class="form-control mb-2" id="tama" placeholder="Tamaño" #txtSearch
         (keyup)="onSearch(txtSearch.value)" />
     </div>
-    </div>
+  </div>
 
   <div class="row">
     <div style="width: 18rem;" *ngFor=" let animal of animales | filtro: page:search ">
@@ -67,4 +67,5 @@
 </section>
 
 <button class="btn btn-primary" (click)="prevPage()">Anterior</button>
-    <button class="btn btn-primary" (click)="nextPage()" [disabled]="(animales | filtro: page:search).length === 0">Siguiente</button>
+<button class="btn btn-primary" (click)="nextPage()"
+  [disabled]="(animales | filtro: page:search).length === 0">Siguiente</button>
