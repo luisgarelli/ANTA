@@ -26,7 +26,7 @@ import { AnimalesEditarComponent } from './components/animales-editar/animales-e
 const routes: Routes = [
 	{
 		path: '',
-		redirectTo: 'usuarios/principal',
+		redirectTo: 'usuarios/home',
 		pathMatch: 'full'
 	},
 	{
@@ -43,8 +43,8 @@ const routes: Routes = [
 	},
 	{
 		path: 'usuarios/home',
-		component: UsuariosHomeComponent,
-		canActivate: [AuthGuard]
+		component: UsuariosHomeComponent
+		
 	},
 	{
 		path: 'autos/administrar',
