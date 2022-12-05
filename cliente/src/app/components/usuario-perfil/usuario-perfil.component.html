@@ -1,7 +1,7 @@
-
-<div>
+<h1 style="text-align: center; background-color: rgb(90, 214, 255);">Mis Datos</h1>
+<div style="width: 35rem; ">
   <br>
-  <div class="card-body">
+  <div class="card-body" style="background-color: white;">
     <p style="color: black;"> Nombre: {{usuarios.nombre}} </p>
     <button class="btn btn-primary btn-sm" (click)="mostrarse()">Cambiar</button> <br>
     <div *ngIf="mostrar">
@@ -89,36 +89,3 @@
 
   </div>
 </div>
-
-<section class="container">
-  <h3 class="text-uppercase text-center">Mis Datos Personales</h3>
-  <p class="text-uppercase text-center">En esta sección podras editar tus datos personales</p>
-  <div class="row">
-    <div class="col-4">
-      <form class="">
-        <div class="form-group">
-            <div class="row">
-                <label for="nombre">Nombre: {{usuarios.nombre}}</label>
-            </div>
-            <div class="row">
-              <br>
-                <label for="email">Email: {{usuarios.email}}</label>
-            </div>
-            <div class="row">
-                <label for="sexo">Sexo: {{usuarios.sexo}}</label>
-            </div>
-            <div class="row">
-                <label for="provincia">Provincia: {{provincias.provincia}}</label>
-            </div>
-            <div class="row">
-                <label for="localidad">Localidad: {{localidades.localidad}}</label>
-            </div>
-          </div>
-              <div class="">
-                <button class="btn btn-primary btn-sm" (click)="mostrarse()">Editar</button>
-              </div>
-      </form>
-    </div>
-  </div>
-
-</section>

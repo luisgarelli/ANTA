@@ -1,36 +1,15 @@
-/*
-.row{
-    background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20191009/pngtree-cute-corgi-dog-face-pattern-image_318704.jpg');
-    
+.col-7{
+    background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20191009/pngtree-cute-corgi-dog-face-pattern-image_318704.jpg'); 
     width: 100%; 
     background-size: cover;
-    padding: 1.5rem!important;
-    display: flex;
-    
 }
-*/
-section{
-    margin-top: 1.5rem;
-    padding: 1.5rem!important;
-    margin-block-end: 1.5rem;
-    align-content: center;
-}
-.container{
-    background-size: cover;
-    background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20191009/pngtree-cute-corgi-dog-face-pattern-image_318704.jpg');
-    background-repeat: no-repeat;
-    align-content: center;
-}
-
-
-h1{
-    text-align: center; 
-    background-color: rgb(90, 214, 255);
-}
-
 h2{
     color: rgb(0, 0, 0);
 }
-h4{
-    color: black;
+
+.row{
+    justify-content: center;
+    padding: 1.5rem!important;
+    display: flex;
+
 }
