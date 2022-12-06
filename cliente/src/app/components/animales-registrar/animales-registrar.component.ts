@@ -212,7 +212,7 @@ getUsuarios(){
 
 }
 alerta(){
-Swal.fire("Completado", 'se ha registrado ','success' );
+Swal.fire("Completado", '¡Se ha registrado!','success' );
 }
 cambiarSeleccion(e:any){
 console.log(e.target.value);
