@@ -5,10 +5,10 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
 
     <ul class="navbar-nav">
-      <div class="dropdown"*ngIf="tokenValidado == true">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"> 
+      <div class="dropdown" *ngIf="tokenValidado == true">
+        <a type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"> 
           Mi Perfil
-        </button>
+        </a>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" routerLink="../../animales/registrados">Mis publicaciones</a>
           <a class="dropdown-item" routerLink="../../animales/adoptados">Dados en Adopción</a>
