@@ -1,5 +1,10 @@
 <h1>Galeria de Animales</h1>
-
+<button class="btn btn-primary" (click)="prevPage()">
+  Anterior
+</button>
+<button class="btn btn-primary" (click)="nextPage()" [disabled]="(animales | filtro: page:search).length === 0">
+  Siguiente
+</button>
 <body>
   <div class="form-row">
     <div class="form-group col-md-3">
@@ -11,7 +16,7 @@
   </div>
   <div class="row">
     <div style="width: 18rem;" *ngFor=" let animal of animales | filtro: page:search ">
-      <img class="card-img-top" [src]="animal.imagen" style="width: 250px;" alt="Card image cap">
+      <img class="card-img-top img-fluid" [src]="animal.imagen" style="width: 250px;" alt="Card image cap">
       <div class="card-body">
         Nombre: {{animal.nombre}} <br>
         Sexo: {{animal.sexo}} <br>
@@ -19,7 +24,7 @@
         Fecha de ingreso: {{animal.alta | date: 'dd/MM/yyyy'}}<br>
         Tamaño: {{animal.tamanio}}<br>
         Provincia: {{animal.provincia}}<br>
-        <p>Tipo: {{animal.tipo}}</p><br>
+        Tipo: {{animal.tipo}}<br>
 
         <div class="card text-center">
           <a class="btn btn-info" (click)="cambiarSeleccion(animal.id)">Ver animal</a>
@@ -30,42 +35,37 @@
   </div>
 
 </body>
-<button class="btn btn-primary" (click)="prevPage()">
-  Anterior
-</button>
-<button class="btn btn-primary" (click)="nextPage()" [disabled]="(animales | filtro: page:search).length === 0">
-  Siguiente
-</button>
+
 <!--************************************-->
 
-<section>
+<section class="">
   <div class="form-row">
     <div class="form-group col-md-3">
       <input type="text" class="form-control mb-2" id="tama" placeholder="Tamaño" #txtSearch
         (keyup)="onSearch(txtSearch.value)" />
     </div>
   </div>
-
-  <div class="row">
-    <div style="width: 18rem;" *ngFor=" let animal of animales | filtro: page:search ">
-      <img class="card-img-top" [src]="animal.imagen" style="width: 250px;" alt="Card image cap">
-      <div class="card-body">
-        Nombre: {{animal.nombre}} <br>
-        Sexo: {{animal.sexo}} <br>
-        Descripción: {{animal.descripcion}}<br>
-        Fecha de ingreso {{animal.alta | date: 'dd/MM/yyyy'}}<br>
-        Tamaño: {{animal.tamanio}}<br>
-        Provincia: {{animal.provincia}}<br>
-        Tipo: {{animal.tipo}}<br>
-
-        <div class="card text-center">
-          <a class="btn btn-info" (click)="cambiarSeleccion(animal.id)">Ver animal</a>
-        </div>
+  <div class="row row-cols-1 row-cols-md-3">
+    <div class="col mb-4" *ngFor=" let animal of animales | filtro: page:search ">
+      <div class="card" style="width: 18rem;" >
+        <img class="card-img-top img-fluid" [src]="animal.imagen" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{animal.nombre}}</h5>
+          <p class="card-text">
+            Sexo: {{animal.sexo}}<br>
+            Descripción: {{animal.descripcion}}<br>
+            Fecha de ingreso: {{animal.alta | date: 'dd/MM/yyyy'}}<br>
+            Tamaño: {{animal.tamanio}}<br>
+            Provincia: {{animal.provincia}}<br>
+            Tipo: {{animal.tipo}}<br></p>
+          <a class="btn btn-outline-primary btn-block" (click)="cambiarSeleccion(animal.id)">
+            Ver más...</a>
       </div>
     </div>
+  </div>  
   </div>
+  <button class="btn btn-primary" (click)="prevPage()">Anterior</button>
+  <button class="btn btn-primary" (click)="nextPage()"
+  [disabled]="(animales | filtro: page:search).length === 0">Siguiente</button>
 </section>
 
-<button class="btn btn-primary" (click)="prevPage()">Anterior</button>
-<button class="btn btn-primary" (click)="nextPage()"
-  [disabled]="(animales | filtro: page:search).length === 0">Siguiente</button>
