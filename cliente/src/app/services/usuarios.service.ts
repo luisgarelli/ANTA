@@ -53,6 +53,27 @@ export class UsuariosService {
 		return this.http.delete(`${this.API_URI}/delete/${id}`);
 	}
 
+	//
+	eliminarUser(id: string) {
+		return this.http.delete(`${this.API_URI}/elimina/${id}`);
+	}
+	eliminarSolicitud(id: string) {
+		return this.http.delete(`${this.API_URI}/solicitud/${id}`);
+	}
+	eliminarSolicitudes(id: string) {
+		return this.http.delete(`${this.API_URI}/solicitudes/${id}`);
+	}
+	eliminarAdopcion(id: string) {
+		return this.http.delete(`${this.API_URI}/adopcion/${id}`);
+	}
+	eliminarAdopciones(id: string) {
+		return this.http.delete(`${this.API_URI}/adopciones/${id}`);
+	}
+	eliminarAnimales(id: string) {
+		return this.http.delete(`${this.API_URI}/animales/${id}`);
+	}
+	//
+
 	actualizarUsuario(id: string, actualizaUsuario: Usuarios): Observable<Usuarios> {
 		return this.http.put(`${this.API_URI}/update/${id}`, actualizaUsuario);
 	}

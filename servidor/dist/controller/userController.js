@@ -210,6 +210,60 @@ class UserController {
             return res.json({ text: 'deleting a user ' + id });
         });
     }
+    eliminarUsuario(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body);
+            //res.send('Usuario '+ req.params.id +' Eliminado!!!');
+            const { id } = req.params; // hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.
+            const result = yield userModel_1.default.eliminar(id);
+            return res.json({ text: 'deleting a user ' + id });
+        });
+    }
+    eliminarAnimal(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body);
+            //res.send('Usuario '+ req.params.id +' Eliminado!!!');
+            const { id } = req.params; // hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.
+            const result = yield userModel_1.default.eliminarAnimales(id);
+            return res.json({ text: 'deleting a user ' + id });
+        });
+    }
+    eliminarSolicitud(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body);
+            //res.send('Usuario '+ req.params.id +' Eliminado!!!');
+            const { id } = req.params; // hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.
+            const result = yield userModel_1.default.eliminarSolicitud(id);
+            return res.json({ text: 'deleting a user ' + id });
+        });
+    }
+    eliminarAdopcion(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body);
+            //res.send('Usuario '+ req.params.id +' Eliminado!!!');
+            const { id } = req.params; // hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.
+            const result = yield userModel_1.default.eliminarAdopcion(id);
+            return res.json({ text: 'deleting a user ' + id });
+        });
+    }
+    eliminarSolicitudes(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body);
+            //res.send('Usuario '+ req.params.id +' Eliminado!!!');
+            const { id } = req.params; // hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.
+            const result = yield userModel_1.default.eliminarUserSolicitudes(id);
+            return res.json({ text: 'deleting a user ' + id });
+        });
+    }
+    eliminarAdopciones(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body);
+            //res.send('Usuario '+ req.params.id +' Eliminado!!!');
+            const { id } = req.params; // hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.
+            const result = yield userModel_1.default.eliminarAdopciones(id);
+            return res.json({ text: 'deleting a user ' + id });
+        });
+    }
 }
 //Instanciamos el objeto controlador y lo exportamos
 const userController = new UserController();

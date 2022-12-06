@@ -34,6 +34,13 @@ class UserRoutes {
         this.router.get('/listar', verifyToken_1.TokenValidation, userController_1.default.listarSexo);
         this.router.get('/listaProvincia', verifyToken_1.TokenValidation, userController_1.default.listarProvincia);
         this.router.get('/listaLocalidad', verifyToken_1.TokenValidation, userController_1.default.listarLocalidad);
+        //
+        this.router.delete('/elimina/:id', verifyToken_1.TokenValidation, userController_1.default.eliminarUsuario);
+        this.router.delete('/solicitud/:id', verifyToken_1.TokenValidation, userController_1.default.eliminarSolicitud);
+        this.router.delete('/adopcion/:id', verifyToken_1.TokenValidation, userController_1.default.eliminarAdopcion);
+        this.router.delete('/adopciones/:id', verifyToken_1.TokenValidation, userController_1.default.eliminarAdopciones);
+        this.router.delete('/animales/:id', verifyToken_1.TokenValidation, userController_1.default.eliminarAnimal);
+        this.router.delete('/solicitudes/:id', verifyToken_1.TokenValidation, userController_1.default.eliminarSolicitudes);
     }
 }
 //Exportamos el enrutador con 

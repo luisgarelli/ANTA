@@ -10,7 +10,7 @@ import { Localidades } from 'src/app/models/localidadModel';
   styleUrls: ['./usuarios-registrar.component.css']
 })
 export class UsuariosRegistrarComponent implements OnInit {
-  user={  nombre:"", email:"", password:"",repassword:"", sexo:"",provincia:"",localidad:""};
+  user={  nombre:"", email:"", password:"",repassword:"", sexo:"",provincia:"",localidad:"",numero:""};
   errorNombre=0;
   errrorPassword=0;
   errorRePassrword=0;
@@ -163,6 +163,7 @@ selecciones: any=[];
         console.log(err.error.message);
       }
     )
+    this.router.navigate(['usuarios/principal']);
 	}
 
 

@@ -34,11 +34,11 @@ export class InteresadosInformacionComponent implements OnInit {
     estadoPersona2="Rechazado";
     descripcion1="Su solicitud ha sido rechazada por no cumplir con los requisitos minimos para la adopción de este animal.";
     descripcion2="Su solicitud  ha sido  aceptada comuniquese con el Dador.";
-  constructor( private ngxToastService: NgxToastService, private rutaActiva: ActivatedRoute, private animalService: AnimalService,  private usuarioService: UsuariosService) {
+  constructor( private router: Router, private rutaActiva: ActivatedRoute, private animalService: AnimalService,  private usuarioService: UsuariosService) {
     this.adopcion = {   id_animal: "" , id_usuario:"" };
     this.animal2 = { estado: "" };
     this.adop = { estado: "",descripcion:"" };
-    this.solici = {   estado: "" , descripcion:"" };
+    this.solici = {   estado: "" , descripcion:"",id_registrado:"" };
    }
 
   ngOnInit(): void {
@@ -106,7 +106,9 @@ export class InteresadosInformacionComponent implements OnInit {
       err => console.log(err)
     )
   }
-
+volver(){
+  this.router.navigate(['animales/registrados']);
+}
 
   agregar(id:any,animal:any) {
     console.log(id);
@@ -127,6 +129,7 @@ export class InteresadosInformacionComponent implements OnInit {
       // empiza modificar estado
       this.adop.estado = this.estadoPersona;
       this.adop.descripcion = this.descripcion2;
+
       this.animalService.modSolicitudes(animal,id,this.adop).subscribe(
         res => {
           console.log("Datos del Servicio");
@@ -167,6 +170,7 @@ export class InteresadosInformacionComponent implements OnInit {
     );
     this.solici.estado = this.estadoPersona2;
     this.solici.descripcion = this.descripcion1;
+  
     this.animalService.actualizaEliminar(id,animal,this.solici).subscribe(
       res => {
         console.log("Datos del Servicio");

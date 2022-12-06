@@ -18,7 +18,7 @@ class UserModel {
         return __awaiter(this, void 0, void 0, function* () {
             this.db = yield (0, promise_1.createPool)({
                 host: 'localhost',
-                port: 3306,
+                port: 33065,
                 user: 'root',
                 password: '',
                 database: 'estacionamiento',
@@ -112,7 +112,42 @@ class UserModel {
     //Devuelve 1 si logro eliminar el usuario indicado por id
     eliminar(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const user = (yield this.db.query('DELETE FROM usuarios WHERE ID = ?', [id]))[0].affectedRows;
+            const user = (yield this.db.query('DELETE FROM usuarios WHERE id = ?', [id]))[0].affectedRows;
+            console.log(user);
+            return user;
+        });
+    }
+    eliminarSolicitud(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const user = (yield this.db.query('DELETE FROM solicitud WHERE id_usuario = ?', [id]))[0].affectedRows;
+            console.log(user);
+            return user;
+        });
+    }
+    eliminarAdopcion(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const user = (yield this.db.query('DELETE FROM adopcion WHERE id_registrado = ?', [id]))[0].affectedRows;
+            console.log(user);
+            return user;
+        });
+    }
+    eliminarAdopciones(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const user = (yield this.db.query('DELETE FROM adopciones WHERE id_usuario = ?', [id]))[0].affectedRows;
+            console.log(user);
+            return user;
+        });
+    }
+    eliminarAnimales(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const user = (yield this.db.query('DELETE FROM animal WHERE id_usuario = ?', [id]))[0].affectedRows;
+            console.log(user);
+            return user;
+        });
+    }
+    eliminarUserSolicitudes(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const user = (yield this.db.query('DELETE FROM solicitud WHERE id_registrado = ?', [id]))[0].affectedRows;
             console.log(user);
             return user;
         });

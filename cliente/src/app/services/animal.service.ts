@@ -83,6 +83,7 @@ export class AnimalService {
 	eliminarAdopcion(id:string){
 		return this.http.delete(`${this.API_URI}/elimindopcion/${id}`);
 	}
+	
 	eliminarTodos(id:string, nombre:string){
 		return this.http.delete(`${this.API_URI}/eliminatodos/${id}/${nombre}`);
 	}

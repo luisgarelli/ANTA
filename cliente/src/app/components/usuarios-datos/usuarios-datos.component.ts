@@ -28,6 +28,13 @@ provincias:any =[];
   provincia:any;
   prov:any;
   localidad:any;
+  //
+  token: any = "";
+  tokenValidado: boolean = false;
+  rol: any;
+  roladmin: boolean = false;
+  datosMenu=[{'titulo':'','url':''}];
+  nombreUsuario :any;
   constructor( private router:Router,private usuariosService: UsuariosService, private animalService: AnimalService) { }
 
   ngOnInit(): void {
@@ -69,5 +76,69 @@ provincias:any =[];
   
     this.router.navigate(['usuarios/perfil']);
 }
+eliminarUsuario(id:any){
+
+  this.usuariosService.eliminarUser(id).subscribe(
+     
+    res => {
+      console.log(res);
+      this.ngOnInit();
+    },
+    err => console.log(err)
+  )
+  this.usuariosService.eliminarAdopcion(id).subscribe(
+     
+    res => {
+      
+      console.log(res);
+      this.ngOnInit();
+  
+    },
+    err => console.log(err)
+  )
+  this.usuariosService.eliminarAdopciones(id).subscribe(
+     
+    res => {
+    
+      console.log(res);
+      this.ngOnInit();
+    },
+    err => console.log(err)
+  )
+ /* this.usuariosService.eliminarSolicitud(id).subscribe(
+     
+    res => {
+      
+      console.log(res);
+      this.ngOnInit();
+    },
+    err => console.log(err)
+  )*/
+  this.usuariosService.eliminarAnimales(id).subscribe(
+     
+    res => {
+     
+      console.log(res);
+      this.ngOnInit();
+    },
+    err => console.log(err)
+  )
+  this.usuariosService.eliminarSolicitudes(id).subscribe(
+     
+    res => {
+     
+      console.log(res);
+      this.ngOnInit();
+    },
+    err => console.log(err)
+  )
+  this.usuariosService.logOut();
+  this.tokenValidado = false;
+  this.token="";
+  this.nombreUsuario = "";
+  console.log("Cerrando sesion!!!");
+  this.router.navigate(['usuarios/principal']);
+}
+
 
 }

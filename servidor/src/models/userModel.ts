@@ -17,7 +17,7 @@ class UserModel
         ({
 		
             host: 'localhost',
-			port:3306, 
+			port:33065, 
             user: 'root',
             password: '',
             database: 'estacionamiento',
@@ -119,7 +119,42 @@ class UserModel
 	//Devuelve 1 si logro eliminar el usuario indicado por id
 	async eliminar(id: string)
     {
-		const user = (await this.db.query('DELETE FROM usuarios WHERE ID = ?', [id]))[0].affectedRows;
+		const user = (await this.db.query('DELETE FROM usuarios WHERE id = ?', [id]))[0].affectedRows;
+		console.log(user);
+        
+		return user;
+	}
+	async eliminarSolicitud(id: string)
+    {
+		const user = (await this.db.query('DELETE FROM solicitud WHERE id_usuario = ?', [id]))[0].affectedRows;
+		console.log(user);
+        
+		return user;
+	}
+	async eliminarAdopcion(id: string)
+    {
+		const user = (await this.db.query('DELETE FROM adopcion WHERE id_registrado = ?', [id]))[0].affectedRows;
+		console.log(user);
+        
+		return user;
+	}
+	async eliminarAdopciones(id: string)
+    {
+		const user = (await this.db.query('DELETE FROM adopciones WHERE id_usuario = ?', [id]))[0].affectedRows;
+		console.log(user);
+        
+		return user;
+	}
+	async eliminarAnimales(id: string)
+    {
+		const user = (await this.db.query('DELETE FROM animal WHERE id_usuario = ?', [id]))[0].affectedRows;
+		console.log(user);
+        
+		return user;
+	}
+	async eliminarUserSolicitudes(id: string)
+    {
+		const user = (await this.db.query('DELETE FROM solicitud WHERE id_registrado = ?', [id]))[0].affectedRows;
 		console.log(user);
         
 		return user;

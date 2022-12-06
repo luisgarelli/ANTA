@@ -5,4 +5,5 @@ export interface Solicitud{
 	estado?: string;
 	descripcion?: string;
 	nombre_animal?: string;
+	id_registrado?: string;
 }

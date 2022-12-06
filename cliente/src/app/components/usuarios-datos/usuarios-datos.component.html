@@ -6,8 +6,10 @@
     <p style="color: black;">  Email:{{usuarios.email}}</p> 
     <p style="color: black;">  Sexo:{{usuarios.sexo}}</p> 
     <p style="color: black;">  Provincia:{{provincias.provincia}}</p> 
-    <p style="color: black;">  Localidad:{{localidades.localidad}}</p> 
-    <button class="btn btn-primary btn-sm" (click)="cambiarSeleccion()"   >Editar datos</button>  
+    <p style="color: black;">  Localidad:{{localidades.localidad}}</p>
+
+    <button class="btn btn-primary btn-sm" (click)="cambiarSeleccion()"   >Editar datos</button> 
+    <button class="btn btn-danger btn-sm" (click)="eliminarUsuario(usuarios.id)"   >Eliminar Perfil</button>   
     </div>
 
     </div>

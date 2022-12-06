@@ -224,6 +224,49 @@ class UserController
         const result = await userModel.eliminar(id);
         return res.json({ text: 'deleting a user ' + id });
 	}
+    public async eliminarUsuario(req:Request,res:Response){
+		console.log(req.body);
+        //res.send('Usuario '+ req.params.id +' Eliminado!!!');
+        const { id } = req.params; // hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.
+        const result = await userModel.eliminar(id);
+        return res.json({ text: 'deleting a user ' + id });
+	}
+    public async eliminarAnimal(req:Request,res:Response){
+		console.log(req.body);
+        //res.send('Usuario '+ req.params.id +' Eliminado!!!');
+        const { id } = req.params; // hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.
+        const result = await userModel.eliminarAnimales(id);
+        return res.json({ text: 'deleting a user ' + id });
+	}
+    public async eliminarSolicitud(req:Request,res:Response){
+		console.log(req.body);
+        //res.send('Usuario '+ req.params.id +' Eliminado!!!');
+        const { id } = req.params; // hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.
+        const result = await userModel.eliminarSolicitud(id);
+        return res.json({ text: 'deleting a user ' + id });
+	}
+    public async eliminarAdopcion(req:Request,res:Response){
+		console.log(req.body);
+        //res.send('Usuario '+ req.params.id +' Eliminado!!!');
+        const { id } = req.params; // hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.
+        const result = await userModel.eliminarAdopcion(id);
+        return res.json({ text: 'deleting a user ' + id });
+	}
+    public async eliminarSolicitudes(req:Request,res:Response){
+		console.log(req.body);
+        //res.send('Usuario '+ req.params.id +' Eliminado!!!');
+        const { id } = req.params; // hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.
+        const result = await userModel.eliminarUserSolicitudes(id);
+        return res.json({ text: 'deleting a user ' + id });
+	}
+    public async eliminarAdopciones(req:Request,res:Response){
+		console.log(req.body);
+        //res.send('Usuario '+ req.params.id +' Eliminado!!!');
+        const { id } = req.params; // hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.
+        const result = await userModel.eliminarAdopciones(id);
+        return res.json({ text: 'deleting a user ' + id });
+	}
+
 	//FIN CRUD
 }
 

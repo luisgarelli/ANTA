@@ -85,6 +85,14 @@
                                 <div *ngSwitchCase="3">Email debe ser nombre@dominio.algo .</div>
                             </div>
 
+                            <div class="input-group form-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                </div>
+                                <input type="text" name="numero" [(ngModel)]="user.numero" 
+                                    placeholder="Número de teléfono" class="form-control">
+                            </div>
+
                             <button class="btn btn-success btn-block" (click)="verificarForm()">Enviar</button>
                         </div>
                     </form>

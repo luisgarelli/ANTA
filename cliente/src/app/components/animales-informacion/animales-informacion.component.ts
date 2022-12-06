@@ -48,11 +48,12 @@ idRegistrado:any;
 adopcion2: Adopcion;
 nombreAnimal:any;
 boton: boolean = true;
+idRegis:any;
 constructor( private ngxToastService: NgxToastService, private rutaActiva: ActivatedRoute, private animalService: AnimalService,  private usuarioService: UsuariosService) { 
   this.adopcion = {  id_animal: "",  id_usuario: "",tipo_vivienda:"", tipo_propietario:"", caso_alquilar:"", animal_castrado:"",compromiso_animal:"" , balcones:"", acuerdo_familiar:"", animal_propiedad:"", animal_pasear:"",id_registrado:"",estado:""};
   this.animal2 = { estado: "" };
   this.adopcion2 = { estado: "" };
-  this.solicitudes = { id_usuario:"",id_animal:"",estado: "",descripcion:"",nombre_animal:"" };
+  this.solicitudes = { id_usuario:"",id_animal:"",estado: "",descripcion:"",nombre_animal:"", id_registrado:"" };
 
  
 }
@@ -154,6 +155,8 @@ constructor( private ngxToastService: NgxToastService, private rutaActiva: Activ
             this.registrado = res;
             console.log(res);
             console.log(this.registrado.numero);
+            console.log("id del usuario q lo registro",this.registrado.id);
+            this.idRegis = this.registrado.id;
           this.nomCelular = this.registrado.numero;
        
           this.celular = `${this.codCelular}${this.nomCelular}`;
@@ -247,6 +250,7 @@ this.idAnimal = idAnim;
   this.solicitudes.estado = this.estadoAnimal;
   this.solicitudes.descripcion = this.descripcion;
   this.solicitudes.nombre_animal = this.nombreAnimal;
+  this.solicitudes.id_registrado = this.idRegis;
   this.animalService.guardarSolicitud(this.solicitudes).subscribe(
     res => {
       console.log("Datos del Servicio");

@@ -40,7 +40,13 @@ class UserRoutes
 		this.router.get('/listar',TokenValidation,userController.listarSexo);
 		this.router.get('/listaProvincia',TokenValidation,userController.listarProvincia);
 		this.router.get('/listaLocalidad',TokenValidation,userController.listarLocalidad);
-		
+		//
+		this.router.delete('/elimina/:id',TokenValidation,userController.eliminarUsuario);
+		this.router.delete('/solicitud/:id',TokenValidation,userController.eliminarSolicitud);
+		this.router.delete('/adopcion/:id',TokenValidation,userController.eliminarAdopcion);
+		this.router.delete('/adopciones/:id',TokenValidation,userController.eliminarAdopciones);
+		this.router.delete('/animales/:id',TokenValidation,userController.eliminarAnimal);
+		this.router.delete('/solicitudes/:id',TokenValidation,userController.eliminarSolicitudes);
 	}
 }
 
