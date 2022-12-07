@@ -50,7 +50,7 @@ nombreAnimal:any;
 boton: boolean = true;
 idRegis:any;
 constructor( private ngxToastService: NgxToastService, private rutaActiva: ActivatedRoute, private animalService: AnimalService,  private usuarioService: UsuariosService) { 
-  this.adopcion = {  id_animal: "",  id_usuario: "",tipo_vivienda:"", tipo_propietario:"", caso_alquilar:"", animal_castrado:"",compromiso_animal:"" , balcones:"", acuerdo_familiar:"", animal_propiedad:"", animal_pasear:"",id_registrado:"",estado:""};
+  this.adopcion = {  id_animal: "",  id_usuario: "",tipo_vivienda:"", animal_castrado:"",compromiso_animal:"" , balcones:"", acuerdo_familiar:"", animal_propiedad:"", animal_pasear:"",id_registrado:"",estado:""};
   this.animal2 = { estado: "" };
   this.adopcion2 = { estado: "" };
   this.solicitudes = { id_usuario:"",id_animal:"",estado: "",descripcion:"",nombre_animal:"", id_registrado:"" };
