@@ -18,7 +18,7 @@ class AutoModel {
         return __awaiter(this, void 0, void 0, function* () {
             this.db = yield (0, promise_1.createPool)({
                 host: 'localhost',
-                port: 3306,
+                port: 33065,
                 user: 'root',
                 password: '',
                 database: 'estacionamiento',

@@ -15,6 +15,7 @@ import { Storage,ref, uploadBytes, listAll,getDownloadURL,UploadTaskSnapshot,upl
 import { AnyForUntypedForms } from '@angular/forms';
 import { UsuariosService } from '../../services/usuarios.service';
 import { Usuarios } from 'src/app/models/usuarioModel';
+import { Solicitud } from 'src/app/models/solicitudModel';
 @Component({
   selector: 'app-usuarios-datos',
   templateUrl: './usuarios-datos.component.html',
@@ -28,6 +29,7 @@ provincias:any =[];
   provincia:any;
   prov:any;
   localidad:any;
+  solici:Solicitud;
   //
   token: any = "";
   tokenValidado: boolean = false;
@@ -35,7 +37,11 @@ provincias:any =[];
   roladmin: boolean = false;
   datosMenu=[{'titulo':'','url':''}];
   nombreUsuario :any;
-  constructor( private router:Router,private usuariosService: UsuariosService, private animalService: AnimalService) { }
+  estadoPersona2="Rechazado";
+    descripcion1="Su solicitud ha sido rechazada porque el usuario ha sido dado de baja.";
+  constructor( private router:Router,private usuariosService: UsuariosService, private animalService: AnimalService) { 
+    this.solici = {   estado: "" , descripcion:""};
+  }
 
   ngOnInit(): void {
     this.user = this.usuariosService.getId();
@@ -105,15 +111,22 @@ eliminarUsuario(id:any){
     },
     err => console.log(err)
   )
- /* this.usuariosService.eliminarSolicitud(id).subscribe(
+//
+
+this.solici.estado = this.estadoPersona2;
+this.solici.descripcion = this.descripcion1;
+ 
+this.animalService.updateSolici(id,this.solici).subscribe(
+  res => {
+    console.log("Datos del Servicio");
+    console.log(res);
+  
      
-    res => {
-      
-      console.log(res);
-      this.ngOnInit();
-    },
-    err => console.log(err)
-  )*/
+    this.ngOnInit();
+  },
+  err => console.log(err)
+);
+//
   this.usuariosService.eliminarAnimales(id).subscribe(
      
     res => {
@@ -123,7 +136,7 @@ eliminarUsuario(id:any){
     },
     err => console.log(err)
   )
-  this.usuariosService.eliminarSolicitudes(id).subscribe(
+  this.usuariosService.eliminarSolicitud(id).subscribe(
      
     res => {
      

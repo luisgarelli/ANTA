@@ -70,6 +70,7 @@ class AnimalRoutes
 		this.router.get('/contador/:id',TokenValidation,animalController.contador);//nuevo
 		this.router.put('/actsolicitud/:id',TokenValidation,animalController.actualizarSolicitud);
 		this.router.delete('/elimindopcion/:id',TokenValidation,animalController.eliminarAdopcion);
+		this.router.put('/updatesoli/:id',TokenValidation,animalController.updateSolicitu);
 
 
 	}

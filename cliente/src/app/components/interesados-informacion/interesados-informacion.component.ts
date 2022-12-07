@@ -38,7 +38,7 @@ export class InteresadosInformacionComponent implements OnInit {
     this.adopcion = {   id_animal: "" , id_usuario:"" };
     this.animal2 = { estado: "" };
     this.adop = { estado: "",descripcion:"" };
-    this.solici = {   estado: "" , descripcion:"",id_registrado:"" };
+    this.solici = {   estado: "" , descripcion:""};
    }
 
   ngOnInit(): void {

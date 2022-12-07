@@ -18,7 +18,7 @@ class AnimalModel {
         return __awaiter(this, void 0, void 0, function* () {
             this.db = yield (0, promise_1.createPool)({
                 host: 'localhost',
-                port: 3306,
+                port: 33065,
                 user: 'root',
                 password: '',
                 database: 'estacionamiento',
@@ -294,6 +294,13 @@ class AnimalModel {
     actualiadopcion(usuario, id, nom) {
         return __awaiter(this, void 0, void 0, function* () {
             const result = (yield this.db.query('UPDATE solicitud SET ?  WHERE id_animal = ? AND id_usuario = ?', [usuario, id, nom]))[0].affectedRows;
+            console.log(result);
+            return result;
+        });
+    }
+    updateSolicitud(usuario, id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const result = (yield this.db.query('UPDATE solicitud SET ?  WHERE id_registrado = ? ', [usuario, id]))[0].affectedRows;
             console.log(result);
             return result;
         });

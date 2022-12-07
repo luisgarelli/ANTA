@@ -321,6 +321,15 @@ class AnimalController {
             return res.json({ text: 'updating a slot ' + id });
         });
     }
+    updateSolicitu(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.body);
+            const { id } = req.params;
+            const result = yield animalModel_1.default.updateSolicitud(req.body, id);
+            //res.send('Usuario '+ req.params.id +' actualizado!!!');
+            return res.json({ text: 'updating a slot ' + id });
+        });
+    }
     eliminar(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             /*console.log(req.body);

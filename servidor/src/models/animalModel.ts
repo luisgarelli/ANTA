@@ -17,7 +17,7 @@ class AnimalModel
         ({
 		
             host: 'localhost',
-			port:3306,
+			port:33065,
             user: 'root',
             password: '',
             database: 'estacionamiento',
@@ -329,6 +329,15 @@ class AnimalModel
 
 		return result;
 	}
+
+	async updateSolicitud(usuario: object, id: string)
+    {
+		const result = (await this.db.query('UPDATE solicitud SET ?  WHERE id_registrado = ? ', [usuario, id]))[0].affectedRows;
+		console.log(result);
+
+		return result;
+	}
+	
 	async actualizaEliminar(usuario: object, id: string,nom:string)
     {
 		const result = (await this.db.query('UPDATE solicitud SET ? WHERE id_usuario != ? AND id_animal = ?', [ usuario,id,nom]))[0].affectedRows;

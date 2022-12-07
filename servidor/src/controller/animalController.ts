@@ -334,6 +334,15 @@ class AnimalController
         return res.json({ text: 'updating a slot ' + id });
 
 	}
+    public async updateSolicitu(req:Request,res:Response)
+    {
+        console.log(req.body);
+        const { id } = req.params;
+        const result = await animalModel.updateSolicitud(req.body, id);
+        //res.send('Usuario '+ req.params.id +' actualizado!!!');
+        return res.json({ text: 'updating a slot ' + id });
+
+	}
 
 	public async eliminar(req:Request,res:Response){
 		/*console.log(req.body);

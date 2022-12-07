@@ -64,6 +64,7 @@ class AnimalRoutes {
         this.router.get('/contador/:id', verifyToken_1.TokenValidation, animalController_1.default.contador); //nuevo
         this.router.put('/actsolicitud/:id', verifyToken_1.TokenValidation, animalController_1.default.actualizarSolicitud);
         this.router.delete('/elimindopcion/:id', verifyToken_1.TokenValidation, animalController_1.default.eliminarAdopcion);
+        this.router.put('/updatesoli/:id', verifyToken_1.TokenValidation, animalController_1.default.updateSolicitu);
     }
 }
 //Exportamos el enrutador con 

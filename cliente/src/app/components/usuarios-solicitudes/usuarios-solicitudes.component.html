@@ -17,6 +17,7 @@
         <td>{{usuarios.estado}}</td>
         <td>{{usuarios.descripcion}}</td>
         <td *ngIf="usuarios.estado == 'Rechazado'"> <button  type="button"   (click)="eliminar(usuarios.id)" class="btn btn-danger"  >Eliminar</button></td>
+        <td *ngIf="usuarios.estado == 'Aceptado'"> <button  type="button"   (click)="eliminar(usuarios.id)" class="btn btn-danger"  >Eliminar</button></td>
         <!-- eliminar desde solicitud. -->
     </tr>
     
