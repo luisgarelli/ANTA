@@ -42,21 +42,20 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
+                <h4 class="text-right">Formulario de Adopción</h4>
                 <button type="button" class="close" data-dismiss="modal">
-                
                   <span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span>
                 </button>
-                <h4 class="text-right">Formulario de Adopción</h4>
               </div>
               <form (submit)="agrega()" method="post">
                 <fieldset>
                   <legend style="color: black">Tipo de Residencia (*)</legend>
                   <label>
-                    <input type="radio" name="color" value="Casa" [(ngModel)]="adopcion.tipo_vivienda">Casa
+                    <input type="radio" name="color" value="Casa" [(ngModel)]="adopcion.tipo_vivienda"> Casa
                   </label>
                   <label>
                     <input type="radio" name="color" value="Departamento"
-                      [(ngModel)]="adopcion.tipo_vivienda">Departamento
+                      [(ngModel)]="adopcion.tipo_vivienda"> Departamento
                   </label>
                 </fieldset>
 
@@ -77,7 +76,7 @@
                   <br>
                   <label>
                     <input type="radio" name="caso" value="Algunos Si y otros No."
-                      [(ngModel)]="adopcion.animal_castrado"> Algunos Si y otros no.
+                      [(ngModel)]="adopcion.animal_castrado"> Algunos si y otros no.
                   </label>
                   <br>
                   <label>
@@ -134,8 +133,7 @@
                   </label>
                   <br>
                   <label>
-                    <input type="radio" name="horas" value="Más de 3 " [(ngModel)]="adopcion.animal_propiedad"> Más de
-                    3.
+                    <input type="radio" name="horas" value="Más de 3 " [(ngModel)]="adopcion.animal_propiedad"> 3 horas o más.
                   </label>
 
                 </fieldset>
@@ -155,7 +153,7 @@
                   </label>
 
                 </fieldset>
-                <button *ngIf="boton" class="btn btn-success btn-block">Adoptar</button>
+                <button *ngIf="boton" class="btn btn-success btn-block">Enviar</button>
 
               </form>
               <div class="modal-footer">
