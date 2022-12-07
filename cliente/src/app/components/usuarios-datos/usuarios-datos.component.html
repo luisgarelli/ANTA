@@ -2,11 +2,12 @@
     <!-- <img class="card-img-top"  src="https://www.elfinanciero.com.mx/resizer/031BMWo-U9oB5WJP4DdPbNx9vII=/400x225/filters:format(jpg):quality(70)/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/G4FLWTZ57VE2JPYATUTCB4GJ7E.jpg" alt="Card image cap">-->
     <br>
      <div class="card-body" style="background-color: white;" >
-    <p style="color: black;"> Nombre: {{usuarios.nombre}} </p> 
-    <p style="color: black;">  Email:{{usuarios.email}}</p> 
-    <p style="color: black;">  Sexo:{{usuarios.sexo}}</p> 
-    <p style="color: black;">  Provincia:{{provincias.provincia}}</p> 
-    <p style="color: black;">  Localidad:{{localidades.localidad}}</p>
+    <p style="color: black;">  Nombre : {{usuarios.nombre}} </p> 
+    <p style="color: black;">  Email : {{usuarios.email}}</p> 
+    <p style="color: black;">  Teléfono : {{usuarios.numero}}</p> 
+    <p style="color: black;">  Sexo : {{usuarios.sexo}}</p> 
+    <p style="color: black;">  Provincia : {{provincias.provincia}}</p> 
+    <p style="color: black;">  Localidad : {{localidades.localidad}}</p>
 
     <button class="btn btn-primary btn-sm" (click)="cambiarSeleccion()"   >Editar datos</button> 
     <button class="btn btn-danger btn-sm" (click)="eliminarUsuario(usuarios.id)"   >Eliminar Perfil</button>   
