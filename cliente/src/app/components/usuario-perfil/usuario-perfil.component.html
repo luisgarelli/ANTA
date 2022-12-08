@@ -1,4 +1,59 @@
+<section class="container">
+  <h3 class="text-uppercase text-center">Datos Personales</h3>
+  <p class="text-uppercase text-center">En esta sección podras editar tus datos personales</p>
+  <div class="row">
+    <div class="col-6">
+      <form class="">
+        <div class="form-group row">
+          <label for="exampleInputEmail1">Nombre</label>
+      <input type="text" class="form-control" id="nombre" [(ngModel)]="usuario.nombre" aria-describedby="emailHelp"
+        placeholder="Ingrese aqui el nombre">
+        </div>
+        <div class="form-group row">
+          <label for="exampleInputEmail1">Email</label>
+      <input type="email" class="form-control" id="email" [(ngModel)]="usuario3.email" aria-describedby="emailHelp"
+        placeholder="Ingrese aqui el email">
+        </div>
+        <div class="form-group row">
+          <label for="exampleInputEmail1">Sexo</label>
+        <input type="text" class="form-control" id="sexo" [(ngModel)]="usuario2.sexo" aria-describedby="emailHelp"
+        placeholder="Ingrese aqui el sexo">
+        </div>  
+      </form>
+    </div>
+    <div class="row">
+        <form class="">
+          <div class="form-group row">
+            <label for="" class="row-4">Provincia</label>
+          <select class="form-control" [(ngModel)]="usuario4.provincia" (change)="cambiarSeleccion5($event)">
+            <option disabled selected> Selecciona una opción</option>
+            <option [value]="ani.id" *ngFor="let ani of combo3">
+              {{ani.provincia}}
+          </select>
+          </div>
+          <div class="form-group row">
+            <label for="" class="row-4">Localidad</label>
+            <select class="form-control" [(ngModel)]="usuario4.localidad" (change)="cambiarSeleccion6($event)">
+              <option [value]="ani.id" *ngFor="let ani of codigo">
+                {{ani.localidad}}
+            </select>
+          </div>
+          <div class="form-group row">
+            <label for="exampleInputEmail1">Telefono</label>
+            <input type="text" class="form-control" id="nombre" [(ngModel)]="usuario5.numero" aria-describedby="emailHelp"
+              placeholder="Ingrese el número (+54)">
+          </div>
+    </form>
+    </div>
+  </div>
+  <div class="contenedor">
+    <button type="button" class="btn btn-primary">Aceptar</button>
+  </div>
+</section>
 
+
+
+<!-- -->
 <div>
   <br>
   <div class="card-body">
@@ -67,7 +122,7 @@
             {{ani.localidad}}
 
         </select>
-      </div>
+    </div>
       <button class="btn btn-primary btn-sm" (click)="cambiarProvincias()">Aceptar</button>
       <button class="btn btn-primary btn-sm" (click)="ocultar4()">Ocultar</button>
     </div>
@@ -90,35 +145,3 @@
   </div>
 </div>
 
-<section class="container">
-  <h3 class="text-uppercase text-center">Mis Datos Personales</h3>
-  <p class="text-uppercase text-center">En esta sección podras editar tus datos personales</p>
-  <div class="row">
-    <div class="col-4">
-      <form class="">
-        <div class="form-group">
-            <div class="row">
-                <label for="nombre">Nombre: {{usuarios.nombre}}</label>
-            </div>
-            <div class="row">
-              <br>
-                <label for="email">Email: {{usuarios.email}}</label>
-            </div>
-            <div class="row">
-                <label for="sexo">Sexo: {{usuarios.sexo}}</label>
-            </div>
-            <div class="row">
-                <label for="provincia">Provincia: {{provincias.provincia}}</label>
-            </div>
-            <div class="row">
-                <label for="localidad">Localidad: {{localidades.localidad}}</label>
-            </div>
-          </div>
-              <div class="">
-                <button class="btn btn-primary btn-sm" (click)="mostrarse()">Editar</button>
-              </div>
-      </form>
-    </div>
-  </div>
-
-</section>

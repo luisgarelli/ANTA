@@ -1,16 +1,18 @@
-<div  style="width: 35rem; "   >
-    <!-- <img class="card-img-top"  src="https://www.elfinanciero.com.mx/resizer/031BMWo-U9oB5WJP4DdPbNx9vII=/400x225/filters:format(jpg):quality(70)/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/G4FLWTZ57VE2JPYATUTCB4GJ7E.jpg" alt="Card image cap">-->
+<div class="container">
+    <div class="card-body">
+    <img class="card-img-top img-fluid"  src="https://static.vecteezy.com/system/resources/previews/004/226/416/non_2x/assignment-ind-glyph-color-icon-cv-user-information-profile-patient-card-silhouette-symbol-on-white-background-with-no-outline-negative-space-illustration-vector.jpg" alt="Card image cap">
     <br>
-     <div class="card-body" style="background-color: white;" >
-    <p style="color: black;">  Nombre : {{usuarios.nombre}} </p> 
-    <p style="color: black;">  Email : {{usuarios.email}}</p> 
-    <p style="color: black;">  Teléfono : {{usuarios.numero}}</p> 
-    <p style="color: black;">  Sexo : {{usuarios.sexo}}</p> 
-    <p style="color: black;">  Provincia : {{provincias.provincia}}</p> 
-    <p style="color: black;">  Localidad : {{localidades.localidad}}</p>
+        
+        <p>  Nombre : {{usuarios.nombre}} </p> 
+        <p>  Email : {{usuarios.email}}</p> 
+        <p>  Teléfono : {{usuarios.numero}}</p> 
+        <p>  Sexo : {{usuarios.sexo}}</p> 
+        <p>  Provincia : {{provincias.provincia}}</p> 
+        <p>  Localidad : {{localidades.localidad}}</p>
 
-    <button class="btn btn-primary btn-sm" (click)="cambiarSeleccion()"   >Editar datos</button> 
-    <button class="btn btn-danger btn-sm" (click)="eliminarUsuario(usuarios.id)"   >Eliminar Perfil</button>   
+        <div class="text-center">
+            <button class="btn btn-primary btn-sm" (click)="cambiarSeleccion()">Editar datos</button> 
+            <button class="btn btn-danger btn-sm" (click)="eliminarUsuario(usuarios.id)">Eliminar Perfil</button>
+        </div>  
     </div>
-
-    </div>
+</div>

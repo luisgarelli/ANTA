@@ -1,0 +1,13 @@
+
+.container{
+    width: 25rem;
+    background-color:cornsilk;  
+}
+p{
+    color:black;
+}
+button{
+    display: inline-block;
+    margin: 2px;
+
+}

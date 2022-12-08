@@ -5,10 +5,18 @@
     background-image: url('https://png.pngtree.com/background/20210711/original/pngtree-light-blue-pet-dog-poster-background-picture-image_1094535.jpg');
     background-repeat: no-repeat;
     align-content: center;
+    height: 35rem;
+    justify-content: center;
+}
+.contenedor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3%;
 }
 section{
     margin-top: 1.5rem;
-    padding: 1.5rem!important;
+    padding: 2.5rem!important;
     margin-block-end: 1.5rem;
 }
 .row{

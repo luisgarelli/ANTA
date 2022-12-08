@@ -3,10 +3,14 @@
   <p class="text-uppercase text-center">En este formulario podras dar de alta un animal que quieras que lo adopten.</p>
 
       <form  (submit)="agregar()" method="post" enctype="multipart/form-data">
+        <div class="form-group row">
+          <label for="nombre" class="col-3 col-form-label">Nombre</label>
+            <input type="text" id="" name="nombre" [(ngModel)]="animal.nombre" placeholder="Ingrese el nombre aquí" autofocus class="form-control col-4">
+        </div>
 
         <div class="form-group row">
           <label for="" class="col-3 col-form-label">Animal</label>
-            <select class="form-select col-4" [(ngModel)]="animal.animal_codigo" (change)="cambiarSeleccion7($event)">
+            <select class="form-control col-4" [(ngModel)]="animal.animal_codigo" (change)="cambiarSeleccion7($event)">
               <option [value]="ani.id" *ngFor="let ani of combo5">
                 {{ani.nombre}}
             </select>
@@ -14,7 +18,7 @@
 
         <div class="form-group row">
           <label for="" class="col-3 col-form-label">Raza</label>
-            <select class="form-select col-4" [(ngModel)]="animal.raza" (change)="cambiarSeleccion2($event)">
+            <select class="form-control col-4" [(ngModel)]="animal.raza" (change)="cambiarSeleccion2($event)">
               <option [value]="ani.id" *ngFor="let ani of codigo2">
                 {{ani.raza}}
             </select>
@@ -22,22 +26,19 @@
 
         <div class="form-group row">
           <label for="" class="col-3 col-form-label">Sexo</label>
-            <select class="form-select col-4" [(ngModel)]="animal.sexo" (change)="cambiarSeleccion($event)">
+            <select class="form-control col-4" [(ngModel)]="animal.sexo" (change)="cambiarSeleccion($event)">
               <option [value]="ani.sexo" *ngFor="let ani of combo">
                 {{ani.sexo}}
             </select>
         </div>
         <div>
 
-        <div class="form-group row">
-          <label for="nombre" class="col-3 col-form-label">Nombre</label>
-            <input type="text" id="" name="nombre" [(ngModel)]="animal.nombre" placeholder="Ingrese el nombre aquí" autofocus class="form-control col-4">
-        </div>
+        
     
 
         <div class="form-group row">
           <label for="" class="col-3 col-form-label">Provincia</label>
-            <select class="form-select col-4" [(ngModel)]="animal.provincia" (change)="cambiarSeleccion5($event)">
+            <select class="form-control col-4" [(ngModel)]="animal.provincia" (change)="cambiarSeleccion5($event)">
               <option disabled selected>Selecciona una opción</option>
               <option [value]="ani.id" *ngFor="let ani of combo3">
                 {{ani.provincia}}
@@ -46,7 +47,7 @@
 
         <div class="form-group row">
           <label for="" class="col-3 col-form-label">Localidad</label>
-            <select class="form-select col-4" [(ngModel)]="animal.localidad" (change)="cambiarSeleccion6($event)">
+            <select class="form-control col-4" [(ngModel)]="animal.localidad" (change)="cambiarSeleccion6($event)">
               <option [value]="ani.id" *ngFor="let ani of codigo">
                 {{ani.localidad}}
             </select>
@@ -54,12 +55,12 @@
 
         <div class="form-group row">
           <label for="" class="col-3 col-form-label">Descripción</label>
-            <input class="form-control col-4" type="text" id="" name="descripcion" [(ngModel)]="animal.descripcion">
+            <input class="form-control col-4" type="text" id="" name="descripcion" [(ngModel)]="animal.descripcion" placeholder="Describi a la mascota">
         </div>
 
         <div class="form-group row">
           <h4 class="col-3 col-form-label">¿Tamaño del Animal?</h4>
-          <label>
+          <label class="">
             <input class="col-3" type="radio" name="tama" value="Pequeño" [(ngModel)]="animal.tamanio"> Pequeño
           </label>
           <label>
@@ -72,14 +73,14 @@
           
         <div class="form-group row">
           <h4 class="col-3 col-form-label">¿Edad del Animal?</h4>
-            <label>
+            <label class="">
               <input class="col-3" type="radio" name="tip" value="Cachorro" [(ngModel)]="animal.tipo"> Cachorro
             </label>
             <label>
-              <input class="col-3" type="radio" name="tip" value="Adulto" [(ngModel)]="animal.tipo"> Adulto
+              <input class="col-3" type="radio" name="tip" value="Adulto" [(ngModel)]="animal.tipo"> Joven
             </label>
             <label>
-              <input class="col-3" type="radio" name="tip" value="Anciano" [(ngModel)]="animal.tipo"> Anciano
+              <input class="col-3" type="radio" name="tip" value="Anciano" [(ngModel)]="animal.tipo"> Adulto
             </label>
         </div>
             
