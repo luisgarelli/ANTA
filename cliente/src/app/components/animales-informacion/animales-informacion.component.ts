@@ -245,7 +245,7 @@ this.idAnimal = idAnim;
     err => console.log(err)
   );
   //
-  this.solicitudes.id_usuario = this.idUsuario;
+  /*this.solicitudes.id_usuario = this.idUsuario;
   this.solicitudes.id_animal = this.idAnimal;
   this.solicitudes.estado = this.estadoAnimal;
   this.solicitudes.descripcion = this.descripcion;
@@ -260,6 +260,7 @@ this.idAnimal = idAnim;
     },
     err => console.log(err)
   );
+  */
   //
 if(this.boleano == false){
   console.log("se puede adoptar");
@@ -277,9 +278,23 @@ if(this.boleano == false){
     res => {
       console.log("Datos del Servicio");
       console.log(res);
-
+      this.solicitudes.id_usuario = this.idUsuario;
+      this.solicitudes.id_animal = this.idAnimal;
+      this.solicitudes.estado = this.estadoAnimal;
+      this.solicitudes.descripcion = this.descripcion;
+      this.solicitudes.nombre_animal = this.nombreAnimal;
+      this.solicitudes.id_registrado = this.idRegis;
+      this.animalService.guardarSolicitud(this.solicitudes).subscribe(
+        res => {
+          console.log("Datos del Servicio");
+          console.log(res);
+    
+          this.ngOnInit();
+        },
+        err => console.log(err)
+      );
       //
-     
+     //guardar ACA SOLICITUD
 
 
       /*this.sinCaracter= this.auto.descripcion?.replace(/[\/\\]+/g,'?');
