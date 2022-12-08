@@ -1,13 +1,14 @@
 
 .container{
     width: 25rem;
-    background-color:cornsilk;  
+    background-color:cornsilk;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;  
 }
 p{
     color:black;
 }
 button{
     display: inline-block;
-    margin: 2px;
-
+    margin: 3px;
 }

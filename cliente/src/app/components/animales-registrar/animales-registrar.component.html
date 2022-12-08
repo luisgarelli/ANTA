@@ -1,5 +1,5 @@
 <section class="container">
-  <h3 class="text-uppercase text-center">Formulario de alta de adopción</h3>
+  <h3 class="text-uppercase text-center">Formulario de alta de mascota</h3>
   <p class="text-uppercase text-center">En este formulario podras dar de alta un animal que quieras que lo adopten.</p>
 
       <form  (submit)="agregar()" method="post" enctype="multipart/form-data">
@@ -60,7 +60,7 @@
 
         <div class="form-group row">
           <h4 class="col-3 col-form-label">¿Tamaño del Animal?</h4>
-          <label class="">
+          <label>
             <input class="col-3" type="radio" name="tama" value="Pequeño" [(ngModel)]="animal.tamanio"> Pequeño
           </label>
           <label>
@@ -92,7 +92,7 @@
           </div>
 
           <div class="form-group">
-            <button class="btn btn-primary btn-sm" (click)="alerta()">Agregar</button>
+            <button class="btn btn-primary" (click)="alerta()">Confirmar</button>
           </div>
         </div>
       </form>
