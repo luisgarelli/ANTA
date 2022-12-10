@@ -312,7 +312,7 @@ class AnimalModel
 	}
 	async buscaradop(nombre: string,nom: string)
     {
-		const encontrado: any = await this.db.query('SELECT * FROM adopcion WHERE id_animal = ? AND id_registrado = ?', [nombre,nom]);
+		const encontrado: any = await this.db.query('SELECT * FROM adopcion WHERE  id_registrado = ? AND id_animal = ?', [nombre,nom]);
 		//Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
 		//const encontrado: any = await this.db.query('SELECT * FROM animal WHERE estado = "Disponible" AND id_usuario = ?', [nombre]);
 		
@@ -425,6 +425,7 @@ class AnimalModel
         
 		return user;
 	}
+	
 	
 }
 

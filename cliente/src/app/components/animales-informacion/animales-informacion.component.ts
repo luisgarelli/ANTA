@@ -24,6 +24,7 @@ usuario :any = [];
 registrado :any = [];
 verificarUsuario :any = [];
 interesados:any=[];
+busAdopciones:any=[];
 id = "";
 
 idAnimal:any;
@@ -43,13 +44,14 @@ nomCelular:any;
 animalElegido:any;
 disabledValue= false;
 disabledValu= false;
+invisible=false;
 valor= true;
 idRegistrado:any;
 adopcion2: Adopcion;
 nombreAnimal:any;
 boton: boolean = true;
 idRegis:any;
-constructor( private ngxToastService: NgxToastService, private rutaActiva: ActivatedRoute, private animalService: AnimalService,  private usuarioService: UsuariosService) { 
+constructor( private ngxToastService: NgxToastService, private rutaActiva: ActivatedRoute, private animalService: AnimalService,  private usuarioService: UsuariosService,  private router: Router) { 
   this.adopcion = {  id_animal: "",  id_usuario: "",tipo_vivienda:"", animal_castrado:"",compromiso_animal:"" , balcones:"", acuerdo_familiar:"", animal_propiedad:"", animal_pasear:"",id_registrado:"",estado:""};
   this.animal2 = { estado: "" };
   this.adopcion2 = { estado: "" };
@@ -70,6 +72,9 @@ constructor( private ngxToastService: NgxToastService, private rutaActiva: Activ
       
      
       });
+
+
+     
       this.animalCargarDatos();
 
       
@@ -133,13 +138,40 @@ constructor( private ngxToastService: NgxToastService, private rutaActiva: Activ
         },
         err => console.log(err)
       );
+
+      //
+      this.animalService.buscaradopciones(this.idUsuario,this.AnimalID.id).subscribe(
+        res => {
+          this.busAdopciones = res
+          console.log("buscar adopciones",this.busAdopciones);
+          /*id_animal, id_registrado */
+         console.log("idol", this.busAdopciones.id);
+            if(this.idUsuario == this.busAdopciones.id_registrado && this.AnimalID.id == this.busAdopciones.id_animal ){
+                console.log("true");
+                this.invisible = true;
+            }
+            else{
+              console.log("false");
+              this.invisible = false;
+            }
+        },
+        err => console.log(err)
+      );
       
   }
   ngOnDestroy(): void {
     this.AnimalID = [];
     this.Animal = [];
   }
+
+  volver(){
+    this.router.navigate(['animales/listar']);
+
+  }
   animalCargarDatos() {
+
+   
+    //
 
     this.animalService.buscarAnimal(this.AnimalID.id).subscribe(
       res => {
@@ -244,7 +276,13 @@ this.idAnimal = idAnim;
     },
     err => console.log(err)
   );
-  //
+//empieza
+
+
+
+
+
+  //terminaa
   /*this.solicitudes.id_usuario = this.idUsuario;
   this.solicitudes.id_animal = this.idAnimal;
   this.solicitudes.estado = this.estadoAnimal;
@@ -309,6 +347,8 @@ if(this.boleano == false){
     },
     err => console.log(err)
   );
+
+  
   }
   if(this.boleano == true){
     console.log("ya ha adoptado al animal");

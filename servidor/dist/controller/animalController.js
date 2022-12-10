@@ -418,8 +418,8 @@ class AnimalController {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.params.id);
             const { id } = req.params;
-            const { use } = req.params;
-            const usuario = yield animalModel_1.default.buscaradop(id, use);
+            const { nom } = req.params;
+            const usuario = yield animalModel_1.default.buscaradop(id, nom);
             if (usuario)
                 return res.json(usuario);
             res.status(404).json({ text: "User doesn't exists" });

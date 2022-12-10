@@ -49,7 +49,7 @@ class AnimalRoutes {
         this.router.get('/buscardados/:id', verifyToken_1.TokenValidation, animalController_1.default.buscarDados);
         this.router.get('/solicitud/:id', verifyToken_1.TokenValidation, animalController_1.default.buscarSolicitud);
         this.router.put('/modsolicitud/:id', verifyToken_1.TokenValidation, animalController_1.default.modificar);
-        this.router.get('/buscaradopciones/:id/:use', verifyToken_1.TokenValidation, animalController_1.default.buscaradop);
+        this.router.get('/buscaradopciones/:id/:nom', verifyToken_1.TokenValidation, animalController_1.default.buscaradop);
         this.router.put('/modsolicitud/:id/:nom', verifyToken_1.TokenValidation, animalController_1.default.actualizadopcion);
         this.router.post('/agregarsolicitud', verifyToken_1.TokenValidation, animalController_1.default.agregarSolicitud);
         this.router.get('/buscasolicitu/:id', verifyToken_1.TokenValidation, animalController_1.default.buscaSolicitud);

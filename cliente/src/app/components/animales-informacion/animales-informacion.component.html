@@ -17,7 +17,7 @@
 
 
 -->
-
+<button type="button"  (click)="volver()" class="btn btn-primary btn-lg"> Volver</button>
 
 <div class="container-fluid">
   <div class="row text-white text-center">
@@ -153,7 +153,7 @@
                   </label>
 
                 </fieldset>
-                <button *ngIf="boton"  class="btn btn-success btn-block"  >Enviar</button>
+                <button   [disabled]="invisible" *ngIf="boton"  class="btn btn-success btn-block"  >Enviar</button>
 
               </form>
               <div class="modal-footer">

@@ -432,8 +432,8 @@ class AnimalController
     {
         console.log(req.params.id);
         const { id } = req.params;
-        const { use } = req.params;
-        const usuario = await animalModel.buscaradop(id,use);
+        const { nom } = req.params;
+        const usuario = await animalModel.buscaradop(id,nom);
 
         if (usuario)
         

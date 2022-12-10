@@ -283,7 +283,7 @@ class AnimalModel {
     }
     buscaradop(nombre, nom) {
         return __awaiter(this, void 0, void 0, function* () {
-            const encontrado = yield this.db.query('SELECT * FROM adopcion WHERE id_animal = ? AND id_registrado = ?', [nombre, nom]);
+            const encontrado = yield this.db.query('SELECT * FROM adopcion WHERE  id_registrado = ? AND id_animal = ?', [nombre, nom]);
             //Ojo la consulta devuelve una tabla de una fila. (Array de array) Hay que desempaquetar y obtener la unica fila al enviar
             //const encontrado: any = await this.db.query('SELECT * FROM animal WHERE estado = "Disponible" AND id_usuario = ?', [nombre]);
             if (encontrado.length > 1)

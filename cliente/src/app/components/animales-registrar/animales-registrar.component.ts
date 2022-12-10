@@ -13,6 +13,7 @@ import { toBase64String } from '@angular/compiler/src/output/source_map';
 import { Storage,ref, uploadBytes, listAll,getDownloadURL,UploadTaskSnapshot,uploadBytesResumable } from '@angular/fire/storage';
 import { AnyForUntypedForms } from '@angular/forms';
 import { UsuariosService } from '../../services/usuarios.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-animales-registrar',
   templateUrl: './animales-registrar.component.html',
@@ -72,7 +73,7 @@ export class AnimalesRegistrarComponent implements OnInit {
  img:any;
  idUsuario:any;
 //--
-  constructor(private animalService: AnimalService, private _sanitizer:DomSanitizer, private storage : Storage, private usuarioService : UsuariosService) {
+  constructor(private router: Router,private animalService: AnimalService, private _sanitizer:DomSanitizer, private storage : Storage, private usuarioService : UsuariosService) {
     this.animal = { nombre: "",   sexo: "" , raza: "", descripcion: "", provincia: "", localidad: "" , animal_codigo: "",imagen:"", estado:"",tamanio:"",tipo:"",id_usuario:"" };
     this.animal2 = {nombre: "",   sexo: "" , raza: "", descripcion: "", alta: ""  };
     this.sexo = { id: "", sexo: "" };
@@ -213,6 +214,8 @@ getUsuarios(){
 }
 alerta(){
 Swal.fire("Completado", '¡Se ha registrado!','success' );
+
+
 }
 cambiarSeleccion(e:any){
 console.log(e.target.value);
@@ -333,7 +336,7 @@ console.log(btoa(binaryString));
       res => {
         console.log("Datos del Servicio");
         console.log(res);
-       
+        this.router.navigate(['animales/registrados']);
       /*  for (let ani of this.animales){
           // this.sanitizer.bypassSecurityTrustResourceUrl(ani.imagen);
           //this.dataURLtoFile(this.croppedImage,'image.png');
