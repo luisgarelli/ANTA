@@ -1,22 +1,29 @@
-<h1>Dados en Adopción</h1>
-<div class="container">  
-    <div class="card-group mt-2">
-    <div class="col-md-5" *ngFor=" let animal of verificarUsuario">
-     <img class="card-img-top" [src]="animal.imagen" alt="Card image cap">
-      <div class="card-body" >
-      Nombre: {{animal.nombre}}
-      <br>
-      Sexo: {{animal.sexo}}
-      <br>
-      Descripción: {{animal.descripcion}}
-      <br>
-      Fecha de ingreso {{animal.alta | date: 'dd/MM/yyyy'}}
-      <br>
-      Tamaño: {{animal.tamanio}}
-      <br>
-      Tipo: {{animal.tipo}}
-      <br>
+<h1 style="text-align: center; background-color: rgb(90, 214, 255);">Dados en Adopción</h1>
+
+<div class="container">
+  
+    <div class="card-group mt-3">
+      
+      <div class="col-md-5" *ngFor=" let animal of verificarUsuario">
+        <div class="card text">
+        <img class="card-img-top" [src]="animal.imagen" alt="Card image cap">
+        <div class="card-body">
+
+          Nombre: {{animal.nombre}}
+          <br>
+          Sexo: {{animal.sexo}}
+          <br>
+          Descripción: {{animal.descripcion}}
+          <br>
+          Fecha de ingreso {{animal.alta | date: 'dd/MM/yyyy'}}
+          <br>
+          Tamaño: {{animal.tamanio}}
+          <br>
+          Tipo: {{animal.tipo}}
+          <br>
+        </div>
       </div>
     </div>
- </div>
+  </div>
+
 </div>

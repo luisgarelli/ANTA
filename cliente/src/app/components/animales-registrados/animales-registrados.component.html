@@ -2,22 +2,27 @@
 
 <div class="container">
   <div class="card-group mt-3">
-    <div class="col-md-5" *ngFor=" let animal of verificarUsuario ">
+    <div class="col-md-5" *ngFor=" let animal of verificarUsuario">
+
       <img class="card-img-top" [src]="animal.imagen" alt="Card image cap">
-      <div class="card-body">
-        Nombre: {{animal.nombre}} <br>
-        Sexo: {{animal.sexo}} <br>
-        Descripción: {{animal.descripcion}}<br>
-        Fecha de ingreso {{animal.alta | date: 'dd/MM/yyyy'}}<br>
-        Tamaño: {{animal.tamanio}}<br>
-        <p>Tipo: {{animal.tipo}} </p> 
+      <div class="card-text">
+        Nombre: {{animal.nombre}}
         <br>
-        <div class="card text-center">
-          <a class="btn btn-info" (click)="cambiarSeleccion(animal.id)">Ver Interesados</a>
-          <a class="btn btn-success" (click)="perfil(animal.id)">Ver Info</a>
-          <a class="btn btn-danger" (click)="eliminarAnimal(animal.id)">Eliminar</a>
-        </div>
+        Sexo: {{animal.sexo}}
+        <br>
+        Descripción: {{animal.descripcion}}
+        <br>
+        Fecha de ingreso {{animal.alta | date: 'dd/MM/yyyy'}}
+        <br>
+        Tamaño: {{animal.tamanio}}
+        <br>
+        Tipo: {{animal.tipo}}
+        <br>
+      </div>
+      <div class="card text-center">
+        <a class="btn btn-info" (click)="cambiarSeleccion(animal.id)">Ver Interesados</a>
+        <a class="btn btn-success" (click)="perfil(animal.id)">Ver Info</a>
+        <a class="btn btn-danger" (click)="eliminarAnimal(animal.id)">Eliminar</a>
       </div>
     </div>
   </div>
-</div>

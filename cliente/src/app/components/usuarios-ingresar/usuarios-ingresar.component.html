@@ -6,20 +6,22 @@
                     <h3>Inicio de Sesión</h3>
                 </div>
                 <div *ngIf="!reintentar" class="card-body">
-                    
+
                     <form (submit)="ingresar()" method="post">
                         <div class="form-group">
                             <div class="input-group form-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-user"></i></span>
-                            </div>
-                            <input type="text" name="usuario" [(ngModel)]="user.usuario" placeholder="Usuario" class="form-control" autofocus>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                </div>
+                                <input type="text" name="usuario" [(ngModel)]="user.usuario" placeholder="Usuario"
+                                    class="form-control" autofocus>
                             </div>
                             <div class="input-group form-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-key"></i></span>
-                            </div>
-                            <input type="password" name="password" [(ngModel)]="user.password" placeholder="Contraseña" class="form-control">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                </div>
+                                <input type="password" name="password" [(ngModel)]="user.password"
+                                    placeholder="Contraseña" class="form-control">
                             </div>
                             <button type="submit" class="btn btn-success btn-block">Enviar</button>
                         </div>
@@ -30,8 +32,8 @@
                 </div>
                 <div *ngIf="reintentar" class="card-body">
                     {{mensaje}} <br>
-                    <a class="btn btn-info" (click)=recargarForm()>Reintentar</a> 
-                     <a class="btn btn-danger" routerLink="../principal">Cancelar</a>
+                    <a class="btn btn-info" (click)=recargarForm()>Reintentar</a>
+                    <a class="btn btn-danger" routerLink="../principal">Cancelar</a>
                 </div>
             </div>
         </div>
