@@ -173,12 +173,9 @@ cambiarSeleccion2(e:any){
       res => {
         console.log("Datos del Servicio");
         console.log(res);
-
+        
       },
       err => console.log(err)
     );
   }
-
- 
-
 }

@@ -25,20 +25,7 @@ class UserController {
             const { usuario, password } = req.body; /* hacemos detrucsturing y obtenemos el ID. Es decir, obtenemos una parte de un objeto JS.*/
             const result = yield userModel_1.default.buscarNombre(usuario);
             const saltRounds = 10;
-            /*const passwordHash: any = async () =>
-            {
-                const hash = await bcrypt.hash(password, saltRounds)
-                console.log("Hash generado: ",hash)
-                //console.log(await bcrypt.compare(password, hash))
-            }*/
-            /*bcrypt.hash(password, saltRounds, (err, hash) => {
-                if (err) {
-                    console.error(err);
-                    return;
-                }
-                console.log(hash);
-            });*/
-            if (yield bcrypt_1.default.compare(password, result.password)) {
+            if (result.password == password) {
                 console.log("CONTRASEÑA CORRECTA");
                 const token = jsonwebtoken_1.default.sign({ _id: result.id }, "secretKey");
                 res.json({ "login": "ok", "mensaje": "Bienvenido ", "nombre": result.nombre, token: token, "rol": result.rol, "password": password, "id": result.id });
@@ -47,7 +34,25 @@ class UserController {
             else {
                 console.log("LOS HASH NO COINCIDEN");
                 res.send({ "login": "incorrecto", "mensaje": "Usuario y/o contraseña incorrectos!!" });
+                return;
             }
+            /*
+            if(await bcrypt.compare(password, result.password))
+            {
+                console.log("CONTRASEÑA CORRECTA");
+    
+                const token:string=jwt.sign({_id: result.id},"secretKey");
+                res.json({ "login":"ok","mensaje":"Bienvenido ","nombre": result.nombre, token:token, "rol": result.rol, "password": password , "id":result.id});
+    
+                return;
+            }
+            else{
+                console.log("LOS HASH NO COINCIDEN");
+                res.send({"login":"incorrecto","mensaje":"Usuario y/o contraseña incorrectos!!"});
+    
+                return;
+            }
+            */
             console.log(usuario);
             console.log(result);
             /*if (!result)
@@ -81,37 +86,28 @@ class UserController {
         return __awaiter(this, void 0, void 0, function* () {
             const usuario = req.body;
             delete usuario.repassword;
-            const user = req.body;
-            //delete slot.repassword;
+            const saltRounds = 10;
             console.log(req.body);
             //res.send('Usuario agregado!!!');
-            const busqueda = yield userModel_1.default.buscarNombre(user.slot);
+            const busqueda = yield userModel_1.default.buscarNombre(usuario.email);
             if (!busqueda) {
-                const result = yield userModel_1.default.crear(user);
-                return res.json({ mensaje: 'user saved!!' });
+                console.log('BUSQUEDA PASADA');
+                const passwordHash = bcrypt_1.default.hash(usuario.password, saltRounds, (err, hash) => {
+                    if (err) {
+                        console.error(err);
+                        return;
+                    }
+                    console.log(hash);
+                    //usuario.password=hash;
+                });
+                //console.log( 'Contraseña encriptada:' + passwordHash);
+                //console.log( 'Contraseña ingresada:' + usuario.password);
+                //usuario.password = passwordHash
+                //console.log( 'Contraseña ingresada:' + usuario.password);
+                const result = yield userModel_1.default.crear(usuario);
+                return res.json({ mensaje: 'User saved!!' });
             }
-            return res.json({ mensaje: 'user exists!!' });
-            /*  const saltRounds = 10;
-      
-              console.log(req.body);
-              //res.send('Usuario agregado!!!');
-              const busqueda = await userModel.buscarNombre(usuario.nombre);
-      
-              if (!busqueda)
-              {
-                  const passwordHash = bcrypt.hash(usuario.password, saltRounds, (err, hash) => {
-                      if (err) {
-                          console.error(err);
-                          return;
-                      }
-                      console.log(hash);
-                  });
-                  usuario.password = passwordHash
-                  const result = await userModel.crear(usuario);
-                  return res.json({ mensaje: 'User saved!!' });
-              }
-      
-              return res.json({ mensaje: 'User exists!!' });*/
+            return res.json({ mensaje: 'User exists!!' });
         });
     }
     list(req, res) {

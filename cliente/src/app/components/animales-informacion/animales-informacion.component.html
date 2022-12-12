@@ -58,6 +58,9 @@
                       [(ngModel)]="adopcion.tipo_vivienda"> Departamento
                   </label>
                 </fieldset>
+                <div [ngSwitch]="errorVivienda">
+                  <div *ngSwitchCase="1" style="color: red">Debes seleccionar una opción</div>
+                </div>
 
                 <fieldset>
                 </fieldset>
@@ -90,6 +93,10 @@
 
                   </label>
                 </fieldset>
+                <div [ngSwitch]="errorCastrado">
+                  <div *ngSwitchCase="1" style="color: red">Debes seleccionar una opción</div>
+                </div>
+
                 <fieldset>
                   <legend style="color: black">¿Se compromete a realizar la
                     vacunación anual, desparacitación y castración de la mascota? (*)</legend>
@@ -99,8 +106,11 @@
                   <label>
                     <input type="radio" name="disp" value="No" [(ngModel)]="adopcion.compromiso_animal"> No.
                   </label>
-
                 </fieldset>
+                <div [ngSwitch]="errorCompromiso">
+                  <div *ngSwitchCase="1" style="color: red">Debes seleccionar una opción</div>
+                </div>
+
                 <fieldset>
                   <legend style="color: black">¿Tenés cerramientos en los balcones y/o ventanas? (red o rejas) (*)
                   </legend>
@@ -118,8 +128,10 @@
                     <input type="radio" name="balcones" value="No, pero voy a colocar. "
                       [(ngModel)]="adopcion.balcones"> No, pero voy a colocar.
                   </label>
-
                 </fieldset>
+                <div [ngSwitch]="errorBalcones">
+                  <div *ngSwitchCase="1" style="color: red">Debes seleccionar una opción</div>
+                </div>
 
                 <fieldset>
                   <legend style="color: black">¿Cuántas horas estará sola la mascota en la propiedad? (*)
@@ -135,8 +147,11 @@
                   <label>
                     <input type="radio" name="horas" value="Más de 3 " [(ngModel)]="adopcion.animal_propiedad"> 3 horas o más.
                   </label>
-
                 </fieldset>
+                <div [ngSwitch]="errorPropiedad">
+                  <div *ngSwitchCase="1" style="color: red">Debes seleccionar una opción</div>
+                </div>
+
                 <fieldset>
                   <legend style="color: black">¿Cuántas veces pensás sacarlo a pasear por día?(*) </legend>
                   <label>
@@ -151,9 +166,12 @@
                     <input type="radio" name="pasear" value="Más de 3 " [(ngModel)]="adopcion.animal_pasear"> Más de 3
                     veces por día.
                   </label>
-
                 </fieldset>
-                <button   [disabled]="invisible" *ngIf="boton"  class="btn btn-success btn-block"  >Enviar</button>
+                <div [ngSwitch]="errorPasear">
+                  <div *ngSwitchCase="1" style="color: red">Debes seleccionar una opción</div>
+                </div>
+
+                <button   [disabled]="invisible" *ngIf="boton"  class="btn btn-success btn-block" (click)="verificarForm()" >Enviar</button>
 
               </form>
               <div class="modal-footer">

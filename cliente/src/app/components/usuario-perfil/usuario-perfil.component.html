@@ -1,4 +1,4 @@
-<section class="container">
+<!-- <section class="container">
   <h3 class="text-uppercase text-center">Datos Personales</h3>
   <p class="text-uppercase text-center">En esta sección podras editar tus datos personales</p>
   <hr>
@@ -10,7 +10,7 @@
           <button class="btn btn-primary btn-sm" (click)="mostrarse()">Editar</button>
         </div>
         <div *ngIf="mostrar">
-        <div class="form-group-row">
+          <div class="form-group-row">
             <input type="text" class="form-control" id="nombre" [(ngModel)]="usuario.nombre"
               aria-describedby="emailHelp" placeholder="Ingrese aqui el nombre">
             <button class="btn btn-primary btn-sm mt-2" (click)="cambiarNombre2()">Aceptar</button>
@@ -22,30 +22,31 @@
           <button class="btn btn-primary btn-sm" (click)="mostrarse3()">Editar</button>
         </div>
         <div *ngIf="mostrar3">
-          <div class="form-group row"> 
-              <input type="email" class="form-control" id="email" [(ngModel)]="usuario3.email" aria-describedby="emailHelp" placeholder="Ingrese aqui el email">
-              <button class="btn btn-primary btn-sm mt-2" (click)="cambiarEmail()">Aceptar</button>
-              <button class="btn btn-primary btn-sm mt-2" (click)="ocultar3()">Ocultar</button>
-            </div>      
+          <div class="form-group row">
+            <input type="email" class="form-control" id="email" [(ngModel)]="usuario3.email"
+              aria-describedby="emailHelp" placeholder="Ingrese aqui el email">
+            <button class="btn btn-primary btn-sm mt-2" (click)="cambiarEmail()">Aceptar</button>
+            <button class="btn btn-primary btn-sm mt-2" (click)="ocultar3()">Ocultar</button>
+          </div>
         </div>
         <div class="form-group row">
           <label for="" class="">Género: {{usuarios.sexo}}</label>
-          <button class="btn btn-primary btn-sm"(click)="mostrarse2()">Editar</button>
+          <button class="btn btn-primary btn-sm" (click)="mostrarse2()">Editar</button>
         </div>
         <div *ngIf="mostrar2">
-            <div class="form-group row">
-              <label for="">
-                <input type="radio" name="tip" value="Mujer" [(ngModel)]="usuario2.sexo"> Mujer
-              </label>
-                <label for="">
-                  <input type="radio" name="tipo" value="Hombre" [(ngModel)]="usuario2.sexo"> Hombre
-                </label>
-            </div>
-            <div class="form-group row">
-              <button class="btn btn-primary btn-sm" (click)="cambiarSexo()">Aceptar</button>
-              <button class="btn btn-primary btn-sm" (click)="ocultar2()">Ocultar</button>
-            </div>
+          <div class="form-group row">
+            <label for="">
+              <input type="radio" name="tip" value="Mujer" [(ngModel)]="usuario2.sexo"> Mujer
+            </label>
+            <label for="">
+              <input type="radio" name="tipo" value="Hombre" [(ngModel)]="usuario2.sexo"> Hombre
+            </label>
           </div>
+          <div class="form-group row">
+            <button class="btn btn-primary btn-sm" (click)="cambiarSexo()">Aceptar</button>
+            <button class="btn btn-primary btn-sm" (click)="ocultar2()">Ocultar</button>
+          </div>
+        </div>
       </form>
     </div>
     <div class="col-6">
@@ -54,33 +55,133 @@
           <label for="" class="">Provincia: {{provincias.provincia}}, {{localidades.localidad}}</label>
           <button class="btn btn-primary btn-sm" (click)="mostrarse4()">Editar</button>
         </div>
-          <div *ngIf="mostrar4">
-            <div class="form-group row">   
-              <select class="form-control mb-2" [(ngModel)]="usuario4.provincia" (change)="cambiarSeleccion5($event)">
-                  <option disabled selected> Selecciona una opcion</option>
-                  <option [value]="ani.id" *ngFor="let ani of combo3">
-                  {{ani.provincia}}
-              </select>
-              <select class="form-control" [(ngModel)]="usuario4.localidad" (change)="cambiarSeleccion6($event)">
-                  <option [value]="ani.id" *ngFor="let ani of codigo">
-                  {{ani.localidad}}
-              </select>
-              <button class="btn btn-primary btn-sm mt-2" (click)="cambiarProvincias()">Aceptar</button>
-              <button class="btn btn-primary btn-sm mt-2" (click)="ocultar4()">Ocultar</button>
-            </div>
-          </div> 
+        <div *ngIf="mostrar4">
+          <div class="form-group row">
+            <select class="form-control mb-2" [(ngModel)]="usuario4.provincia" (change)="cambiarSeleccion5($event)">
+              <option disabled selected> Selecciona una opcion</option>
+              <option [value]="ani.id" *ngFor="let ani of combo3">
+                {{ani.provincia}}
+            </select>
+            <select class="form-control" [(ngModel)]="usuario4.localidad" (change)="cambiarSeleccion6($event)">
+              <option [value]="ani.id" *ngFor="let ani of codigo">
+                {{ani.localidad}}
+            </select>
+            <button class="btn btn-primary btn-sm mt-2" (click)="cambiarProvincias()">Aceptar</button>
+            <button class="btn btn-primary btn-sm mt-2" (click)="ocultar4()">Ocultar</button>
+          </div>
+        </div>
         <div class="form-group row">
           <label for="" class="">Teléfono: {{usuarios.numero}}</label>
           <button class="btn btn-primary btn-sm" (click)="mostrarse5()">Editar</button>
         </div>
-          <div *ngIf="mostrar5">
-            <div class="form-group row">
-              <input type="text" class="form-control" id="nombre" [(ngModel)]="usuario5.numero" aria-describedby="emailHelp" placeholder="Ingrese el número">
-              <button class="btn btn-primary btn-sm mt-2" (click)="cambiarNumero()">Aceptar</button>
-              <button class="btn btn-primary btn-sm mt-2" (click)="ocultar5()">Ocultar</button>
-            </div>
-          </div>      
+        <div *ngIf="mostrar5">
+          <div class="form-group row">
+            <input type="text" class="form-control" id="nombre" [(ngModel)]="usuario5.numero"
+              aria-describedby="emailHelp" placeholder="Ingrese el número">
+            <button class="btn btn-primary btn-sm mt-2" (click)="cambiarNumero()">Aceptar</button>
+            <button class="btn btn-primary btn-sm mt-2" (click)="ocultar5()">Ocultar</button>
+          </div>
+        </div>
       </form>
     </div>
   </div>
-</section>
+  </section>
+  -->
+
+  <div style="width: 35rem; ">
+    <!-- <img class="card-img-top"  src="https://www.elfinanciero.com.mx/resizer/031BMWo-U9oB5WJP4DdPbNx9vII=/400x225/filters:format(jpg):quality(70)/cloudfront-us-east-1.images.arcpublishing.com/elfinanciero/G4FLWTZ57VE2JPYATUTCB4GJ7E.jpg" alt="Card image cap">-->
+    <br>
+    <div class="card-body" style="background-color: white;">
+      <p style="color: black;"> Nombre: {{usuarios.nombre}} </p>
+      <button class="btn btn-primary btn-sm" (click)="mostrarse()">Cambiar</button> <br>
+      <div *ngIf="mostrar">
+        <label for="exampleInputEmail1">Ingrese el nombre</label>
+        <input type="text" class="form-control" id="nombre" [(ngModel)]="usuario.nombre" aria-describedby="emailHelp"
+          placeholder="Ingrese el nombre">
+        <button class="btn btn-primary btn-sm" (click)="cambiarNombre2()">Aceptar</button>
+        <button class="btn btn-primary btn-sm" (click)="ocultar()">Ocultar</button>
+        <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+      </div>
+      <p style="color: black;"> Email:{{usuarios.email}}</p>
+      <button class="btn btn-primary btn-sm" (click)="mostrarse3()">Editar</button> <br>
+      <div *ngIf="mostrar3">
+        <label for="exampleInputEmail1">Ingrese el email</label>
+        <input type="email" class="form-control" id="email" [(ngModel)]="usuario3.email" aria-describedby="emailHelp"
+          placeholder="Ingrese el email">
+        <button class="btn btn-primary btn-sm" (click)="cambiarEmail()">Aceptar</button>
+        <button class="btn btn-primary btn-sm" (click)="ocultar3()">Ocultar</button>
+        <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+      </div>
+
+      <p style="color: black;"> Género:{{usuarios.sexo}}</p>
+      <button class="btn btn-primary btn-sm" (click)="mostrarse2()">Cambiar</button> <br>
+      <div *ngIf="mostrar2">
+        <div class="form-group row">
+          <label for="">
+            <input type="radio" name="tip" value="Mujer" [(ngModel)]="usuario2.sexo"> Mujer
+          </label>
+          <label for="">
+            <input type="radio" name="tipo" value="Hombre" [(ngModel)]="usuario2.sexo"> Hombre
+          </label>
+        </div>
+        <button class="btn btn-primary btn-sm" (click)="cambiarSexo()">Aceptar</button>
+        <button class="btn btn-primary btn-sm" (click)="ocultar2()">Ocultar</button>
+        <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+      </div>
+      <div class="row">
+
+        <div class="form-group col-md-4">
+          <p style="color: black;"> Provincia:{{provincias.provincia}}</p>
+        </div>
+        <div class="form-group col-md-6">
+          <p style="color: black;"> Localidad:{{localidades.localidad}}</p> <br>
+        </div>
+        <button class="form-group col-md-2" class="btn btn-primary btn-sm" (click)="mostrarse4()">Cambiar</button> <br>
+
+      </div>
+
+      <!---->
+      <div class="row" *ngIf="mostrar4">
+        <div class="form-group col-md-6">
+
+          <label for="sexo" class="form-label">Provincia</label>
+          <select class="form-select" [(ngModel)]="usuario4.provincia" (change)="cambiarSeleccion5($event)">
+            <!-- <option selected>Seleccione...</option>-->
+            <option disabled selected> Selecciona una opcion</option>
+            <option [value]="ani.id" *ngFor="let ani of combo3">
+              {{ani.provincia}}
+
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+
+          <label for="sexo" class="form-label">Localidad</label>
+          <select class="form-select" [(ngModel)]="usuario4.localidad" (change)="cambiarSeleccion6($event)">
+            <!-- <option selected>Seleccione...</option>-->
+
+            <option [value]="ani.id" *ngFor="let ani of codigo">
+              {{ani.localidad}}
+
+          </select>
+        </div>
+        <button class="btn btn-primary btn-sm" (click)="cambiarProvincias()">Aceptar</button>
+        <button class="btn btn-primary btn-sm" (click)="ocultar4()">Ocultar</button>
+      </div>
+
+      <!---->
+      <p style="color: black;"> Número:{{usuarios.numero}}</p>
+      <button class="btn btn-primary btn-sm" (click)="mostrarse5()">Editar</button>
+      <div *ngIf="mostrar5">
+        <label for="exampleInputEmail1">Ingrese el número</label>
+        <input type="text" class="form-control" id="nombre" [(ngModel)]="usuario5.numero" aria-describedby="emailHelp"
+          placeholder="Ingrese el número">
+        <button class="btn btn-primary btn-sm" (click)="cambiarNumero()">Aceptar</button>
+        <button class="btn btn-primary btn-sm" (click)="ocultar5()">Ocultar</button>
+        <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+      </div>
+
+      <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+
+
+    </div>
+  </div>

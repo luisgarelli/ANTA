@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Request, Response, text } from 'express';
 import userModel from '../models/userModel';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
@@ -18,21 +18,26 @@ class UserController
         const result = await userModel.buscarNombre(usuario);
         const saltRounds = 10;
 
-        /*const passwordHash: any = async () =>
-        {
-            const hash = await bcrypt.hash(password, saltRounds)
-            console.log("Hash generado: ",hash)
-            //console.log(await bcrypt.compare(password, hash))
-        }*/
-          
-        /*bcrypt.hash(password, saltRounds, (err, hash) => {
-            if (err) {
-                console.error(err);
-                return;
-            }
-            console.log(hash);
-        });*/
 
+
+        if(result.password == password)
+        {
+            console.log("CONTRASEÑA CORRECTA");
+
+            const token:string=jwt.sign({_id: result.id},"secretKey");
+            res.json({ "login":"ok","mensaje":"Bienvenido ","nombre": result.nombre, token:token, "rol": result.rol, "password": password , "id":result.id});
+
+            return;        
+        }
+        else{
+            console.log("LOS HASH NO COINCIDEN");
+            res.send({"login":"incorrecto","mensaje":"Usuario y/o contraseña incorrectos!!"});
+
+            return;
+        }
+
+
+        /*
         if(await bcrypt.compare(password, result.password))
         {
             console.log("CONTRASEÑA CORRECTA");
@@ -45,8 +50,10 @@ class UserController
         else{
             console.log("LOS HASH NO COINCIDEN");
             res.send({"login":"incorrecto","mensaje":"Usuario y/o contraseña incorrectos!!"});
-        }
 
+            return;
+        }
+        */
         console.log(usuario);
         console.log(result);
 
@@ -85,39 +92,37 @@ class UserController
     {
         const usuario = req.body;
         delete usuario.repassword;
-
-        const user = req.body;
-        //delete slot.repassword;
-        console.log(req.body);
-        //res.send('Usuario agregado!!!');
-        const busqueda = await userModel.buscarNombre(user.slot);
-        if (!busqueda) {
-            const result = await userModel.crear(user);
-            return res.json({ mensaje: 'user saved!!' });
-        }
-        return res.json({ mensaje: 'user exists!!' });
-      /*  const saltRounds = 10;
+        const saltRounds = 10;
 
         console.log(req.body);
         //res.send('Usuario agregado!!!');
-        const busqueda = await userModel.buscarNombre(usuario.nombre);
+        const busqueda = await userModel.buscarNombre(usuario.email);
 
         if (!busqueda)
         {
+            console.log('BUSQUEDA PASADA');
+
             const passwordHash = bcrypt.hash(usuario.password, saltRounds, (err, hash) => {
                 if (err) {
                     console.error(err);
                     return;
                 }
                 console.log(hash);
+                //usuario.password=hash;
             });
-            usuario.password = passwordHash
+
+            //console.log( 'Contraseña encriptada:' + passwordHash);
+            //console.log( 'Contraseña ingresada:' + usuario.password);
+
+            //usuario.password = passwordHash
+
+            //console.log( 'Contraseña ingresada:' + usuario.password);
+
             const result = await userModel.crear(usuario);
             return res.json({ mensaje: 'User saved!!' });
         }
 
-        return res.json({ mensaje: 'User exists!!' });*/
-
+        return res.json({ mensaje: 'User exists!!' });
 	}
 	
 	public async list(req:Request,res:Response)

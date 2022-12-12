@@ -7,6 +7,9 @@
           <label for="nombre" class="col-3 col-form-label">Nombre</label>
             <input type="text" id="" name="nombre" [(ngModel)]="animal.nombre" placeholder="Ingrese el nombre aquí" autofocus class="form-control col-4">
         </div>
+        <div [ngSwitch]="errorNombre">
+          <div *ngSwitchCase="1">Debes completar el nombre</div>
+        </div>
 
         <div class="form-group row">
           <label for="" class="col-3 col-form-label">Animal</label>
@@ -14,6 +17,9 @@
               <option [value]="ani.id" *ngFor="let ani of combo5">
                 {{ani.nombre}}
             </select>
+        </div>
+        <div [ngSwitch]="errorAnimal">
+          <div *ngSwitchCase="1">Debes seleccionar el tipo de animal</div>
         </div>
 
         <div class="form-group row">
@@ -33,9 +39,6 @@
         </div>
         <div>
 
-        
-    
-
         <div class="form-group row">
           <label for="" class="col-3 col-form-label">Provincia</label>
             <select class="form-control col-4" [(ngModel)]="animal.provincia" (change)="cambiarSeleccion5($event)">
@@ -44,6 +47,9 @@
                 {{ani.provincia}}
             </select>
         </div>
+        <div [ngSwitch]="errorProvincia">
+          <div *ngSwitchCase="1">Debes seleccionar una provincia</div>
+        </div>
 
         <div class="form-group row">
           <label for="" class="col-3 col-form-label">Localidad</label>
@@ -51,6 +57,9 @@
               <option [value]="ani.id" *ngFor="let ani of codigo">
                 {{ani.localidad}}
             </select>
+        </div>
+        <div [ngSwitch]="errorLocalidad">
+          <div *ngSwitchCase="1">Debes seleccionar una localidad</div>
         </div>
 
         <div class="form-group row">
@@ -69,6 +78,9 @@
           <label>
             <input class="col-3" type="radio" name="tama" value="Grande" [(ngModel)]="animal.tamanio"> Grande
           </label>
+        </div>
+        <div [ngSwitch]="errorTamanio">
+          <div *ngSwitchCase="1">Debes seleccionar un tamaño</div>
         </div>
           
         <div class="form-group row">
@@ -93,10 +105,8 @@
 
           <div class="form-group">
             <!--  (click)="alerta()" -->
-            <button class="btn btn-primary" >Confirmar</button>
+            <button class="btn btn-primary">Publicar</button>
           </div>
         </div>
       </form>
-
-
 </section>
