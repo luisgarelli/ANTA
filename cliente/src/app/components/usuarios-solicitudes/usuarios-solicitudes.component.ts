@@ -17,6 +17,9 @@ export class UsuariosSolicitudesComponent implements OnInit {
   idUsuario:any;
   usuario :any = [];
   solicitudes:any;
+  codCelular = 549;
+  nomCelular:any;
+  celular:any;
   constructor(private animalService: AnimalService,  private usuarioService: UsuariosService, private router:Router) { }
 
   ngOnInit(): void {
@@ -26,6 +29,7 @@ export class UsuariosSolicitudesComponent implements OnInit {
       res => {
         this.solicitudes = res
         console.log("verificar solicitudes",this.solicitudes);
+      
      
       },
       err => console.log(err)

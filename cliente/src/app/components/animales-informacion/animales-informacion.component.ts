@@ -38,8 +38,10 @@ export class AnimalesInformacionComponent implements OnInit {
   animal2: Animal;
   idUsuario: any;
   codCelular = 549;
+  codCelular2 = 549;
   numeroUsuario = 5491164048188;
   celular: any;
+  celular2:any;
   nomCelular: any;
   animalElegido: any;
   disabledValue = false;
@@ -61,7 +63,7 @@ export class AnimalesInformacionComponent implements OnInit {
   constructor(private ngxToastService: NgxToastService, private rutaActiva: ActivatedRoute, private animalService: AnimalService, private usuarioService: UsuariosService, private router: Router) {
     this.animal2 = { estado: "" };
     this.adopcion2 = { estado: "" };
-    this.solicitudes = { id_usuario: "", id_animal: "", estado: "", descripcion: "", nombre_animal: "", id_registrado: "" };
+    this.solicitudes = { id_usuario: "", id_animal: "", estado: "", descripcion: "", nombre_animal: "", id_registrado: "",numero_registrado:"" };
 
 
   }
@@ -326,6 +328,11 @@ export class AnimalesInformacionComponent implements OnInit {
           this.solicitudes.descripcion = this.descripcion;
           this.solicitudes.nombre_animal = this.nombreAnimal;
           this.solicitudes.id_registrado = this.idRegis;
+          
+          /* this.celular = `${this.codCelular}${this.nomCelular}`;
+            console.log(this.celular); */
+         
+         this.solicitudes.numero_registrado = this.nomCelular;
           this.animalService.guardarSolicitud(this.solicitudes).subscribe(
             res => {
               console.log("Datos del Servicio");

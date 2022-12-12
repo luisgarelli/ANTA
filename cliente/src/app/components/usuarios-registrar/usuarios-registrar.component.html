@@ -90,7 +90,7 @@
                                     <span class="input-group-text"><i class="fas fa-user"></i></span>
                                 </div>
                                 <input type="text" name="numero" [(ngModel)]="user.numero" 
-                                    placeholder="Número de teléfono" class="form-control">
+                                    placeholder="Número de teléfono" class="form-control" maxlength="10">
                             </div>
 
                             <button class="btn btn-success btn-block" (click)="verificarForm()">Enviar</button>

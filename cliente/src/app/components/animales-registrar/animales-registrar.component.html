@@ -6,10 +6,12 @@
         <div class="form-group row">
           <label for="nombre" class="col-3 col-form-label">Nombre</label>
             <input type="text" id="" name="nombre" [(ngModel)]="animal.nombre" placeholder="Ingrese el nombre aquí" autofocus class="form-control col-4">
+
+            <div [ngSwitch]="errorNombre">
+              <div *ngSwitchCase="1">Debes completar el nombre</div>
+            </div>
         </div>
-        <div [ngSwitch]="errorNombre">
-          <div *ngSwitchCase="1">Debes completar el nombre</div>
-        </div>
+      
 
         <div class="form-group row">
           <label for="" class="col-3 col-form-label">Animal</label>
@@ -17,10 +19,11 @@
               <option [value]="ani.id" *ngFor="let ani of combo5">
                 {{ani.nombre}}
             </select>
+         <!--  <div [ngSwitch]="errorAnimal">
+              <div *ngSwitchCase="1">Debes seleccionar el tipo de animal</div>
+            </div>--> 
         </div>
-        <div [ngSwitch]="errorAnimal">
-          <div *ngSwitchCase="1">Debes seleccionar el tipo de animal</div>
-        </div>
+
 
         <div class="form-group row">
           <label for="" class="col-3 col-form-label">Raza</label>
@@ -28,6 +31,11 @@
               <option [value]="ani.id" *ngFor="let ani of codigo2">
                 {{ani.raza}}
             </select>
+
+           <!--<div [ngSwitch]="errorRaza">
+              <div *ngSwitchCase="1">Debes seleccionar una raza</div>
+             
+          </div>--> 
         </div>
 
         <div class="form-group row">
@@ -46,10 +54,11 @@
               <option [value]="ani.id" *ngFor="let ani of combo3">
                 {{ani.provincia}}
             </select>
+          <!--  <div [ngSwitch]="errorProvincia">
+              <div *ngSwitchCase="1">Debes seleccionar una provincia</div>
+            </div>-->
         </div>
-        <div [ngSwitch]="errorProvincia">
-          <div *ngSwitchCase="1">Debes seleccionar una provincia</div>
-        </div>
+       
 
         <div class="form-group row">
           <label for="" class="col-3 col-form-label">Localidad</label>
@@ -57,14 +66,24 @@
               <option [value]="ani.id" *ngFor="let ani of codigo">
                 {{ani.localidad}}
             </select>
+           <!-- <div [ngSwitch]="errorLocalidad">
+              <div *ngSwitchCase="1">Debes seleccionar una localidad</div>
+            </div>-->
         </div>
-        <div [ngSwitch]="errorLocalidad">
-          <div *ngSwitchCase="1">Debes seleccionar una localidad</div>
-        </div>
+       
 
         <div class="form-group row">
           <label for="" class="col-3 col-form-label">Descripción</label>
             <input class="form-control col-4" type="text" id="" name="descripcion" [(ngModel)]="animal.descripcion" placeholder="Describi a la mascota">
+            <div [ngSwitch]="errorDescripcion">                                                                                     
+              <div *ngSwitchCase="1">Debes completar el campo</div>
+              <div *ngSwitchCase="2">ha exedido el  limite,  la
+                  descripcion sera truncada.
+                 </div>
+                 
+           
+              <div *ngSwitchCase="3">Debe ser alfanumerico</div>
+          </div>
         </div>
 
         <div class="form-group row">
@@ -78,10 +97,12 @@
           <label>
             <input class="col-3" type="radio" name="tama" value="Grande" [(ngModel)]="animal.tamanio"> Grande
           </label>
+
+        <!-- <div [ngSwitch]="errorTamanio">
+            <div *ngSwitchCase="1">Debes seleccionar un tamaño</div>
+          </div>--> 
         </div>
-        <div [ngSwitch]="errorTamanio">
-          <div *ngSwitchCase="1">Debes seleccionar un tamaño</div>
-        </div>
+     
           
         <div class="form-group row">
           <h4 class="col-3 col-form-label">¿Edad del Animal?</h4>
@@ -105,7 +126,7 @@
 
           <div class="form-group">
             <!--  (click)="alerta()" -->
-            <button class="btn btn-primary">Publicar</button>
+            <button class="btn btn-primary" >Publicar</button>
           </div>
         </div>
       </form>

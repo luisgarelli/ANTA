@@ -71,6 +71,11 @@ export class AnimalesRegistrarComponent implements OnInit {
   errorProvincia = 0;
   errorLocalidad = 0;
   errorTamanio = 0;
+  errorTipo = 0;
+ errorDescripcion =0;
+ errorRaza=0;
+ errorSexo=0;
+ errorImagen=0;
   //--
   constructor(private router: Router, private animalService: AnimalService, private _sanitizer: DomSanitizer, private storage: Storage, private usuarioService: UsuariosService) {
     this.animal = { nombre: "", sexo: "", raza: "", descripcion: "", provincia: "", localidad: "", animal_codigo: "", imagen: "", estado: "", tamanio: "", tipo: "", id_usuario: "" };
@@ -333,7 +338,7 @@ export class AnimalesRegistrarComponent implements OnInit {
       res => {
         console.log("Datos del Servicio");
         console.log(res);
-        this.router.navigate(['animales/registrados']);
+       this.router.navigate(['animales/registrados']);
         /*  for (let ani of this.animales){
             // this.sanitizer.bypassSecurityTrustResourceUrl(ani.imagen);
             //this.dataURLtoFile(this.croppedImage,'image.png');
@@ -451,20 +456,32 @@ export class AnimalesRegistrarComponent implements OnInit {
   }
   // otra prueba
 
+  recargarForm(){
+    this.animal.nombre= "";
+    this.errorNombre = 0;    
+    this.animal.descripcion = "";
+    this.errorDescripcion = 0;    
+   
+  }
+
   verificarForm(): boolean {
     this.errorNombre = this.verificarNombre(this.animal.nombre);
     this.errorAnimal = this.verificarAnimal(this.animal.animal_codigo);
+    this.errorRaza = this.verificarRaza(this.animal.raza);
+    this.errorSexo = this.verificarAnimal(this.animal.sexo);
     this.errorProvincia = this.verificarProvincia(this.animal.provincia);
     this.errorLocalidad = this.verificarLocalidad(this.animal.localidad);
+    this.errorDescripcion= this.verificarDescripcion(this.animal.descripcion);
     this.errorTamanio = this.verificarTamanio(this.animal.tamanio);
-
-    if ((this.errorNombre + this.errorAnimal + this.errorProvincia + this.errorLocalidad + this.errorTamanio) > 0) {
+    this.errorTipo = this.verificarTamanio(this.animal.tipo);
+  
+    if ((this.errorNombre + this.errorAnimal + this.errorRaza +this.errorSexo+this.errorProvincia + this.errorLocalidad +this.errorDescripcion+ this.errorTamanio + this.errorTipo ) > 0) {
       return false;
     }
     return true;
   }
 
-  private verificarNombre(nombre: string): number {
+  private verificarNombre(nombre: any): number {
     const patron = /^[a-zA-z]+$/;
     if (nombre.length == 0)
       return 1;
@@ -474,30 +491,47 @@ export class AnimalesRegistrarComponent implements OnInit {
       return 3;
     return 0;
   }
+  private verificarDescripcion(descripcion:any): number {
+    const patron=/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9]+(?: [a-zA-ZáéíóúÁÉÍÓÚñÑ0-9]+)*$/g;
+    if(descripcion.length==0)
+      return 1;
+    if(descripcion.length>30)
+      return 2;
+     
+    if(!patron.test(descripcion))
+      return 3;
+    return 0;
+  }
 
   private verificarAnimal(animal: string): number {
-    if (animal == ""){
+    if (animal.length==0){
       return 1;
     }
     return 0;
   }
+  private verificarRaza(raza: string): number {
+    if (raza.length==0)
+      return 1;
+    
+    return 0;
+  }
 
   private verificarProvincia(provincia: string): number {
-    if (provincia == ""){
+    if (provincia.length==0){
       return 1;
     }
     return 0;
   }
 
   private verificarLocalidad(localidad: string): number {
-    if (localidad == ""){
+    if (localidad.length==0){
       return 1;
     }
     return 0;
   }
 
   private verificarTamanio(tamaño: string): number {
-    if (tamaño == ""){
+    if (tamaño.length==0){
       return 1;
     }
     return 0;
